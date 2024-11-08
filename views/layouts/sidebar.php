@@ -9,10 +9,10 @@
     <nav class="pc-sidebar">
       <div class="navbar-wrapper">
         <div class="m-header">
-          <a href="index.html" class="b-brand text-primary">
+          <a href="<?= BASE_PATH ?>home" class="b-brand text-primary">
             <!-- ========   Change your logo from here   ============ -->
             <img src="<?= BASE_PATH ?>assets/images/logo-dark.svg" alt="logo image" class="logo-lg" />
-            <span class="badge bg-brand-color-2 rounded-pill ms-2 theme-version">v1.2.0</span>
+            <span class="badge bg-brand-color-2 rounded-pill ms-2 theme-version">Zumaya was here</span>
           </a>
         </div>
         <div class="navbar-content">
@@ -39,42 +39,20 @@
               </ul>
             </li>
             <li class="pc-item pc-caption">
-              <label>Widget</label>
+              <label>Administración de usuarios</label>
               <i class="ph-duotone ph-chart-pie"></i>
-            </li>
-            <li class="pc-item">
-              <a href="../widget/w_user.html" class="pc-link">
-                <span class="pc-micon">
-                  <i class="ph-duotone ph-identification-card"></i>
-                </span>
-                <span class="pc-mtext">User</span>
-              </a>
-            </li>
-            <li class="pc-item pc-caption">
-              <label>Application</label>
-              <i class="ph-duotone ph-buildings"></i>
-            </li>
-            <li class="pc-item">
-              <a href="../application/calendar.html" class="pc-link">
-                <span class="pc-micon">
-                  <i class="ph-duotone ph-calendar-blank"></i>
-                </span>
-                <span class="pc-mtext">Calendar</span></a
-              >
             </li>
             <li class="pc-item pc-hasmenu">
               <a href="#!" class="pc-link">
                 <span class="pc-micon">
-                  <i class="ph-duotone ph-shopping-cart"></i>
+                  <i class="ph-duotone ph-identification-card"></i>
                 </span>
-                <span class="pc-mtext">E-commerce</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+                <span class="pc-mtext">Usuarios</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
               ></a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">Productos</a></li>
-                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-details.html">Product details</a></li>
-                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-list.html">Product List</a></li>
-                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/create">Agregar nuevo producto</a></li>
-                <li class="pc-item"><a class="pc-link" href="../application/ecom_checkout.html">Checkout</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/create">Alta de usuarios</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/create">Baja de usuarios</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">Todos los usuarios</a></li>
               </ul>
             </li>
             <li class="pc-item pc-hasmenu">
@@ -82,17 +60,72 @@
                 <span class="pc-micon">
                   <i class="ph-duotone ph-user-circle"></i>
                 </span>
-                <span class="pc-mtext">Users</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+                <span class="pc-mtext">Clientes</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
               ></a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="../application/account-profile.html">Account Profile</a></li>
-                <li class="pc-item"><a class="pc-link" href="../application/social-media.html">Social media</a></li>
-                <li class="pc-item"><a class="pc-link" href="../application/user-card.html">User Card</a></li>
-                <li class="pc-item"><a class="pc-link" href="../application/user-list.html">User List</a></li>
-                <li class="pc-item"><a class="pc-link" href="../application/team.html">Team</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/create">Alta de clientes</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/create">Baja de clientes</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">Todos los clientes</a></li>
               </ul>
             </li>
-
+            <li class="pc-item pc-caption">
+              <label>Administración de productos</label>
+              <i class="ph-duotone ph-buildings"></i>
+            </li>
+            <li class="pc-item pc-hasmenu">
+              <a href="#!" class="pc-link">
+                <span class="pc-micon">
+                  <i class="ph-duotone ph-shopping-cart"></i>
+                </span>
+                <span class="pc-mtext">Productos</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+              ></a>
+              <ul class="pc-submenu">
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/create">Alta de producto</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/create">Baja de producto</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">Consultar</a></li>
+              </ul>
+            </li>
+             <li class="pc-item pc-hasmenu">
+              <a href="#!" class="pc-link">
+                <span class="pc-micon">
+                  <i class="ph-duotone ph-books"></i>
+                </span>
+                <span class="pc-mtext">Cátalogos</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+              ></a>
+              <ul class="pc-submenu">
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">CRUD de Categorías</a></li>
+                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-details.html">CRUD de Marcas</a></li>
+                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-list.html">CRUD de Tags</a></li>
+              </ul>
+            </li>
+            </li>
+             <li class="pc-item pc-hasmenu">
+              <a href="#!" class="pc-link">
+                <span class="pc-micon">
+                  <i class="ph-duotone ph-tag"></i>
+                </span>
+                <span class="pc-mtext">Cupones</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+              ></a>
+              <ul class="pc-submenu">
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">Alta de cupones</a></li>
+                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-details.html">Baja de cupones</a></li>
+                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-list.html">Consultar</a></li>
+              </ul>
+            </li>
+            </li>
+             <li class="pc-item pc-hasmenu">
+              <a href="#!" class="pc-link">
+                <span class="pc-micon">
+                  <i class="ph-duotone ph-basket  "></i>
+                </span>
+                <span class="pc-mtext">Ordenes</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+              ></a>
+              <ul class="pc-submenu">
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">Alta de ordenes</a></li>
+                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-details.html">Baja de ordenes</a></li>
+                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-list.html">Consultar</a></li>
+              </ul>
+            </li>
             <li class="pc-item pc-caption">
               <label>Pages</label>
               <i class="ph-duotone ph-devices"></i>
