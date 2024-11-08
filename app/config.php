@@ -4,7 +4,7 @@
 	}
 	
 	if (!defined('BASE_PATH')) {
-      define('BASE_PATH','http://localhost:8888/avanzada_ids_tm_2024/');
+      define('BASE_PATH','http://localhost:80/avanzada/Examen-avanzada/');
    	}
 
 ?>
