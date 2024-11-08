@@ -4,7 +4,7 @@
 	}
 	
 	if (!defined('BASE_PATH')) {
-      define('BASE_PATH','http://localhost:80/avanzada/Examen-avanzada/');
+      define('BASE_PATH','http://localhost/avanzada/Examen-avanzada/');
    	}
 
 ?>

@@ -70,10 +70,10 @@
                 <span class="pc-mtext">E-commerce</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
               ></a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="products/index.php">Product</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">Productos</a></li>
                 <li class="pc-item"><a class="pc-link" href="../application/ecom_product-details.html">Product details</a></li>
                 <li class="pc-item"><a class="pc-link" href="../application/ecom_product-list.html">Product List</a></li>
-                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-add.html">Add New Product</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/create">Agregar nuevo producto</a></li>
                 <li class="pc-item"><a class="pc-link" href="../application/ecom_checkout.html">Checkout</a></li>
               </ul>
             </li>

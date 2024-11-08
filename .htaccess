@@ -1,0 +1,14 @@
+Options +FollowSymLinks -MultiViews -Indexes
+RewriteEngine on
+RewriteBase /avanzada/Examen-avanzada/
+
+# Rutas de reescritura de páginas
+RewriteRule ^login/?$ index.php [L]
+RewriteRule ^home/?$ views/home.php [L]
+RewriteRule ^products/?$ views/products/index.php [L]
+RewriteRule ^products/create/?$ products/create.php [L]
+RewriteRule ^products/([^/]+)/?$ views/products/details.php [L]
+
+# Controladores
+RewriteRule ^auth/?$ app/AuthController.php [L]
+RewriteRule ^products/?$ app/ProductController.php [L]
