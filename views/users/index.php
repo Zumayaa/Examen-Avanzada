@@ -68,6 +68,7 @@
                     <tbody>
                       <tr>
                         <td>
+                          <a href="<?= BASE_PATH ?>users/details" style="text-decoration: none; color: inherit;">
                           <div class="d-inline-block align-middle">
                             <img
                               src="../assets/images/user/avatar-1.jpg"

@@ -38,3 +38,6 @@ RewriteRule ^users/add-users/?$ views/users/add-users.php [L]
 
 # Editar usuarios
 RewriteRule ^users/edit-users/?$ views/users/edit-users.php [L]
+
+# Detalles de usuarrio
+RewriteRule ^users/([^/]+)/?$ views/users/details.php [L]
