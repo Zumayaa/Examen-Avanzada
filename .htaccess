@@ -6,6 +6,7 @@ RewriteBase /Examen-avanzada/
 RewriteRule ^login/?$ index.php [L]
 RewriteRule ^home/?$ views/home.php [L]
 RewriteRule ^products/?$ views/products/index.php [L]
+RewriteRule ^users/?$ views/users/index.php [L]
 
 # Controladores
 RewriteRule ^auth/?$ app/AuthController.php [L]
@@ -31,3 +32,6 @@ RewriteRule ^products/([^/]+)/?$ views/products/details-presentation.php [L]
 
 # Detalles de productos
 RewriteRule ^products/([^/]+)/?$ views/products/details.php [L]
+
+# Alta de usuarios
+RewriteRule ^users/add-users/?$ views/users/add-users.php [L]

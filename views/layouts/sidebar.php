@@ -50,9 +50,9 @@
                 <span class="pc-mtext">Usuarios</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
               ></a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="">Alta de usuarios</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>users/add-users">Alta de usuarios</a></li>
                 <li class="pc-item"><a class="pc-link" href="">Baja de usuarios</a></li>
-                <li class="pc-item"><a class="pc-link" href="">Todos los usuarios</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>users">Todos los usuarios</a></li>
               </ul>
             </li>
             <li class="pc-item pc-hasmenu">
