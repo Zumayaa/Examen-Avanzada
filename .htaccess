@@ -5,10 +5,17 @@ RewriteBase /Examen-avanzada/
 # Rutas de reescritura de páginas
 RewriteRule ^login/?$ index.php [L]
 RewriteRule ^home/?$ views/home.php [L]
-RewriteRule ^products/?$ views/products/add-product.php [L]
-RewriteRule ^products/create/?$ products/create.php [L]
-RewriteRule ^products/([^/]+)/?$ views/products/details.php [L]
+RewriteRule ^products/?$ views/products/index.php [L]
 
 # Controladores
 RewriteRule ^auth/?$ app/AuthController.php [L]
 RewriteRule ^products/?$ app/ProductController.php [L]
+
+# Alta de producto
+RewriteRule ^products/add-product/?$ views/products/add-product.php [L]
+
+# Editar producto
+RewriteRule ^products/edit-product/?$ views/products/edit-product.php [L]
+
+# Detalles de productos
+RewriteRule ^products/([^/]+)/?$ views/products/details.php [L]

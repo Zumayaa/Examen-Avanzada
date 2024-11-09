@@ -80,8 +80,8 @@
                 <span class="pc-mtext">Productos</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
               ></a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">Alta de producto</a></li>
-                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/create">Todos los productos</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/add-product">Alta de producto</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">Todos los productos</a></li>
               </ul>
             </li>
              <li class="pc-item pc-hasmenu">

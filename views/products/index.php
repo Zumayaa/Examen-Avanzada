@@ -59,7 +59,7 @@
             <div class="card table-card">
               <div class="card-body">
                 <div class="text-end p-sm-4 pb-sm-2">
-                  <a href="ecom_product-add.html" class="btn btn-primary"> <i class="ti ti-plus f-18"></i> Agregar producto </a>
+                  <a href="<?= BASE_PATH ?>products/add-product" class="btn btn-primary"> <i class="ti ti-plus f-18"></i> Agregar producto </a>
                 </div>
                 <div class="table-responsive">
                   <table class="table table-hover tbl-product" id="pc-dt-simple">
@@ -99,17 +99,12 @@
                           <div class="prod-action-links">
                             <ul class="list-inline me-auto mb-0">
                               <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
-                                <a
-                                  href="#"
-                                  class="avtar avtar-xs btn-link-secondary btn-pc-default"
-                                  data-bs-toggle="offcanvas"
-                                  data-bs-target="#productOffcanvas"
-                                >
+                                <a href="<?= BASE_PATH ?>products/details" class="avtar avtar-xs btn-link-success btn-pc-default">
                                   <i class="ti ti-eye f-18"></i>
                                 </a>
                               </li>
                               <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
-                                <a href="ecom_product-add.html" class="avtar avtar-xs btn-link-success btn-pc-default">
+                                <a href="<?= BASE_PATH ?>products/edit-product" class="avtar avtar-xs btn-link-success btn-pc-default">
                                   <i class="ti ti-edit-circle f-18"></i>
                                 </a>
                               </li>

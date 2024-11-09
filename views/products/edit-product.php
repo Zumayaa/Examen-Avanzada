@@ -40,12 +40,12 @@
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item"><a href="../dashboard/index.html">Inicio</a></li>
                   <li class="breadcrumb-item"><a href="javascript: void(0)">Productos</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Agregar nuevo producto</li>
+                  <li class="breadcrumb-item" aria-current="page">Editar producto</li>
                 </ul>
               </div>
               <div class="col-md-12">
                 <div class="page-header-title">
-                  <h2 class="mb-0">Agregar nuevo producto</h2>
+                  <h2 class="mb-0">Editar producto</h2>
                 </div>
               </div>
             </div>
