@@ -50,9 +50,9 @@
                 <span class="pc-mtext">Usuarios</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
               ></a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/create">Alta de usuarios</a></li>
-                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/create">Baja de usuarios</a></li>
-                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">Todos los usuarios</a></li>
+                <li class="pc-item"><a class="pc-link" href="">Alta de usuarios</a></li>
+                <li class="pc-item"><a class="pc-link" href="">Baja de usuarios</a></li>
+                <li class="pc-item"><a class="pc-link" href="">Todos los usuarios</a></li>
               </ul>
             </li>
             <li class="pc-item pc-hasmenu">
@@ -63,9 +63,9 @@
                 <span class="pc-mtext">Clientes</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
               ></a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/create">Alta de clientes</a></li>
-                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/create">Baja de clientes</a></li>
-                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">Todos los clientes</a></li>
+                <li class="pc-item"><a class="pc-link" href="">Alta de clientes</a></li>
+                <li class="pc-item"><a class="pc-link" href="">Baja de clientes</a></li>
+                <li class="pc-item"><a class="pc-link" href="">Todos los clientes</a></li>
               </ul>
             </li>
             <li class="pc-item pc-caption">
@@ -92,7 +92,7 @@
                 <span class="pc-mtext">Cátalogos</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
               ></a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">CRUD de Categorías</a></li>
+                <li class="pc-item"><a class="pc-link" href="">CRUD de Categorías</a></li>
                 <li class="pc-item"><a class="pc-link" href="../application/ecom_product-details.html">CRUD de Marcas</a></li>
                 <li class="pc-item"><a class="pc-link" href="../application/ecom_product-list.html">CRUD de Tags</a></li>
               </ul>
@@ -106,7 +106,7 @@
                 <span class="pc-mtext">Cupones</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
               ></a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">Alta de cupones</a></li>
+                <li class="pc-item"><a class="pc-link" href="">Alta de cupones</a></li>
                 <li class="pc-item"><a class="pc-link" href="../application/ecom_product-details.html">Baja de cupones</a></li>
                 <li class="pc-item"><a class="pc-link" href="../application/ecom_product-list.html">Consultar</a></li>
               </ul>
@@ -120,7 +120,7 @@
                 <span class="pc-mtext">Ordenes</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
               ></a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">Alta de ordenes</a></li>
+                <li class="pc-item"><a class="pc-link" href="">Alta de ordenes</a></li>
                 <li class="pc-item"><a class="pc-link" href="../application/ecom_product-details.html">Baja de ordenes</a></li>
                 <li class="pc-item"><a class="pc-link" href="../application/ecom_product-list.html">Consultar</a></li>
               </ul>
