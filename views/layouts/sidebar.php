@@ -81,6 +81,7 @@
               ></a>
               <ul class="pc-submenu">
                 <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/add-product">Alta de producto</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products/presentation">Presentaciones</a></li>
                 <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>products">Todos los productos</a></li>
               </ul>
             </li>

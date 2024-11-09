@@ -17,5 +17,17 @@ RewriteRule ^products/add-product/?$ views/products/add-product.php [L]
 # Editar producto
 RewriteRule ^products/edit-product/?$ views/products/edit-product.php [L]
 
+# Lista de presentaciones
+RewriteRule ^products/presentation/?$ views/products/presentation.php [L]
+
+# Crear presentaciones
+RewriteRule ^products/add-presentation/?$ views/products/add-presentation.php [L]
+
+# Editar presentaciones
+RewriteRule ^products/edit-presentation/?$ views/products/edit-presentation.php [L]
+
+# Detalles de presentaciones
+RewriteRule ^products/([^/]+)/?$ views/products/details-presentation.php [L]
+
 # Detalles de productos
 RewriteRule ^products/([^/]+)/?$ views/products/details.php [L]
