@@ -35,14 +35,14 @@
             <div class="row align-items-center">
               <div class="col-md-12">
                 <ul class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
-                  <li class="breadcrumb-item"><a href="javascript: void(0)">Online Courses</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Teacher Add</li>
+                  <li class="breadcrumb-item"><a href="../dashboard/index.html">Inicio</a></li>
+                  <li class="breadcrumb-item"><a href="javascript: void(0)">Usuarios</a></li>
+                  <li class="breadcrumb-item" aria-current="page">Alta de usuario</li>
                 </ul>
               </div>
               <div class="col-md-12">
                 <div class="page-header-title">
-                  <h2 class="mb-0">Teacher Add</h2>
+                  <h2 class="mb-0">Alta de usuario</h2>
                 </div>
               </div>
             </div>
@@ -56,19 +56,19 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="mb-0">Basic Information</h5>
+                <h5 class="mb-0">Información del usuario</h5>
               </div>
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="mb-3">
-                      <label class="form-label">First Name</label>
+                      <label class="form-label">Primer nombre</label>
                       <input type="text" class="form-control" placeholder="Enter first name" />
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="mb-3">
-                      <label class="form-label">Last Name</label>
+                      <label class="form-label">Apellido</label>
                       <input type="text" class="form-control" placeholder="Enter last name" />
                     </div>
                   </div>
@@ -80,63 +80,30 @@
                   </div>
                   <div class="col-md-6">
                     <div class="mb-3">
-                      <label class="form-label">Joining Date</label>
+                      <label class="form-label">Día de inicio</label>
                       <input type="date" class="form-control" />
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="mb-3">
-                      <label class="form-label">Password</label>
-                      <input type="password" class="form-control" placeholder="Enter Password" />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="mb-3">
-                      <label class="form-label">Confirm Password</label>
-                      <input type="password" class="form-control" placeholder="Enter confirm password" />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="mb-3">
-                      <label class="form-label">Mobile Number</label>
+                      <label class="form-label">Número télefonico</label>
                       <input type="number" class="form-control" placeholder="Enter Mobile number" />
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="mb-3">
-                      <label class="form-label">Gender</label>
+                      <label class="form-label">Género</label>
                       <select class="form-select">
-                        <option>Female</option>
-                        <option>Male</option>
+                        <option>Masculino</option>
+                        <option>Femenino</option>
+                        <option>Kanye West</option>
                       </select>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="mb-3">
-                      <label class="form-label">Designation</label>
-                      <input type="text" class="form-control" placeholder="Designation" />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="mb-3">
-                      <label class="form-label">Department</label>
-                      <select class="form-select">
-                        <option>Department</option>
-                        <option>Department 1</option>
-                        <option>Department 2</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="mb-3">
-                      <label class="form-label">Date of Birth</label>
+                      <label class="form-label">Fecha de nacimiento</label>
                       <input type="date" class="form-control" />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="mb-3">
-                      <label class="form-label">Education</label>
-                      <input type="text" class="form-control" placeholder="Education" />
                     </div>
                   </div>
                   <div class="col-md-12">
@@ -145,7 +112,7 @@
                     </div>
                   </div>
                   <div class="col-md-12 text-end">
-                    <button class="btn btn-primary">Submit</button>
+                    <button class="btn btn-primary">Crear usuario</button>
                   </div>
                 </div>
               </div>
