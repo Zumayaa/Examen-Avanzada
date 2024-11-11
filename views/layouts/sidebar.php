@@ -191,25 +191,13 @@
                       <li>
                         <a class="pc-user-links">
                           <i class="ph-duotone ph-user"></i>
-                          <span>My Account</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="pc-user-links">
-                          <i class="ph-duotone ph-gear"></i>
-                          <span>Settings</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="pc-user-links">
-                          <i class="ph-duotone ph-lock-key"></i>
-                          <span>Lock Screen</span>
+                          <span>Mi cuenta</span>
                         </a>
                       </li>
                       <li>
                         <a class="pc-user-links">
                           <i class="ph-duotone ph-power"></i>
-                          <span>Logout</span>
+                          <span>Cerrar sesión</span>
                         </a>
                       </li>
                     </ul>
