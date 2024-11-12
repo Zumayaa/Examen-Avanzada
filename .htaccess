@@ -7,6 +7,7 @@ RewriteRule ^login/?$ index.php [L]
 RewriteRule ^home/?$ views/home.php [L]
 RewriteRule ^products/?$ views/products/index.php [L]
 RewriteRule ^users/?$ views/users/index.php [L]
+RewriteRule ^customer/?$ views/customer/index.php [L]
 
 # Controladores
 RewriteRule ^auth/?$ app/AuthController.php [L]
@@ -41,3 +42,9 @@ RewriteRule ^users/edit-users/?$ views/users/edit-users.php [L]
 
 # Detalles de usuarrio
 RewriteRule ^users/([^/]+)/?$ views/users/details.php [L]
+
+# Editar cliente
+RewriteRule ^customer/edit-customer/?$ views/customer/edit-customer.php [L]
+
+# Editar cliente
+RewriteRule ^customer/([^/]+)/?$ views/customer/details.php [L]

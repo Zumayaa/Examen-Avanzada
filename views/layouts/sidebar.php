@@ -62,9 +62,7 @@
                 <span class="pc-mtext">Clientes</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
               ></a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="">Alta de clientes</a></li>
-                <li class="pc-item"><a class="pc-link" href="">Baja de clientes</a></li>
-                <li class="pc-item"><a class="pc-link" href="">Todos los clientes</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>customer">Lista de clientes</a></li>
               </ul>
             </li>
             <li class="pc-item pc-caption">
