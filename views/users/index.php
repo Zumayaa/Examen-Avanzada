@@ -7,21 +7,28 @@
   <!-- [Head] start -->
 
   <head>
-    <?php 
-      include "../layouts/head.php";
-    ?>
+  <?php 
+
+    include "../layouts/head.php";
+
+  ?>
+
   </head>
   <!-- [Head] end -->
   <!-- [Body] Start -->
 
-  <body>
+  <body data-pc-preset="preset-1" data-pc-sidebar-theme="light" data-pc-sidebar-caption="true" data-pc-direction="ltr" data-pc-theme="light">
+
     <?php 
-      include "../layouts/sidebar.php";
+
+    include "../layouts/sidebar.php";
+
     ?>
 
     <?php 
 
     include "../layouts/nav.php";
+
     ?>
     <!-- [ Main Content ] start -->
     <div class="pc-container">
@@ -32,14 +39,14 @@
             <div class="row align-items-center">
               <div class="col-md-12">
                 <ul class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="../dashboard/index.html">Inicio</a></li>
-                  <li class="breadcrumb-item"><a href="javascript: void(0)">Usuarios</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Lista de usuarios</li>
+                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>home">Inicio</a></li>
+                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>customer">Usuario</a></li>
+                  <li class="breadcrumb-item" aria-current="page">Todos los usuarios</li>
                 </ul>
               </div>
               <div class="col-md-12">
                 <div class="page-header-title">
-                  <h2 class="mb-0">Lista de usuarios</h2>
+                  <h2 class="mb-0">Usuarios</h2>
                 </div>
               </div>
             </div>
@@ -50,213 +57,188 @@
 
         <!-- [ Main Content ] start -->
         <div class="row">
-          <!-- [ sample-page ] start -->
-          <div class="col-sm-12">
-            <div class="card border-0 table-card user-profile-list">
-              <div class="card-body">
+          <div class="col-lg-12">
+            <div class="card shadow-none">
+              <div class="card-header">
+                <h5>Usuarios</h5>
+                <div class="card-header-right">
+                  <button type="button" class="btn btn-light-warning m-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Agregar usuario
+                  </button>
+                  <div
+                    class="modal fade"
+                    id="exampleModal"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel"
+                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Agregar usuario</h5
+                          >
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                        </div>
+                        <form>
+                          <div class="modal-body">
+                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0"
+                              >Agrega la información correspondiente al formulario.</small
+                            >
+                            <div class="mb-3">
+                              <label class="form-label">Nombre</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="fname"
+                                aria-describedby="emailHelp"
+                                placeholder="Ingresa el nombre"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Apellido</label>
+                              <input
+                                type="email"
+                                class="form-control"
+                                id="lname"
+                                aria-describedby="emailHelp"
+                                placeholder="Ingresa el apellido"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Email</label>
+                              <input type="email" class="form-control" id="emial" aria-describedby="emailHelp" placeholder="Ingresa el correo" />
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label">Imagen del usuario</label>
+                                <input class="form-control" type="file" />
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-light-primary">Agregar usuario</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body shadow border-0">
                 <div class="table-responsive">
-                  <table class="table table-hover" id="pc-dt-simple">
+                  <table id="report-table" class="table table-bordered table-striped mb-0">
                     <thead>
                       <tr>
-                        <th>Nombre</th>
-                        <th>Posición</th>
-                        <th>Edad</th>
-                        <th>Start date</th>
-                        <th>Status</th>
+                        <th class="border-top-0">Nombre</th>
+                        <th class="border-top-0">Email</th>
+                        <th class="border-top-0">Cuenta</th>
+                        <th class="border-top-0">Cumpleaños (hay que cambiarlo)</th>
+                        <th class="border-top-0">Acción</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
+                        <td>Mark Jason</td>
+                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
+                        <td>N/A</td>
+                        <td>January 01,2019 at 03:35 PM</td>
                         <td>
-                          <a href="<?= BASE_PATH ?>users/details" style="text-decoration: none; color: inherit;">
-                          <div class="d-inline-block align-middle">
-                            <img
-                              src="../assets/images/user/avatar-1.jpg"
-                              alt="user image"
-                              class="img-radius align-top m-r-15"
-                              style="width: 40px"
-                            />
-                            <div class="d-inline-block">
-                              <h6 class="m-b-0">Quinn Flynn</h6>
-                              <p class="m-b-0 text-primary">Android developer</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Support Lead</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>
-                          <span class="badge bg-light-success">Active</span>
-                          <div class="overlay-edit">
-                            <ul class="list-inline mb-0">
-                              <li class="list-inline-item m-0"
-                                ><a href="<?= BASE_PATH ?>users/edit-users" class="avtar avtar-s btn btn-primary"><i class="ti ti-pencil f-18"></i></a
-                              ></li>
-                              <li class="list-inline-item m-0"
-                                ><a href="#" class="avtar avtar-s btn bg-white btn-link-danger"><i class="ti ti-trash f-18"></i></a
-                              ></li>
-                            </ul>
-                          </div>
+                          <a href="<?= BASE_PATH ?>users/details" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
+                          <a href="<?= BASE_PATH ?>users/edit-users" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
+                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
                         </td>
                       </tr>
                       <tr>
+                        <td>Alice Nicol</td>
+                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
+                        <td>N/A</td>
+                        <td>January 01,2019 at 03:35 PM</td>
                         <td>
-                          <div class="d-inline-block align-middle">
-                            <img
-                              src="../assets/images/user/avatar-2.jpg"
-                              alt="user image"
-                              class="img-radius align-top m-r-15"
-                              style="width: 40px"
-                            />
-                            <div class="d-inline-block">
-                              <h6 class="m-b-0">Garrett Winters</h6>
-                              <p class="m-b-0 text-primary">Android developer</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Accountant</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>
-                          <span class="badge bg-light-danger">Disabled</span>
-                          <div class="overlay-edit">
-                            <ul class="list-inline mb-0">
-                              <li class="list-inline-item m-0"
-                                ><a href="<?= BASE_PATH ?>users/edit-users" class="avtar avtar-s btn btn-primary"><i class="ti ti-pencil f-18"></i></a
-                              ></li>
-                              <li class="list-inline-item m-0"
-                                ><a href="#" class="avtar avtar-s btn bg-white btn-link-danger"><i class="ti ti-trash f-18"></i></a
-                              ></li>
-                            </ul>
-                          </div>
+                          <a href="#" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
+                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
+                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
                         </td>
                       </tr>
                       <tr>
+                        <td>Harry Cook</td>
+                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
+                        <td>N/A</td>
+                        <td>January 01,2019 at 03:35 PM</td>
                         <td>
-                          <div class="d-inline-block align-middle">
-                            <img
-                              src="../assets/images/user/avatar-3.jpg"
-                              alt="user image"
-                              class="img-radius align-top m-r-15"
-                              style="width: 40px"
-                            />
-                            <div class="d-inline-block">
-                              <h6 class="m-b-0">Ashton Cox</h6>
-                              <p class="m-b-0 text-primary">Android developer</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Junior Technical Author</td>
-                        <td>66</td>
-                        <td>2009/01/12</td>
-                        <td>
-                          <span class="badge bg-light-danger">Disabled</span>
-                          <div class="overlay-edit">
-                            <ul class="list-inline mb-0">
-                              <li class="list-inline-item m-0"
-                                ><a href="#" class="avtar avtar-s btn btn-primary"><i class="ti ti-pencil f-18"></i></a
-                              ></li>
-                              <li class="list-inline-item m-0"
-                                ><a href="#" class="avtar avtar-s btn bg-white btn-link-danger"><i class="ti ti-trash f-18"></i></a
-                              ></li>
-                            </ul>
-                          </div>
+                          <a href="#" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
+                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
+                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
                         </td>
                       </tr>
                       <tr>
+                        <td>Tom Hannry</td>
+                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
+                        <td>N/A</td>
+                        <td>January 01,2019 at 03:35 PM</td>
                         <td>
-                          <div class="d-inline-block align-middle">
-                            <img
-                              src="../assets/images/user/avatar-4.jpg"
-                              alt="user image"
-                              class="img-radius align-top m-r-15"
-                              style="width: 40px"
-                            />
-                            <div class="d-inline-block">
-                              <h6 class="m-b-0">Cedric Kelly</h6>
-                              <p class="m-b-0 text-primary">Android developer</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Senior Javascript Developer</td>
-                        <td>22</td>
-                        <td>2012/03/29</td>
-                        <td>
-                          <span class="badge bg-light-success">Active</span>
-                          <div class="overlay-edit">
-                            <ul class="list-inline mb-0">
-                              <li class="list-inline-item m-0"
-                                ><a href="#" class="avtar avtar-s btn btn-primary"><i class="ti ti-pencil f-18"></i></a
-                              ></li>
-                              <li class="list-inline-item m-0"
-                                ><a href="#" class="avtar avtar-s btn bg-white btn-link-danger"><i class="ti ti-trash f-18"></i></a
-                              ></li>
-                            </ul>
-                          </div>
+                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
+                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
                         </td>
                       </tr>
                       <tr>
+                        <td>Martin Frank</td>
+                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
+                        <td>N/A</td>
+                        <td>January 01,2019 at 03:35 PM</td>
                         <td>
-                          <div class="d-inline-block align-middle">
-                            <img
-                              src="../assets/images/user/avatar-4.jpg"
-                              alt="user image"
-                              class="img-radius align-top m-r-15"
-                              style="width: 40px"
-                            />
-                            <div class="d-inline-block">
-                              <h6 class="m-b-0">Airi Satou</h6>
-                              <p class="m-b-0 text-primary">Android developer</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Accountant</td>
-                        <td>33</td>
-                        <td>2008/11/28</td>
-                        <td>
-                          <span class="badge bg-light-success">Active</span>
-                          <div class="overlay-edit">
-                            <ul class="list-inline mb-0">
-                              <li class="list-inline-item m-0"
-                                ><a href="#" class="avtar avtar-s btn btn-primary"><i class="ti ti-pencil f-18"></i></a
-                              ></li>
-                              <li class="list-inline-item m-0"
-                                ><a href="#" class="avtar avtar-s btn bg-white btn-link-danger"><i class="ti ti-trash f-18"></i></a
-                              ></li>
-                            </ul>
-                          </div>
+                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
+                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
                         </td>
                       </tr>
                       <tr>
+                        <td>Endrew Khan</td>
+                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
+                        <td>N/A</td>
+                        <td>January 01,2019 at 03:35 PM</td>
                         <td>
-                          <div class="d-inline-block align-middle">
-                            <img
-                              src="../assets/images/user/avatar-5.jpg"
-                              alt="user image"
-                              class="img-radius align-top m-r-15"
-                              style="width: 40px"
-                            />
-                            <div class="d-inline-block">
-                              <h6 class="m-b-0">Brielle Williamson</h6>
-                              <p class="m-b-0 text-primary">Android developer</p>
-                            </div>
-                          </div>
+                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
+                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
                         </td>
-                        <td>Integration Specialist</td>
-                        <td>61</td>
-                        <td>2012/12/02</td>
+                      </tr>
+                      <tr>
+                        <td>Chritina Methewv</td>
+                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
+                        <td>N/A</td>
+                        <td>January 01,2019 at 03:35 PM</td>
                         <td>
-                          <span class="badge bg-light-danger">Disabled</span>
-                          <div class="overlay-edit">
-                            <ul class="list-inline mb-0">
-                              <li class="list-inline-item m-0"
-                                ><a href="#" class="avtar avtar-s btn btn-primary"><i class="ti ti-pencil f-18"></i></a
-                              ></li>
-                              <li class="list-inline-item m-0"
-                                ><a href="#" class="avtar avtar-s btn bg-white btn-link-danger"><i class="ti ti-trash f-18"></i></a
-                              ></li>
-                            </ul>
-                          </div>
+                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
+                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Jakson Pit</td>
+                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
+                        <td>N/A</td>
+                        <td>January 01,2019 at 03:35 PM</td>
+                        <td>
+                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
+                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Nikolas Jons</td>
+                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
+                        <td>N/A</td>
+                        <td>January 01,2019 at 03:35 PM</td>
+                        <td>
+                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
+                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Nik Cage</td>
+                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
+                        <td>N/A</td>
+                        <td>January 01,2019 at 03:35 PM</td>
+                        <td>
+                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
+                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
                         </td>
                       </tr>
                     </tbody>
@@ -265,18 +247,11 @@
               </div>
             </div>
           </div>
-          <!-- [ sample-page ] end -->
         </div>
         <!-- [ Main Content ] end -->
       </div>
     </div>
-    <script src="../assets/js/plugins/simple-datatables.js"></script>
-    <script>
-      const dataTable = new simpleDatatables.DataTable('#pc-dt-simple', {
-        sortable: false,
-        perPage: 5
-      });
-    </script>
+
     <?php 
 
       include "../layouts/footer.php";
@@ -320,7 +295,6 @@
       include "../layouts/modals.php";
 
       ?>
-
 
   </body>
   <!-- [Body] end -->

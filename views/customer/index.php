@@ -110,9 +110,13 @@
                               <label class="form-label">Email</label>
                               <input type="email" class="form-control" id="emial" aria-describedby="emailHelp" placeholder="Ingresa el correo" />
                             </div>
+                            <div class="col-md-12">
+                                <label class="form-label">Imagen del usuario</label>
+                                <input class="form-control" type="file" />
+                            </div>
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
                             <button type="button" class="btn btn-light-primary">Agregar cliente</button>
                           </div>
                         </form>
