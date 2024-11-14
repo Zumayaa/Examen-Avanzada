@@ -188,7 +188,7 @@
                         <td>N/A</td>
                         <td>January 01,2019 at 03:35 PM</td>
                         <td>
-                          <a href="<?= BASE_PATH ?>catalogs/categories/details" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
+                          <a href="<?= BASE_PATH ?>coupons/details" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
                           <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
                             <i class="feather icon-edit"></i>
                           </button>

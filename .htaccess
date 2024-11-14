@@ -8,6 +8,7 @@ RewriteRule ^home/?$ views/home.php [L]
 RewriteRule ^products/?$ views/products/index.php [L]
 RewriteRule ^users/?$ views/users/index.php [L]
 RewriteRule ^customer/?$ views/customer/index.php [L]
+RewriteRule ^coupons/?$ views/coupons/coupons.php [L]
 
 # Controladores
 RewriteRule ^auth/?$ app/AuthController.php [L]
@@ -60,3 +61,8 @@ RewriteRule ^catalogs/categories/details/?$ views/catalogs/categories/details.ph
 #CRUD tags
 RewriteRule ^catalogs/tags/?$ views/catalogs/tags/tags.php [L]
 RewriteRule ^catalogs/tags/details/?$ views/catalogs/tags/details.php [L]
+
+#Detalles Cupon
+RewriteRule ^coupons/([^/]+)/?$ views/coupons/details.php [L]
+
+

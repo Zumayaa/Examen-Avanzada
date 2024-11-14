@@ -103,9 +103,7 @@
                 <span class="pc-mtext">Cupones</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
               ></a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="">Alta de cupones</a></li>
-                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-details.html">Baja de cupones</a></li>
-                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-list.html">Consultar</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>coupons">Todos los cupones</a></li>
               </ul>
             </li>
             </li>
