@@ -36,13 +36,13 @@
               <div class="col-md-12">
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item"><a href="../dashboard/index.html">Incio</a></li>
-                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>catalogs/brands">Marcas</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Detalles de marca</li>
+                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>catalogs/categories">Categorías</a></li>
+                  <li class="breadcrumb-item" aria-current="page">Detalles de categoría</li>
                 </ul>
               </div>
               <div class="col-md-12">
                 <div class="page-header-title">
-                  <h2 class="mb-0">Detalles de marca</h2>
+                  <h2 class="mb-0">Detalles de categoría</h2>
                 </div>
               </div>
             </div>
@@ -85,7 +85,7 @@
                       aria-controls="user-set-profile"
                       aria-selected="true"
                     >
-                      <span class="f-w-500"><i class="ph-duotone ph-user-circle m-r-10"></i>Visualización de marca</span>
+                      <span class="f-w-500"><i class="ph-duotone ph-user-circle m-r-10"></i>Visualización de la categoría</span>
                     </a>
                   </div>
                 </div>
