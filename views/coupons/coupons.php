@@ -40,13 +40,13 @@
               <div class="col-md-12">
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>home">Inicio</a></li>
-                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>users">Usuarios</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Todos los usuarios</li>
+                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>catalogs/categories">Cupones</a></li>
+                  <li class="breadcrumb-item" aria-current="page">Todos los cupones</li>
                 </ul>
               </div>
               <div class="col-md-12">
                 <div class="page-header-title">
-                  <h2 class="mb-0">Usuarios</h2>
+                  <h2 class="mb-0">Cupones</h2>
                 </div>
               </div>
             </div>
@@ -63,7 +63,7 @@
                 <h5>Marcas</h5>
                 <div class="card-header-right">
                   <button type="button" class="btn btn-light-warning m-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Agregar usuarios
+                    Agregar cupones
                   </button>
                   <div
                     class="modal fade"
@@ -77,7 +77,7 @@
                       <div class="modal-content">
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLabel"
-                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Agregar usuarios</h5
+                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Agregar cupones</h5
                           >
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
@@ -87,7 +87,7 @@
                               >Agrega la información correspondiente al formulario.</small
                             >
                             <div class="mb-3">
-                              <label class="form-label">Nombre de los usuarios</label>
+                              <label class="form-label">Nombre del cupon</label>
                               <input
                                 type="text"
                                 class="form-control"
@@ -106,14 +106,10 @@
                                 placeholder="Ingresa el apellido"
                               />
                             </div>
-                            <div class="col-md-12">
-                                <label class="form-label">Imagen del usuario</label>
-                                <input class="form-control" type="file" />
-                            </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Agregar usuario</button>
+                            <button type="button" class="btn btn-light-primary">Agregar cupon</button>
                           </div>
                         </form>
                       </div>
@@ -133,7 +129,7 @@
                       <div class="modal-content">
                         <div class="modal-header">
                           <h5 class="modal-title" id="tituloModal"
-                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Editar usuario</h5
+                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Editar cupon</h5
                           >
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
@@ -143,7 +139,7 @@
                               >Agrega la información correspondiente al formulario.</small
                             >
                             <div class="mb-3">
-                              <label class="form-label">Nombre del usuario</label>
+                              <label class="form-label">Nombre del cupon</label>
                               <input
                                 type="text"
                                 class="form-control"
@@ -162,14 +158,10 @@
                                 placeholder="Ingresa el apellido"
                               />
                             </div>
-                            <div class="col-md-12">
-                                <label class="form-label">Imagen del usuario</label>
-                                <input class="form-control" type="file" />
-                            </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Editar usuario</button>
+                            <button type="button" class="btn btn-light-primary">Editar cupon</button>
                           </div>
                         </form>
                       </div>
@@ -196,7 +188,7 @@
                         <td>N/A</td>
                         <td>January 01,2019 at 03:35 PM</td>
                         <td>
-                          <a href="<?= BASE_PATH ?>users/details" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
+                          <a href="<?= BASE_PATH ?>catalogs/categories/details" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
                           <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
                             <i class="feather icon-edit"></i>
                           </button>

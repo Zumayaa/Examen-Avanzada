@@ -53,17 +53,17 @@
           </div>
         </div>
         <!-- [ breadcrumb ] end -->
-
+      
 
         <!-- [ Main Content ] start -->
         <div class="row">
           <div class="col-lg-12">
             <div class="card shadow-none">
               <div class="card-header">
-                <h5>Clientes</h5>
+                <h5>Marcas</h5>
                 <div class="card-header-right">
                   <button type="button" class="btn btn-light-warning m-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Agregar cliente
+                    Agregar clientes
                   </button>
                   <div
                     class="modal fade"
@@ -77,7 +77,7 @@
                       <div class="modal-content">
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLabel"
-                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Agregar cliente</h5
+                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Agregar clientes</h5
                           >
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
@@ -87,7 +87,7 @@
                               >Agrega la información correspondiente al formulario.</small
                             >
                             <div class="mb-3">
-                              <label class="form-label">Nombre</label>
+                              <label class="form-label">Nombre de los clientes</label>
                               <input
                                 type="text"
                                 class="form-control"
@@ -97,7 +97,7 @@
                               />
                             </div>
                             <div class="mb-3">
-                              <label class="form-label">Apellido</label>
+                              <label class="form-label">Información extra</label>
                               <input
                                 type="email"
                                 class="form-control"
@@ -106,18 +106,70 @@
                                 placeholder="Ingresa el apellido"
                               />
                             </div>
-                            <div class="mb-3">
-                              <label class="form-label">Email</label>
-                              <input type="email" class="form-control" id="emial" aria-describedby="emailHelp" placeholder="Ingresa el correo" />
-                            </div>
                             <div class="col-md-12">
-                                <label class="form-label">Imagen del usuario</label>
+                                <label class="form-label">Imagen del clientes</label>
                                 <input class="form-control" type="file" />
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
                             <button type="button" class="btn btn-light-primary">Agregar cliente</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-header-right">
+                  <div
+                    class="modal fade"
+                    id="editModal"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="tituloModal"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="tituloModal"
+                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Editar cliente</h5
+                          >
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                        </div>
+                        <form>
+                          <div class="modal-body">
+                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0"
+                              >Agrega la información correspondiente al formulario.</small
+                            >
+                            <div class="mb-3">
+                              <label class="form-label">Nombre del cliente</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="fname"
+                                aria-describedby="emailHelp"
+                                placeholder="Ingresa el nombre"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Información extra</label>
+                              <input
+                                type="email"
+                                class="form-control"
+                                id="lname"
+                                aria-describedby="emailHelp"
+                                placeholder="Ingresa el apellido"
+                              />
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label">Imagen del cliente</label>
+                                <input class="form-control" type="file" />
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-light-primary">Editar cliente</button>
                           </div>
                         </form>
                       </div>
@@ -144,8 +196,10 @@
                         <td>N/A</td>
                         <td>January 01,2019 at 03:35 PM</td>
                         <td>
-                          <a href="<?= BASE_PATH ?>customer/details" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <a href="<?= BASE_PATH ?>customer/edit-customer" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
+                          <a href="<?= BASE_PATH ?>users/details" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
+                          <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
+                            <i class="feather icon-edit"></i>
+                          </button>
                           <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
                         </td>
                       </tr>
@@ -254,13 +308,13 @@
 
     <?php 
 
-      include "../layouts/footer.php";
+        include "../layouts/footer.php";
 
       ?>
 
     <?php 
 
-      include "../layouts/scripts.php";
+        include "../layouts/scripts.php";
 
       ?>
 
@@ -292,7 +346,8 @@
     
     <?php 
 
-      include "../layouts/modals.php";
+      include "../layouts/modals.php"
+
 
       ?>
 
