@@ -90,7 +90,7 @@
               ></a>
               <ul class="pc-submenu">
                 <li class="pc-item"><a class="pc-link" href="">CRUD de Categorías</a></li>
-                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-details.html">CRUD de Marcas</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>catalogs/brands">CRUD de Marcas</a></li>
                 <li class="pc-item"><a class="pc-link" href="../application/ecom_product-list.html">CRUD de Tags</a></li>
               </ul>
             </li>

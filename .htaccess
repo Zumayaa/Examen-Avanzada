@@ -48,3 +48,7 @@ RewriteRule ^customer/edit-customer/?$ views/customer/edit-customer.php [L]
 
 # Editar cliente
 RewriteRule ^customer/([^/]+)/?$ views/customer/details.php [L]
+
+#CRUD marcas
+RewriteRule ^catalogs/brands/?$ views/catalogs/brands/brands.php [L]
+RewriteRule ^catalogs/brands/details/?$ views/catalogs/brands/details.php [L]
