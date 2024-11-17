@@ -1,7 +1,16 @@
+
 <?php 
   include_once "../../app/config.php";
+?>
+
+<?php  
+    include_once "../../app/ProductController.php";
+
+    $productController = new ProductController();
+    $products = $productController->get();
 
 ?>
+
 <!doctype html>
 <html lang="en">
   <!-- [Head] start -->
@@ -37,8 +46,8 @@
             <div class="row align-items-center">
               <div class="col-md-12">
                 <ul class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>home">Home</a></li>
-                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>products">Productos</a></li>
+                  <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="javascript: void(0)">E-commerce</a></li>
                   <li class="breadcrumb-item" aria-current="page">Lista de productos</li>
                 </ul>
               </div>
@@ -75,283 +84,76 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td class="text-end">7</td>
-                        <td>
-                          <div class="row">
-                            <div class="col-auto pe-0">
-                              <img src="../assets/images/application/img-prod-1.jpg" alt="user-image" class="wid-40 rounded" />
+                      <!-- [card body] start-->
+                      <?php $con=0?>
+                      <?php foreach ($products as $tarjeta): ?>
+                        <?php $con++?>
+                        <tr>
+                          <td class="text-end"><?php echo $con ?></td>
+                          <td>
+                            <div class="row">
+                              <div class="col-auto pe-0">
+                                <img src="<?php echo $tarjeta->cover; ?>" alt="user-image" class="wid-40 rounded" />
+                              </div>
+                              <div class="col">
+                                <h6 class="mb-1"><?php echo $tarjeta->name; ?></h6>
+                                <p class="text-muted f-12 mb-0"> <?php echo $tarjeta->slug; ?>
+                              </div>
                             </div>
-                            <div class="col">
-                              <h6 class="mb-1">Apple Series 4 GPS A38 MM Space</h6>
-                              <p class="text-muted f-12 mb-0">Apple Watch SE Smartwatch </p>
+                          </td>
+                          <td><?php 
+                                  if (!empty($tarjeta->categories)) {
+                                      $categories = [];
+                                      foreach ($tarjeta->categories as $category) {
+                                          $categories[$category->slug] = true;
+                                      }
+                                      $categories = array_slice($categories, 0, 3);
+                                      echo implode('/', array_keys($categories));
+                                  } else {
+                                      echo "Sin categorías";
+                                  }
+                              ?></td>
+                          <td class="text-end">
+                            $<?php echo isset($tarjeta->presentations[0]->price[0]->amount) ? $tarjeta->presentations[0]->price[0]->amount : 0; ?>
+                          </td>
+                          <td class="text-end"><?php echo isset($tarjeta->presentations[0]->stock) ? $tarjeta->presentations[0]->stock : 0; ?></td>
+                          <td class="text-center">
+                            <?php if (isset($tarjeta->presentations[0]) && $tarjeta->presentations[0] !== null && 
+                                      in_array($tarjeta->presentations[0]->status, ['activo', 'active'])): ?>
+                                <i class="ph-duotone ph-check-circle text-success f-24" data-bs-toggle="tooltip" data-bs-title="Activo"></i>
+                            <?php else: ?>
+                                <i class="ph-duotone ph-x-circle text-danger f-24" data-bs-toggle="tooltip" data-bs-title="inactivo"></i>
+                            <?php endif; ?>
+                          </td>
+                          <td class="text-center">
+                            <img src="../assets/images/application/img-prod-brand-1.png" alt="user-image" class="wid-40" />
+                            <div class="prod-action-links">
+                              <ul class="list-inline me-auto mb-0">
+                                <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
+                                  <a href="<?= BASE_PATH ?>products/details?slug=<?= $tarjeta->slug ?>" class="avtar avtar-xs btn-link-success btn-pc-default">
+                                    <i class="ti ti-eye f-18"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
+                                  <a href="<?= BASE_PATH ?>products/edit-product" class="avtar avtar-xs btn-link-success btn-pc-default">
+                                    <i class="ti ti-edit-circle f-18"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Delete">
+                                <form action="<?= BASE_PATH ?>products" method="POST" style="display:inline;">
+                                    <input type="hidden" name="action" value="delete_product">
+                                    <input type="hidden" name="product_id" value="<?= $tarjeta->id ?>">
+                                    <button type="submit" class="avtar avtar-xs btn-link-danger btn-pc-default">
+                                        <i class="ti ti-trash f-18"></i>
+                                    </button>
+                                </form>
+                                </li>
+                              </ul>
                             </div>
-                          </div>
-                        </td>
-                        <td>Electronics, Laptop</td>
-                        <td class="text-end">$14.59</td>
-                        <td class="text-end">70</td>
-                        <td class="text-center">
-                          <i class="ph-duotone ph-check-circle text-success f-24" data-bs-toggle="tooltip" data-bs-title="success"></i>
-                        </td>
-                        <td class="text-center">
-                          <img src="../assets/images/application/img-prod-brand-1.png" alt="user-image" class="wid-40" />
-                          <div class="prod-action-links">
-                            <ul class="list-inline me-auto mb-0">
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
-                                <a href="<?= BASE_PATH ?>products/details" class="avtar avtar-xs btn-link-success btn-pc-default">
-                                  <i class="ti ti-eye f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
-                                <a href="<?= BASE_PATH ?>products/edit-product" class="avtar avtar-xs btn-link-success btn-pc-default">
-                                  <i class="ti ti-edit-circle f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Delete">
-                                <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default">
-                                  <i class="ti ti-trash f-18"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-end">2</td>
-                        <td>
-                          <div class="row">
-                            <div class="col-auto pe-0">
-                              <img src="../assets/images/application/img-prod-2.jpg" alt="user-image" class="wid-40 rounded" />
-                            </div>
-                            <div class="col">
-                              <h6 class="mb-1">Boat On-Ear Wireless</h6>
-                              <p class="text-muted f-12 mb-0">Mic(Bluetooth 4.2, Rockerz 450R</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Electronics, Headphones</td>
-                        <td class="text-end">$81.99</td>
-                        <td class="text-end">45</td>
-                        <td class="text-center">
-                          <i class="ph-duotone ph-clock-countdown text-warning f-24" data-bs-toggle="tooltip" data-bs-title="warning"></i>
-                        </td>
-                        <td class="text-center">
-                          <img src="../assets/images/application/img-prod-brand-2.png" alt="user-image" class="wid-40" />
-                          <div class="prod-action-links">
-                            <ul class="list-inline me-auto mb-0">
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
-                                <a
-                                  href="#"
-                                  class="avtar avtar-xs btn-link-secondary btn-pc-default"
-                                  data-bs-toggle="offcanvas"
-                                  data-bs-target="#productOffcanvas"
-                                >
-                                  <i class="ti ti-eye f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
-                                <a href="ecom_product-add.html" class="avtar avtar-xs btn-link-success btn-pc-default">
-                                  <i class="ti ti-edit-circle f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Delete">
-                                <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default">
-                                  <i class="ti ti-trash f-18"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-end">5</td>
-                        <td>
-                          <div class="row">
-                            <div class="col-auto pe-0">
-                              <img src="../assets/images/application/img-prod-3.jpg" alt="user-image" class="wid-40 rounded" />
-                            </div>
-                            <div class="col">
-                              <h6 class="mb-1">Fitbit MX30 Smart Watch</h6>
-                              <p class="text-muted f-12 mb-0">(MX30- waterproof) watch</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Fashion, Watch</td>
-                        <td class="text-end">$49.9</td>
-                        <td class="text-end">21</td>
-                        <td class="text-center">
-                          <i class="ph-duotone ph-x-circle text-danger f-24" data-bs-toggle="tooltip" data-bs-title="danger"></i>
-                        </td>
-                        <td class="text-center">
-                          <img src="../assets/images/application/img-prod-brand-3.png" alt="user-image" class="wid-40" />
-                          <div class="prod-action-links">
-                            <ul class="list-inline me-auto mb-0">
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
-                                <a
-                                  href="#"
-                                  class="avtar avtar-xs btn-link-secondary btn-pc-default"
-                                  data-bs-toggle="offcanvas"
-                                  data-bs-target="#productOffcanvas"
-                                >
-                                  <i class="ti ti-eye f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
-                                <a href="ecom_product-add.html" class="avtar avtar-xs btn-link-success btn-pc-default">
-                                  <i class="ti ti-edit-circle f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Delete">
-                                <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default">
-                                  <i class="ti ti-trash f-18"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-end">7</td>
-                        <td>
-                          <div class="row">
-                            <div class="col-auto pe-0">
-                              <img src="../assets/images/application/img-prod-4.jpg" alt="user-image" class="wid-40 rounded" />
-                            </div>
-                            <div class="col">
-                              <h6 class="mb-1">Apple Series 4 GPS A38 MM Space</h6>
-                              <p class="text-muted f-12 mb-0">Apple Watch SE Smartwatch </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Electronics, Laptop</td>
-                        <td class="text-end">$14.59</td>
-                        <td class="text-end">70</td>
-                        <td class="text-center">
-                          <i class="ph-duotone ph-check-circle text-success f-24" data-bs-toggle="tooltip" data-bs-title="success"></i>
-                        </td>
-                        <td class="text-center">
-                          <img src="../assets/images/application/img-prod-brand-4.png" alt="user-image" class="wid-40" />
-                          <div class="prod-action-links">
-                            <ul class="list-inline me-auto mb-0">
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
-                                <a
-                                  href="#"
-                                  class="avtar avtar-xs btn-link-secondary btn-pc-default"
-                                  data-bs-toggle="offcanvas"
-                                  data-bs-target="#productOffcanvas"
-                                >
-                                  <i class="ti ti-eye f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
-                                <a href="ecom_product-add.html" class="avtar avtar-xs btn-link-success btn-pc-default">
-                                  <i class="ti ti-edit-circle f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Delete">
-                                <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default">
-                                  <i class="ti ti-trash f-18"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-end">2</td>
-                        <td>
-                          <div class="row">
-                            <div class="col-auto pe-0">
-                              <img src="../assets/images/application/img-prod-5.jpg" alt="user-image" class="wid-40 rounded" />
-                            </div>
-                            <div class="col">
-                              <h6 class="mb-1">Boat On-Ear Wireless</h6>
-                              <p class="text-muted f-12 mb-0">Mic(Bluetooth 4.2, Rockerz 450R</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Electronics, Headphones</td>
-                        <td class="text-end">$81.99</td>
-                        <td class="text-end">45</td>
-                        <td class="text-center">
-                          <i class="ph-duotone ph-clock-countdown text-warning f-24" data-bs-toggle="tooltip" data-bs-title="warning"></i>
-                        </td>
-                        <td class="text-center">
-                          <img src="../assets/images/application/img-prod-brand-5.png" alt="user-image" class="wid-40" />
-                          <div class="prod-action-links">
-                            <ul class="list-inline me-auto mb-0">
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
-                                <a
-                                  href="#"
-                                  class="avtar avtar-xs btn-link-secondary btn-pc-default"
-                                  data-bs-toggle="offcanvas"
-                                  data-bs-target="#productOffcanvas"
-                                >
-                                  <i class="ti ti-eye f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
-                                <a href="ecom_product-add.html" class="avtar avtar-xs btn-link-success btn-pc-default">
-                                  <i class="ti ti-edit-circle f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Delete">
-                                <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default">
-                                  <i class="ti ti-trash f-18"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-end">7</td>
-                        <td>
-                          <div class="row">
-                            <div class="col-auto pe-0">
-                              <img src="../assets/images/application/img-prod-4.jpg" alt="user-image" class="wid-40 rounded" />
-                            </div>
-                            <div class="col">
-                              <h6 class="mb-1">Apple Series 4 GPS A38 MM Space</h6>
-                              <p class="text-muted f-12 mb-0">Apple Watch SE Smartwatch </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Electronics, Laptop</td>
-                        <td class="text-end">$14.59</td>
-                        <td class="text-end">70</td>
-                        <td class="text-center">
-                          <i class="ph-duotone ph-check-circle text-success f-24" data-bs-toggle="tooltip" data-bs-title="success"></i>
-                        </td>
-                        <td class="text-center">
-                          <img src="../assets/images/application/img-prod-brand-4.png" alt="user-image" class="wid-40" />
-                          <div class="prod-action-links">
-                            <ul class="list-inline me-auto mb-0">
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
-                                <a
-                                  href="#"
-                                  class="avtar avtar-xs btn-link-secondary btn-pc-default"
-                                  data-bs-toggle="offcanvas"
-                                  data-bs-target="#productOffcanvas"
-                                >
-                                  <i class="ti ti-eye f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
-                                <a href="ecom_product-add.html" class="avtar avtar-xs btn-link-success btn-pc-default">
-                                  <i class="ti ti-edit-circle f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Delete">
-                                <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default">
-                                  <i class="ti ti-trash f-18"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>
+                          </td>
+                        </tr>
+                      <?php endforeach ?>
+                      <!-- [card body] end-->
                     </tbody>
                   </table>
                 </div>
