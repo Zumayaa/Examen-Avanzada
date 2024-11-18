@@ -23,12 +23,10 @@ if (isset($_POST['action'])) {
 }
 
 
-class AuthControlller
-{
+class AuthControlller {
 
 
-	public function login($email=null,$password=null)
-	{  
+	public function login($email=null,$password=null) {  
 
 		$curl = curl_init();
 
@@ -65,13 +63,19 @@ class AuthControlller
 			header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 		}
-		
-
-
 	}
 
+	public function logout() {
+		
+		if (session_status() === PHP_SESSION_ACTIVE) {
+			session_unset();
+			session_destroy();
+		}
 
+		//NO HE PROBADO LA RUTA
+		header('Location: ' . BASE_PATH . 'login?status=ok');
+		exit();
+	}
 }
-
 
 ?>
