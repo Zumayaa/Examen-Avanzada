@@ -35,27 +35,6 @@ if (isset($_SESSION['user_data'])) {
         <div class="navbar-content">
           <ul class="pc-navbar">
             <li class="pc-item pc-caption">
-              <label>Navigation</label>
-              <i class="ph-duotone ph-gauge"></i>
-            </li>
-            <li class="pc-item pc-hasmenu">
-              <a href="#!" class="pc-link">
-                <span class="pc-micon">
-                  <i class="ph-duotone ph-gauge"></i>
-                </span>
-                <span class="pc-mtext">Dashboard</span>
-                <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-                <span class="pc-badge">2</span>
-              </a>
-              <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="index.html">Analytics</a></li>
-                <li class="pc-item"><a class="pc-link" href="affiliate.html">Affiliate</a></li>
-                <li class="pc-item"><a class="pc-link" href="finance.html">Finance</a></li>
-                <li class="pc-item"><a class="pc-link" href="../admins/helpdesk-dashboard.html">Helpdesk</a></li>
-                <li class="pc-item"><a class="pc-link" href="invoice.html">Invoice</a></li>
-              </ul>
-            </li>
-            <li class="pc-item pc-caption">
               <label>Administración de usuarios</label>
               <i class="ph-duotone ph-chart-pie"></i>
             </li>
@@ -132,48 +111,7 @@ if (isset($_SESSION['user_data'])) {
                 <span class="pc-mtext">Ordenes</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
               ></a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="">Alta de ordenes</a></li>
-                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-details.html">Baja de ordenes</a></li>
-                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-list.html">Consultar</a></li>
-              </ul>
-            </li>
-            <li class="pc-item pc-caption">
-              <label>Pages</label>
-              <i class="ph-duotone ph-devices"></i>
-            </li>
-            <li class="pc-item pc-hasmenu">
-              <a href="#!" class="pc-link">
-                <span class="pc-micon">
-                  <i class="ph-duotone ph-shield-checkered"></i>
-                </span>
-                <span class="pc-mtext">Authentication</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
-              ></a>
-              <ul class="pc-submenu">
-                <li class="pc-item pc-hasmenu">
-                  <a href="#!" class="pc-link"
-                    >Authentication 1<span class="pc-arrow"><i data-feather="chevron-right"></i></span
-                  ></a>
-                  <ul class="pc-submenu">
-                    <li class="pc-item"><a class="pc-link" target="_blank" href="../pages/login-v1.html">Login</a></li>
-                    <li class="pc-item"><a class="pc-link" target="_blank" href="../pages/register-v1.html">Register</a></li>
-                    <li class="pc-item"><a class="pc-link" target="_blank" href="../pages/forgot-password-v1.html">Forgot Password</a></li>
-                    <li class="pc-item"><a class="pc-link" target="_blank" href="../pages/reset-password-v1.html">reset password</a> </li>
-                    <li class="pc-item"><a class="pc-link" target="_blank" href="../pages/code-verification-v1.html">code verification</a></li>
-                  </ul>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                  <a href="#!" class="pc-link"
-                    >Authentication 2<span class="pc-arrow"><i data-feather="chevron-right"></i></span
-                  ></a>
-                  <ul class="pc-submenu">
-                    <li class="pc-item"><a class="pc-link" target="_blank" href="../pages/login-v2.html">Login</a></li>
-                    <li class="pc-item"><a class="pc-link" target="_blank" href="../pages/register-v2.html">Register</a></li>
-                    <li class="pc-item"><a class="pc-link" target="_blank" href="../pages/forgot-password-v2.html">Forgot password</a> </li>
-                    <li class="pc-item"><a class="pc-link" target="_blank" href="../pages/reset-password-v2.html">reset password</a> </li>
-                    <li class="pc-item"><a class="pc-link" target="_blank" href="../pages/code-verification-v2.html">code verification</a></li>
-                  </ul>
-                </li>
-                <li class="pc-item"><a class="pc-link" href="../pages/login-modal.html">Login Modal</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>orders">Todas las ordenes</a></li>
               </ul>
             </li>
         </div>

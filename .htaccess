@@ -10,6 +10,7 @@ RewriteRule ^products/?$ views/products/index.php [L]
 RewriteRule ^users/?$ views/users/index.php [L]
 RewriteRule ^customer/?$ views/customer/index.php [L]
 RewriteRule ^coupons/?$ views/coupons/coupons.php [L]
+RewriteRule ^orders/?$ views/orders/orders.php [L]
 
 # Controladores
 RewriteRule ^auth/?$ app/AuthController.php [L]
@@ -43,6 +44,9 @@ RewriteRule ^users/([^/]+)/?$ views/users/details.php [L]
 
 # Ver cliente
 RewriteRule ^customer/([^/]+)/?$ views/customer/details.php [L]
+
+# Ver ordenes
+RewriteRule ^orders/([^/]+)/?$ views/orders/details.php [L]
 
 #CRUD marcas
 RewriteRule ^catalogs/brands/?$ views/catalogs/brands/brands.php [L]
