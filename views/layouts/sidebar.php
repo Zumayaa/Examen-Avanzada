@@ -190,10 +190,13 @@
                         </a>
                       </li>
                       <li>
-                        <a class="pc-user-links">
-                          <i class="ph-duotone ph-power"></i>
-                          <span>Cerrar sesión</span>
-                        </a>
+                        <form action="<?= BASE_PATH ?>app/AuthController.php" method="POST">
+                            <input type="hidden" name="action" value="logout">
+                            <i class="ph-duotone ph-power"></i>
+                            <button type="submit" style="background: none; border: none; color: inherit; padding: 0; font: inherit; cursor: pointer; text-decoration: none;">
+                                <span>Cerrar sesión</span>
+                            </button>
+                        </form>
                       </li>
                     </ul>
                   </div>
