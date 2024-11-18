@@ -126,7 +126,12 @@
                             <?php endif; ?>
                           </td>
                           <td class="text-center">
-                            <img src="../assets/images/application/img-prod-brand-1.png" alt="user-image" class="wid-40" />
+                              <?php 
+                              if (isset($tarjeta->brand->name)) {
+                                echo $tarjeta->brand->name;
+                              }else{
+                                echo "Marca No Disponible";
+                              }?>
                             <div class="prod-action-links">
                               <ul class="list-inline me-auto mb-0">
                                 <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
@@ -135,7 +140,7 @@
                                   </a>
                                 </li>
                                 <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
-                                  <a href="<?= BASE_PATH ?>products/edit-product" class="avtar avtar-xs btn-link-success btn-pc-default">
+                                  <a href="<?= BASE_PATH ?>products/edit-product?id=<?= $tarjeta->id ?>" class="avtar avtar-xs btn-link-success btn-pc-default">
                                     <i class="ti ti-edit-circle f-18"></i>
                                   </a>
                                 </li>
