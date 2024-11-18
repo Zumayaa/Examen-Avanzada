@@ -16,9 +16,14 @@ if (isset($_POST['action'])) {
 
 		break;
 		
+		case 'logout':
+			$authController = new AuthControlller();
+			$authController->logout();
+		break;
+
 		default:
 			// code...
-			break;
+		break;
 	}
 }
 
