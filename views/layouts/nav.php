@@ -1,4 +1,21 @@
- <!-- [ Header Topbar ] start -->
+<?php 
+  // Verificar si el usuario está logueado
+if (isset($_SESSION['user_data'])) {
+  // Acceder a los datos del usuario desde la sesión
+  $userData = $_SESSION['user_data'];
+
+  // Obtener campos específicos
+  $name = $userData->name;     
+  $lastname = $userData->lastname;        
+  $avatar = $userData->avatar;  
+  $email = $userData->email;  
+
+} else {
+  echo "No hay usuario logueado.";
+}
+
+?>
+<!-- [ Header Topbar ] start -->
 <header class="pc-header">
   <div class="header-wrapper"> <!-- [Mobile Media Block] start -->
   <div class="me-auto pc-mob-drp">
