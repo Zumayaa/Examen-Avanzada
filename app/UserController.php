@@ -1,4 +1,46 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+if (isset($_POST['action'])) {
+    switch ($_POST['action']) {
+        case 'create_user':
+            $name = $_POST['name'];
+            $lastname = $_POST['lastname'];
+            $email = $_POST['email'];
+            $phone_number = $_POST['phone_number'];
+            $created_by = $_POST['created_by'];
+            $role = $_POST['role'];
+            $password = $_POST['password']; 
+            $profilePhotoPath = $_POST['profilePhotoPath']; 
+
+            $productController = new ProductController();
+            $productController->create($name, $lastname, $email, $phone_number, $created_by, $role, $password, $profilePhotoPath);
+        break;
+
+        case 'update_user':
+            $id = $_POST['id'];
+            $name = $_POST['name'];
+            $lastname = $_POST['lastname'];
+            $email = $_POST['email'];
+            $phone_number = $_POST['phone_number'];
+            $created_by = $_POST['created_by'];
+            $role = $_POST['role'];
+            $password = $_POST['password'];
+
+            $userController = new UserController();
+            $userController->updateUser($id, $name, $lastname, $email, $phone_number, $created_by, $role, $password);
+        break;
+
+        case 'delete_user':
+            $id = $_POST['id'];
+
+            $userController = new UserController();
+            $userController->deleteUser($id);
+        break;
+    }
+}
 
 class UserController {
     public function getAllUsers() {
