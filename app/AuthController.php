@@ -58,7 +58,7 @@ class AuthControlller
 			$_SESSION['user_data'] = $response->data;
 			$_SESSION['user_id'] = $response->data->id;
 
-			header('Location: ../home.php');
+			header('Location: ../views/home.php');
 
 		}else{
 
