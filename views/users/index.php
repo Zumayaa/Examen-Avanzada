@@ -89,39 +89,83 @@
                           >
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
-                        <form>
+                        <form method="POST" action="create_user.php" enctype="multipart/form-data">
                           <div class="modal-body">
-                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0"
-                              >Agrega la información correspondiente al formulario.</small
-                            >
+                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
+                              Agrega la información correspondiente al formulario.
+                            </small>
                             <div class="mb-3">
-                              <label class="form-label">Nombre de los usuarios</label>
+                              <label class="form-label">Nombre</label>
                               <input
                                 type="text"
                                 class="form-control"
-                                id="fname"
-                                aria-describedby="emailHelp"
+                                name="name"
                                 placeholder="Ingresa el nombre"
+                                required
                               />
                             </div>
                             <div class="mb-3">
-                              <label class="form-label">Información extra</label>
+                              <label class="form-label">Apellido</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="lastname"
+                                placeholder="Ingresa el apellido"
+                                required
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Correo Electrónico</label>
                               <input
                                 type="email"
                                 class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el apellido"
+                                name="email"
+                                placeholder="Ingresa el correo"
+                                required
                               />
                             </div>
-                            <div class="col-md-12">
-                                <label class="form-label">Imagen del usuario</label>
-                                <input class="form-control" type="file" />
+                            <div class="mb-3">
+                              <label class="form-label">Número de Teléfono</label>
+                              <input
+                                type="tel"
+                                class="form-control"
+                                name="phone_number"
+                                placeholder="Ingresa el número de teléfono"
+                                required
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Rol</label>
+                              <select class="form-select" name="role" required>
+                                <option value="admin">Administrador</option>
+                                <option value="user">Usuario</option>
+                                <!-- Agrega más opciones según sea necesario -->
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Contraseña</label>
+                              <input
+                                type="password"
+                                class="form-control"
+                                name="password"
+                                placeholder="Ingresa la contraseña"
+                                required
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Imagen de Perfil</label>
+                              <input
+                                type="file"
+                                class="form-control"
+                                name="profile_photo_file"
+                                accept="image/*"
+                                required
+                              />
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Agregar usuario</button>
+                            <button type="submit" class="btn btn-light-primary">Agregar Usuario</button>
                           </div>
                         </form>
                       </div>
