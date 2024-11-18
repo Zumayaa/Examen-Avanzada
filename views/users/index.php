@@ -1,6 +1,14 @@
 <?php 
   include_once "../../app/config.php";
+  // Incluir el controlador de usuarios
+  include_once "../../app/UserController.php";
 
+  // Instanciar el controlador de usuarios
+  $userController = new UserController();
+
+  // Obtener todos los usuarios
+  $usersResponse = $userController->getAllUsers();
+  $users = $usersResponse['data'] ?? []; // Asegurarse de que 'data' esté presente en la respuesta
 ?>
 <!doctype html>
 <html lang="en">
@@ -179,126 +187,46 @@
               </div>
               <div class="card-body shadow border-0">
                 <div class="table-responsive">
-                  <table id="report-table" class="table table-bordered table-striped mb-0">
-                    <thead>
-                      <tr>
-                        <th class="border-top-0">Nombre</th>
-                        <th class="border-top-0">Email</th>
-                        <th class="border-top-0">Cuenta</th>
-                        <th class="border-top-0">Cumpleaños (hay que cambiarlo)</th>
-                        <th class="border-top-0">Acción</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Mark Jason</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="<?= BASE_PATH ?>users/details" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
-                            <i class="feather icon-edit"></i>
-                          </button>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Alice Nicol</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Harry Cook</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Tom Hannry</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Martin Frank</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Endrew Khan</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Chritina Methewv</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Jakson Pit</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Nikolas Jons</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Nik Cage</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                    <table id="report-table" class="table table-bordered table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0">Nombre</th>
+                                <th class="border-top-0">Email</th>
+                                <th class="border-top-0">Cuenta</th>
+                                <th class="border-top-0">Cumpleaños</th>
+                                <th class="border-top-0">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (!empty($users)): ?>
+                                <?php foreach ($users as $user): ?>
+                                    <tr>
+                                        <td><?= htmlspecialchars($user['name']) . ' ' . htmlspecialchars($user['lastname']) ?></td>
+                                        <td><a href="mailto:<?= htmlspecialchars($user['email']) ?>" class="link-secondary"><?= htmlspecialchars($user['email']) ?></a></td>
+                                        <td><?= htmlspecialchars($user['role'] ?? 'N/A') ?></td>
+                                        <td><?= htmlspecialchars($user['birthday'] ?? 'No disponible') ?></td>
+                                        <td>
+                                            <a href="details.php?id=<?= urlencode($user['id']) ?>" class="btn btn-sm btn-light-primary">
+                                                <i class="feather icon-eye"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
+                                                <i class="feather icon-edit"></i>
+                                            </button>
+                                            <a href="delete.php?id=<?= urlencode($user['id']) ?>" class="btn btn-sm btn-light-danger">
+                                                <i class="feather icon-trash-2"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="5" class="text-center">No se encontraron usuarios.</td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
                 </div>
-              </div>
+            </div>
             </div>
           </div>
         </div>
