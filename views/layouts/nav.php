@@ -100,12 +100,13 @@
                 </a>
               </li>
               <li class="list-group-item">
-                <a href="#" class="dropdown-item">
-                  <span class="d-flex align-items-center">
+                <form action="<?= BASE_PATH ?>app/AuthController.php" method="POST">
+                    <input type="hidden" name="action" value="logout">
                     <i class="ph-duotone ph-power"></i>
-                    <span>Cerrar sesión</span>
-                  </span>
-                </a>
+                    <button type="submit" style="background: none; border: none; color: inherit; padding: 0; font: inherit; cursor: pointtext-decoration: none;">
+                        <span>Cerrar sesión</span>
+                    </button>
+                </form>
               </li>
             </ul>
           </div>
