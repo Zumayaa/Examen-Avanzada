@@ -94,9 +94,7 @@
                 <span class="pc-mtext">Ordenes</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
               ></a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="">Alta de ordenes</a></li>
-                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-details.html">Baja de ordenes</a></li>
-                <li class="pc-item"><a class="pc-link" href="../application/ecom_product-list.html">Consultar</a></li>
+                <li class="pc-item"><a class="pc-link" href="<?= BASE_PATH ?>orders">Todas las ordenes</a></li>
               </ul>
             </li>
         </div>
