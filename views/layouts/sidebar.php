@@ -184,7 +184,7 @@
                   <div class="dropdown-menu">
                     <ul>
                       <li>
-                        <a class="pc-user-links">
+                        <a class="pc-user-links" href="<?= BASE_PATH ?>profile">
                           <i class="ph-duotone ph-user"></i>
                           <span>Mi cuenta</span>
                         </a>

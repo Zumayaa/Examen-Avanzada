@@ -64,57 +64,100 @@
               <div class="card-body">
                 <div class="mb-3">
                   <label class="form-label">Nombre de la presentación</label>
-                  <input type="text" class="form-control" placeholder="Enter Product Name" />
+                  <input type="text" class="form-control" placeholder="Ingresa el nombre" />
                 </div>
                 <div class="mb-3">
-                  <label class="form-label">Producto madre</label>
-                  <select class="form-select">
-                    <option>Sneakers</option>
-                    <option>Category 1</option>
-                    <option>Category 2</option>
-                    <option>Category 3</option>
-                    <option>Category 4</option>
+                  <label class="form-label">Código</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Ingrese el código" 
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                    required 
+                  />
+                  <small class="text-muted">El código debe contener solo números.</small>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Peso en gramos</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="gr" 
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Estatus</label>
+                  <select class="form-control" required>
+                    <option value="">Seleccione un estatus</option>
+                    <option value="activo">Activo</option>
+                    <option value="inactivo">Inactivo</option>
                   </select>
                 </div>
-                <div class="mb-0">
-                  <label class="form-label">Descripción de la presentación</label>
-                  <textarea class="form-control" placeholder="Enter Product Description"></textarea>
+                <div class="mb-3">
+                  <label class="form-label">Stock</label>
+                  <input 
+                    type="number" 
+                    class="form-control" 
+                    placeholder="Ingrese el stock actual" 
+                    min="0" 
+                    required 
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Stock mínimo</label>
+                  <input 
+                    type="number" 
+                    class="form-control" 
+                    placeholder="Ingrese el stock mínimo" 
+                    min="0" 
+                    required 
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Stock máximo</label>
+                  <input 
+                    type="number" 
+                    class="form-control" 
+                    placeholder="Ingrese el stock máximo" 
+                    min="0" 
+                    required 
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">ID del Producto</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Ingrese el ID del producto" 
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                    required 
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">ID</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Ingrese el ID" 
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                    required 
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Cantidad</label>
+                  <input 
+                    type="number" 
+                    class="form-control" 
+                    placeholder="Ingrese la cantidad" 
+                    min="0" 
+                    required 
+                  />
                 </div>
               </div>
             </div>
           </div>
           <div class="col-xl-6">
-            <!-- 
-            <div class="card">
-              <div class="card-header">
-                <h5>Select size</h5>
-              </div>
-              <div class="card-body">
-                <div class="row g-2">
-                  <div class="col-auto">
-                    <input type="radio" class="btn-check" id="btnrdolite1" name="btn_radio2" checked="" />
-                    <label class="btn btn-sm btn-light-primary" for="btnrdolite1">34</label>
-                  </div>
-                  <div class="col-auto">
-                    <input type="radio" class="btn-check" id="btnrdolite2" name="btn_radio2" />
-                    <label class="btn btn-sm btn-light-primary" for="btnrdolite2">36</label>
-                  </div>
-                  <div class="col-auto">
-                    <input type="radio" class="btn-check" id="btnrdolite3" name="btn_radio2" />
-                    <label class="btn btn-sm btn-light-primary" for="btnrdolite3">38</label>
-                  </div>
-                  <div class="col-auto">
-                    <input type="radio" class="btn-check" id="btnrdolite4" name="btn_radio2" />
-                    <label class="btn btn-sm btn-light-primary" for="btnrdolite4">40</label>
-                  </div>
-                  <div class="col-auto">
-                    <input type="radio" class="btn-check" id="btnrdolite5" name="btn_radio2" />
-                    <label class="btn btn-sm btn-light-primary" for="btnrdolite5">42</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            -->
           </div>
           <div class="col-sm-12">
             <div class="card">
