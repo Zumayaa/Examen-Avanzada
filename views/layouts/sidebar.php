@@ -1,3 +1,20 @@
+<?php 
+  // Verificar si el usuario está logueado
+if (isset($_SESSION['user_data'])) {
+  // Acceder a los datos del usuario desde la sesión
+  $userData = $_SESSION['user_data'];
+
+  // Obtener campos específicos
+  $name = $userData->name;     
+  $lastname = $userData->lastname;        
+  $avatar = $userData->avatar;  
+
+} else {
+  echo "No hay usuario logueado.";
+}
+
+?>
+
 <!-- [ Pre-loader ] start -->
     <div class="loader-bg">
       <div class="loader-track">
@@ -12,7 +29,7 @@
           <a href="<?= BASE_PATH ?>home" class="b-brand text-primary">
             <!-- ========   Change your logo from here   ============ -->
             <img src="<?= BASE_PATH ?>assets/images/logo-dark.svg" alt="logo image" class="logo-lg" />
-            <span class="badge bg-brand-color-2 rounded-pill ms-2 theme-version">Zumaya was here</span>
+            <span class="badge bg-brand-color-2 rounded-pill ms-2 theme-version"><?= htmlspecialchars($name)?> was here</span>
           </a>
         </div>
         <div class="navbar-content">
@@ -164,14 +181,17 @@
           <div class="card-body">
             <div class="d-flex align-items-center">
               <div class="flex-shrink-0">
-                <img src="<?= BASE_PATH ?>assets/images/user/avatar-1.jpg" alt="user-image" class="user-avtar wid-45 rounded-circle" />
+              <div class="chat-avtar d-inline-flex mx-auto" style="width: 50px; height: 50px;">
+                <img class="user-avtar rounded-circle" src="<?= htmlspecialchars($avatar) ?>" alt="User image" style="object-fit: cover; width: 100%; height: 100%;" />
+              </div>
+              <!-- <img src="<?= BASE_PATH ?>assets/images/user/avatar-1.jpg" alt="user-image" class="user-avtar wid-45 rounded-circle" /> -->
               </div>
               <div class="flex-grow-1 ms-3">
                 <div class="dropdown">
                   <a href="#" class="arrow-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,20">
                     <div class="d-flex align-items-center">
                       <div class="flex-grow-1 me-2">
-                        <h6 class="mb-0">Jonh Smith</h6>
+                        <h6 class="mb-0"><?= htmlspecialchars($name)?></h6>
                         <small>Administrator</small>
                       </div>
                       <div class="flex-shrink-0">
