@@ -205,9 +205,9 @@ class ProductController {
         $response = json_decode($response);
 
         if (isset($response->code) && $response->code == 4) {
-            header('Location: ../home.php?status=ok');
+            header('Location: ' . BASE_PATH . 'products?status=ok');
         } else {
-            header('Location: ../home.php?status=error');
+            header('Location: ' . BASE_PATH . 'products?status=error');
         }
     }
 
@@ -251,9 +251,9 @@ class ProductController {
 		$response = json_decode($response);
 
 		if (isset($response->code) && $response->code == 4) {
-			header('Location: ../home.php?status=ok');
+			header('Location: ' . BASE_PATH . 'products?status=ok');
 		} else {
-			header('Location: ../home.php?status=error');
+			header('Location: ' . BASE_PATH . 'products?status=ok');
 		}
 	}
 
@@ -278,9 +278,9 @@ class ProductController {
         $response = json_decode($response);
 
         if (isset($response->code) && $response->code == 2) {
-            header('Location: ../home.php?status=ok');
+            header('Location: ' . BASE_PATH . 'products?status=ok');
         } else {
-            header('Location: ../home.php?status=error');
+            header('Location: ' . BASE_PATH . 'products?status=error');
         }
     }
 
