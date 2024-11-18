@@ -23,6 +23,7 @@ RewriteRule ^products/presentation/?$ views/products/presentation.php [L]
 
 # Crear presentaciones
 RewriteRule ^products/add-presentation/?$ views/products/add-presentation.php [L]
+RewriteRule ^products/add-product/?$ views/products/add-product.php [L]
 
 # Editar presentaciones
 RewriteRule ^products/edit-presentation/?$ views/products/edit-presentation.php [L]
