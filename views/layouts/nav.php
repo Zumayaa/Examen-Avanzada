@@ -71,7 +71,7 @@
         data-bs-auto-close="outside"
         aria-expanded="false"
       >
-        <img src="<?= BASE_PATH ?>assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar" />
+      <img src="<?= htmlspecialchars($avatar) ?>" alt="user-image" class="rounded-circle" style="width: 35px; height: 35px; object-fit: cover;" />
       </a>
       <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
         <div class="dropdown-header d-flex align-items-center justify-content-between">
@@ -83,11 +83,11 @@
               <li class="list-group-item">
                 <div class="d-flex align-items-center">
                   <div class="flex-shrink-0">
-                    <img src="<?= BASE_PATH ?>assets/images/user/avatar-2.jpg" alt="user-image" class="wid-50 rounded-circle" />
+                  <img src="<?= htmlspecialchars($avatar) ?>" alt="user-image" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;" />
                   </div>
                   <div class="flex-grow-1 mx-3">
-                    <h5 class="mb-0">Carson Darrin</h5>
-                    <a class="link-primary" href="mailto:carson.darrin@company.io">carson.darrin@company.io</a>
+                    <h5 class="mb-0"><?= htmlspecialchars($name)?></h5>
+                    <a class="link-primary" href="mailto:carson.darrin@company.io"><?= htmlspecialchars($email) ?></a>
                   </div>
                 </div>
               </li>

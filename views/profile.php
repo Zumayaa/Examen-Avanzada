@@ -44,7 +44,7 @@ if (isset($_SESSION['user_data'])) {
                   <div class="text-center mt-3">
                     <div class="chat-avtar d-inline-flex mx-auto">
                       <img
-                        class="rounded-circle img-fluid wid-90 img-thumbnail"
+                        class=" img-fluid img-thumbnail"
                         src="<?= htmlspecialchars($avatar) ?>"
                         alt="User image"
                       />
