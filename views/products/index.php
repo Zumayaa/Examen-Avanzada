@@ -134,17 +134,17 @@
                               }?>
                             <div class="prod-action-links">
                               <ul class="list-inline me-auto mb-0">
-                                <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
+                                <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Detalles">
                                   <a href="<?= BASE_PATH ?>products/details?slug=<?= $tarjeta->slug ?>" class="avtar avtar-xs btn-link-success btn-pc-default">
                                     <i class="ti ti-eye f-18"></i>
                                   </a>
                                 </li>
-                                <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
+                                <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Editar">
                                   <a href="<?= BASE_PATH ?>products/edit-product?id=<?= $tarjeta->id ?>" class="avtar avtar-xs btn-link-success btn-pc-default">
                                     <i class="ti ti-edit-circle f-18"></i>
                                   </a>
                                 </li>
-                                <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Delete">
+                                <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Borrar">
                                 <form action="<?= BASE_PATH ?>products" method="POST" style="display:inline;">
                                     <input type="hidden" name="action" value="delete_product">
                                     <input type="hidden" name="product_id" value="<?= $tarjeta->id ?>">
