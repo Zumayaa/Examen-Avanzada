@@ -6,8 +6,6 @@ if (!isset($_SESSION)) {
 
 require_once 'config.php';
 
-require_once 'config.php';
-
 if (isset($_POST['action'])) {
     switch ($_POST['action']) {
         
