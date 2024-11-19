@@ -89,7 +89,7 @@
                           >
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
-                        <form method="POST" action="create_user.php" enctype="multipart/form-data">
+                        <form method="POST" action="<?= BASE_PATH ?>app/UserController.php" enctype="multipart/form-data">
                           <div class="modal-body">
                             <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
                               Agrega la información correspondiente al formulario.
@@ -135,9 +135,19 @@
                               />
                             </div>
                             <div class="mb-3">
+                              <label class="form-label">Creador</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="created_by"
+                                placeholder="Ingresa el nombre del creador"
+                                required
+                              />
+                            </div>
+                            <div class="mb-3">
                               <label class="form-label">Rol</label>
                               <select class="form-select" name="role" required>
-                                <option value="admin">Administrador</option>
+                                <option value="Administrador">Administrador</option>
                                 <option value="user">Usuario</option>
                                 <!-- Agrega más opciones según sea necesario -->
                               </select>
@@ -167,6 +177,8 @@
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
                             <button type="submit" class="btn btn-light-primary">Agregar Usuario</button>
                           </div>
+
+                          <input type="hidden" name="action" value="create_user">
                         </form>
                       </div>
                     </div>
