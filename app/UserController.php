@@ -44,6 +44,14 @@ if (isset($_POST['action'])) {
             $userController = new UserController();
             $userController->deleteUser($id);
         break;
+
+        case 'update_profile_image':
+            $id = $_POST['id'];
+            $profilePhotoPath = $_FILES['profilePhotoPath']['tmp_name'];
+        
+            $userController = new UserController();
+            $userController->updateProfileImage($id, $profilePhotoPath);
+        break;
     }
 }
 
@@ -201,15 +209,10 @@ class UserController {
 
     public function updateProfileImage($id, $profilePhotoPath) {
         $curl = curl_init();
-
+    
         curl_setopt_array($curl, [
             CURLOPT_URL => 'https://crud.jonathansoto.mx/api/users/avatar',
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => [
                 'id' => $id,
@@ -219,10 +222,16 @@ class UserController {
                 'Authorization: Bearer ' . $_SESSION['user_data']->token,
             ],
         ]);
-
+    
         $response = curl_exec($curl);
         curl_close($curl);
-
-        return json_decode($response, true);
+    
+        $response = json_decode($response, true);
+    
+        if (isset($response['code']) && $response['code'] == 4) {
+            header('Location: ' . BASE_PATH . 'users?status=profile_updated');
+        } else {
+            header('Location: ' . BASE_PATH . 'users?status=profile_update_failed');
+        }
     }
 }
