@@ -82,29 +82,103 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
                         <form>
-                          <div class="modal-body">
-                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0"
-                              >Agrega la información correspondiente al formulario.</small
-                            >
+                         <div class="modal-body">
+                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
+                              Completa la información para agregar un nuevo cupón.
+                            </small>
+                            <!-- Nombre del cupón -->
                             <div class="mb-3">
-                              <label class="form-label">Nombre del cupon</label>
+                              <label class="form-label">Nombre del cupón</label>
                               <input
                                 type="text"
                                 class="form-control"
-                                id="fname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el nombre"
+                                id="name"
+                                placeholder="Ingresa el nombre del cupón"
                               />
                             </div>
+                            <!-- Código -->
                             <div class="mb-3">
-                              <label class="form-label">Información extra</label>
+                              <label class="form-label">Código</label>
                               <input
-                                type="email"
+                                type="text"
                                 class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el apellido"
+                                id="code"
+                                placeholder="Ingresa el código del cupón"
                               />
+                            </div>
+                            <!-- Descuento porcentual -->
+                            <div class="mb-3">
+                              <label class="form-label">Descuento porcentual</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="percentage_discount"
+                                placeholder="Ingresa el porcentaje de descuento"
+                              />
+                            </div>
+                            <!-- Monto mínimo requerido -->
+                            <div class="mb-3">
+                              <label class="form-label">Monto mínimo requerido</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="min_amount_required"
+                                placeholder="Ingresa el monto mínimo requerido"
+                              />
+                            </div>
+                            <!-- Productos mínimos requeridos -->
+                            <div class="mb-3">
+                              <label class="form-label">Productos mínimos requeridos</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="min_product_required"
+                                placeholder="Ingresa la cantidad mínima de productos requeridos"
+                              />
+                            </div>
+                            <!-- Fecha de inicio -->
+                            <div class="mb-3">
+                              <label class="form-label">Fecha de inicio</label>
+                              <input
+                                type="date"
+                                class="form-control"
+                                id="start_date"
+                              />
+                            </div>
+                            <!-- Fecha de finalización -->
+                            <div class="mb-3">
+                              <label class="form-label">Fecha de finalización</label>
+                              <input
+                                type="date"
+                                class="form-control"
+                                id="end_date"
+                              />
+                            </div>
+                            <!-- Máximo de usos -->
+                            <div class="mb-3">
+                              <label class="form-label">Máximo de usos</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="max_uses"
+                                placeholder="Ingresa el número máximo de usos"
+                              />
+                            </div>
+                            <!-- Válido solo para primera compra -->
+                            <div class="mb-3">
+                              <label class="form-label">Válido solo para la primera compra</label>
+                              <select class="form-control" id="valid_only_first_purchase">
+                                <option value="1">Sí</option>
+                                <option value="0">No</option>
+                              </select>
+                            </div>
+                            <!-- Estado -->
+                            <div class="mb-3">
+                              <label class="form-label">Estado</label>
+                              <select class="form-control" id="status">
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                              </select>
                             </div>
                           </div>
                           <div class="modal-footer">
@@ -128,40 +202,114 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="tituloModal"
-                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Editar cupon</h5
-                          >
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                          <h5 class="modal-title" id="tituloModal">
+                            <i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Editar cupón
+                          </h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form>
                           <div class="modal-body">
-                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0"
-                              >Agrega la información correspondiente al formulario.</small
-                            >
+                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
+                              Agrega la información correspondiente al formulario.
+                            </small>
+                            <!-- Nombre del cupón -->
                             <div class="mb-3">
-                              <label class="form-label">Nombre del cupon</label>
+                              <label class="form-label">Nombre del cupón</label>
                               <input
                                 type="text"
                                 class="form-control"
-                                id="fname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el nombre"
+                                id="name"
+                                placeholder="Ingresa el nombre del cupón"
                               />
                             </div>
+                            <!-- Código -->
                             <div class="mb-3">
-                              <label class="form-label">Información extra</label>
+                              <label class="form-label">Código</label>
                               <input
-                                type="email"
+                                type="text"
                                 class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el apellido"
+                                id="code"
+                                placeholder="Ingresa el código del cupón"
                               />
+                            </div>
+                            <!-- Descuento porcentual -->
+                            <div class="mb-3">
+                              <label class="form-label">Descuento porcentual</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="percentage_discount"
+                                placeholder="Ingresa el porcentaje de descuento"
+                              />
+                            </div>
+                            <!-- Monto mínimo requerido -->
+                            <div class="mb-3">
+                              <label class="form-label">Monto mínimo requerido</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="min_amount_required"
+                                placeholder="Ingresa el monto mínimo requerido"
+                              />
+                            </div>
+                            <!-- Productos mínimos requeridos -->
+                            <div class="mb-3">
+                              <label class="form-label">Productos mínimos requeridos</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="min_product_required"
+                                placeholder="Ingresa la cantidad mínima de productos requeridos"
+                              />
+                            </div>
+                            <!-- Fecha de inicio -->
+                            <div class="mb-3">
+                              <label class="form-label">Fecha de inicio</label>
+                              <input
+                                type="date"
+                                class="form-control"
+                                id="start_date"
+                              />
+                            </div>
+                            <!-- Fecha de finalización -->
+                            <div class="mb-3">
+                              <label class="form-label">Fecha de finalización</label>
+                              <input
+                                type="date"
+                                class="form-control"
+                                id="end_date"
+                              />
+                            </div>
+                            <!-- Máximo de usos -->
+                            <div class="mb-3">
+                              <label class="form-label">Máximo de usos</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="max_uses"
+                                placeholder="Ingresa el número máximo de usos"
+                              />
+                            </div>
+                            <!-- Válido solo para primera compra -->
+                            <div class="mb-3">
+                              <label class="form-label">Válido solo para la primera compra</label>
+                              <select class="form-control" id="valid_only_first_purchase">
+                                <option value="1">Sí</option>
+                                <option value="0">No</option>
+                              </select>
+                            </div>
+                            <!-- Estado -->
+                            <div class="mb-3">
+                              <label class="form-label">Estado</label>
+                              <select class="form-control" id="status">
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                              </select>
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Editar cupon</button>
+                            <button type="button" class="btn btn-light-primary">Editar cupón</button>
                           </div>
                         </form>
                       </div>
