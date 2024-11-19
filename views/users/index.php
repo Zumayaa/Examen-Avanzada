@@ -262,7 +262,7 @@
                                         <td><?= htmlspecialchars($user['role'] ?? 'N/A') ?></td>
                                         <td><?= htmlspecialchars($user['birthday'] ?? 'No disponible') ?></td>
                                         <td>
-                                            <a href="details.php?id=<?= urlencode($user['id']) ?>" class="btn btn-sm btn-light-primary">
+                                            <a href="<?= BASE_PATH ?>users/details.php?id=<?= urlencode($user['id']) ?>" class="btn btn-sm btn-light-primary">
                                                 <i class="feather icon-eye"></i>
                                             </a>
                                             <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
