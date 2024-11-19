@@ -79,8 +79,13 @@ class PresentationController {
 
         $response = curl_exec($curl);
         curl_close($curl);
+        $response = json_decode($response);
 
-        return $response;
+        if (isset($response->data)) {
+            return $response->data;
+        }
+
+        return null;
     }
 
     public function getSpecificPresentation($presentationId) {
@@ -102,8 +107,13 @@ class PresentationController {
 
         $response = curl_exec($curl);
         curl_close($curl);
+        $response = json_decode($response);
 
-        return $response;
+        if (isset($response->data)) {
+            return $response->data;
+        }
+
+        return null; 
     }
 
     public function createPresentation($description, $code, $weight, $status, $cover, $stock, $stockMin, $stockMax, $productId, $amount) {

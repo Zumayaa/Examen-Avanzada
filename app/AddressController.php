@@ -67,11 +67,17 @@ class AddressController {
                 'Authorization: Bearer ' . $_SESSION['user_data']->token,
             ),
         ));
-
+        
         $response = curl_exec($curl);
         curl_close($curl);
-
-        return $response;
+        $response = json_decode($response);
+    
+        if (isset($response->data)) {
+            return $response->data; 
+        }
+    
+        return null;
+    
     }
 
     public function createAddress($firstName, $lastName, $street, $postalCode, $city, $province, $phone, $isBilling, $clientId) {
