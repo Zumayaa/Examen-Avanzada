@@ -3,6 +3,8 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+require_once 'config.php';
+
 if (isset($_POST['action'])) {
     switch ($_POST['action']) {
         case 'create_user':
@@ -12,11 +14,14 @@ if (isset($_POST['action'])) {
             $phone_number = $_POST['phone_number'];
             $created_by = $_POST['created_by'];
             $role = $_POST['role'];
-            $password = $_POST['password']; 
-            $profilePhotoPath = $_POST['profilePhotoPath']; 
-
+            $password = $_POST['password'];
+            $profile_photo_file = $_FILES['profile_photo_file']['tmp_name'] ?? null;
+            if (empty($profile_photo_file) || !is_uploaded_file($profile_photo_file)) {
+                die("Error: sin foto");
+            }
+        
             $userController = new UserController();
-            $userController->createUser($name, $lastname, $email, $phone_number, $created_by, $role, $password, $profilePhotoPath);
+            $userController->createUser($name, $lastname, $email, $phone_number, $created_by, $role, $password, $profile_photo_file);
         break;
 
         case 'update_user':
