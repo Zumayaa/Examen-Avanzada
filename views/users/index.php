@@ -268,9 +268,13 @@
                                             <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
                                                 <i class="feather icon-edit"></i>
                                             </button>
-                                            <a href="delete.php?id=<?= urlencode($user['id']) ?>" class="btn btn-sm btn-light-danger">
-                                                <i class="feather icon-trash-2"></i>
-                                            </a>
+                                            <form action="<?= BASE_PATH ?>app/UserController.php" method="POST" style="display: inline;">
+                                                <input type="hidden" name="action" value="delete_user">
+                                                <input type="hidden" name="id" value="<?= $user['id'] ?>">
+                                                <button type="submit" class="btn btn-sm btn-light-danger">
+                                                    <i class="feather icon-trash-2"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
