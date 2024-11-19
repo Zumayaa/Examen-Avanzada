@@ -201,41 +201,101 @@
                           >
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
-                        <form>
+                        <form action="<?= BASE_PATH ?>app/UserController.php" method="POST">
+                          <input type="hidden" name="action" value="update_user">
+                          <input type="hidden" name="id" id="userId"> <!-- Campo oculto para el ID del usuario -->
+
                           <div class="modal-body">
-                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0"
-                              >Agrega la información correspondiente al formulario.</small
-                            >
+                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
+                              Edita la información correspondiente al formulario.
+                            </small>
                             <div class="mb-3">
-                              <label class="form-label">Nombre del usuario</label>
+                              <label for="name" class="form-label">Nombre</label>
                               <input
                                 type="text"
                                 class="form-control"
-                                id="fname"
-                                aria-describedby="emailHelp"
+                                id="name"
+                                name="name"
                                 placeholder="Ingresa el nombre"
+                                required
                               />
                             </div>
                             <div class="mb-3">
-                              <label class="form-label">Información extra</label>
+                              <label for="lastname" class="form-label">Apellido</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="lastname"
+                                name="lastname"
+                                placeholder="Ingresa el apellido"
+                                required
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label for="email" class="form-label">Email</label>
                               <input
                                 type="email"
                                 class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el apellido"
+                                id="email"
+                                name="email"
+                                placeholder="Ingresa el email"
+                                required
                               />
                             </div>
-                            <div class="col-md-12">
-                                <label class="form-label">Imagen del usuario</label>
-                                <input class="form-control" type="file" />
+                            <div class="mb-6">
+                              <label for="phone_number" class="form-label">Número telefónico</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="phone_number"
+                                name="phone_number"
+                                placeholder="Ingresa el número telefónico"
+                                required
+                              />
+                              
+                            <div class="mb-3">
+                              <label for="created_by" class="form-label">Creado por</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="created_by"
+                                name="created_by"
+                                placeholder="Nombre del creador"
+                                required
+                              />
+                            </div>
+                              
+                            </div>
+                            <div class="mb-3">
+                              <label for="role" class="form-label">Rol</label>
+                              <select
+                                class="form-select"
+                                id="role"
+                                name="role"
+                                required
+                              >
+                                <option value="admin">Admin</option>
+                                <option value="user">Usuario</option>
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <label for="password" class="form-label">Contraseña</label>
+                              <input
+                                type="password"
+                                class="form-control"
+                                id="password"
+                                name="password"
+                                placeholder="Ingresa una nueva contraseña (opcional)"
+                              />
                             </div>
                           </div>
+
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Editar usuario</button>
+                            <button type="submit" class="btn btn-light-primary">Guardar cambios</button>
                           </div>
                         </form>
+
                       </div>
                     </div>
                   </div>
