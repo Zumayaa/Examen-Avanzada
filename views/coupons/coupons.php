@@ -40,7 +40,7 @@
               <div class="col-md-12">
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>home">Inicio</a></li>
-                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>catalogs/categories">Cupones</a></li>
+                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>coupons">Cupones</a></li>
                   <li class="breadcrumb-item" aria-current="page">Todos los cupones</li>
                 </ul>
               </div>

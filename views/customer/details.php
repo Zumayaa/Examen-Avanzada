@@ -36,7 +36,7 @@
               <div class="col-md-12">
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>home">Incio</a></li>
-                  <li class="breadcrumb-item"><a href="javascript: void(0)">Cliente</a></li>
+                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>customer">Cliente</a></li>
                   <li class="breadcrumb-item" aria-current="page">Detalles de cliente</li>
                 </ul>
               </div>

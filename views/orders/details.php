@@ -35,8 +35,8 @@
             <div class="row align-items-center">
               <div class="col-md-12">
                 <ul class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="../dashboard/index.html">Incio</a></li>
-                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>catalogs/brands">Cupon</a></li>
+                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>home">Incio</a></li>
+                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>orders">Cupon</a></li>
                   <li class="breadcrumb-item" aria-current="page">Detalles de la orden</li>
                 </ul>
               </div>

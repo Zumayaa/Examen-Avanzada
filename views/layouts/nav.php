@@ -120,7 +120,7 @@ if (isset($_SESSION['user_data'])) {
                 <form action="<?= BASE_PATH ?>app/AuthController.php" method="POST">
                     <input type="hidden" name="action" value="logout">
                     <i class="ph-duotone ph-power"></i>
-                    <button type="submit" style="background: none; border: none; color: inherit; padding: 0; font: inherit; cursor: pointtext-decoration: none;">
+                    <button type="submit" style="background: none; border: none; color: inherit; padding: 0; font: inherit; cursor: pointer; text-decoration: none">
                         <span>Cerrar sesión</span>
                     </button>
                 </form>

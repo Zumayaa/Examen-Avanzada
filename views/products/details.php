@@ -54,7 +54,7 @@
               <div class="col-md-12">
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>home">Inicio</a></li>
-                  <li class="breadcrumb-item"><a href="javascript: void(0)">Productos</a></li>
+                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>products">Productos</a></li>
                   <li class="breadcrumb-item" aria-current="page">Detalle de producto</li>
                 </ul>
               </div>

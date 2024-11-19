@@ -41,9 +41,7 @@
             <div class="row align-items-center">
               <div class="col-md-12">
                 <ul class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>home">Home</a></li>
-                  <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Home</li>
+                  <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>home">Inicio</a></li>
                 </ul>
               </div>
               <div class="col-md-12">
