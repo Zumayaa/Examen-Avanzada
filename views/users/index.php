@@ -9,6 +9,16 @@
   // Obtener todos los usuarios
   $usersResponse = $userController->getAllUsers();
   $users = $usersResponse['data'] ?? []; // Asegurarse de que 'data' esté presente en la respuesta
+
+  // Supongamos que tienes un ID del usuario en la URL
+  $userId = $_GET['id'] ?? null;
+
+  if ($userId) {
+      // Carga los datos del usuario desde la base de datos
+      $user = getUserById($userId); // Función ficticia para obtener datos
+  } else {
+      $user = null; // Si no hay ID, no hay usuario
+  }
 ?>
 <!doctype html>
 <html lang="en">
@@ -201,100 +211,56 @@
                           >
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
-                        <form action="<?= BASE_PATH ?>app/UserController.php" method="POST">
+                        <form id="updateForm" action="<?= BASE_PATH ?>app/UserController.php" method="POST" enctype="multipart/form-data">
                           <input type="hidden" name="action" value="update_user">
-                          <input type="hidden" name="id" id="userId"> <!-- Campo oculto para el ID del usuario -->
-
+                          <input type="hidden" name="id" value="<?= isset($user->id) ? htmlspecialchars($user->id) : '' ?>">
                           <div class="modal-body">
-                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
-                              Edita la información correspondiente al formulario.
-                            </small>
-                            <div class="mb-3">
-                              <label for="name" class="form-label">Nombre</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="name"
-                                name="name"
-                                placeholder="Ingresa el nombre"
-                                required
-                              />
-                            </div>
-                            <div class="mb-3">
-                              <label for="lastname" class="form-label">Apellido</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="lastname"
-                                name="lastname"
-                                placeholder="Ingresa el apellido"
-                                required
-                              />
-                            </div>
-                            <div class="mb-3">
-                              <label for="email" class="form-label">Email</label>
-                              <input
-                                type="email"
-                                class="form-control"
-                                id="email"
-                                name="email"
-                                placeholder="Ingresa el email"
-                                required
-                              />
-                            </div>
-                            <div class="mb-6">
-                              <label for="phone_number" class="form-label">Número telefónico</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="phone_number"
-                                name="phone_number"
-                                placeholder="Ingresa el número telefónico"
-                                required
-                              />
-                              
-                            <div class="mb-3">
-                              <label for="created_by" class="form-label">Creado por</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="created_by"
-                                name="created_by"
-                                placeholder="Nombre del creador"
-                                required
-                              />
-                            </div>
-                              
-                            </div>
-                            <div class="mb-3">
-                              <label for="role" class="form-label">Rol</label>
-                              <select
-                                class="form-select"
-                                id="role"
-                                name="role"
-                                required
-                              >
-                                <option value="admin">Admin</option>
-                                <option value="user">Usuario</option>
-                              </select>
-                            </div>
-                            <div class="mb-3">
-                              <label for="password" class="form-label">Contraseña</label>
-                              <input
-                                type="password"
-                                class="form-control"
-                                id="password"
-                                name="password"
-                                placeholder="Ingresa una nueva contraseña (opcional)"
-                              />
-                            </div>
+                              <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
+                                  Edita la información del usuario.
+                              </small>
+                              <div class="mb-3">
+                                  <label class="form-label">Nombre</label>
+                                  <input type="text" class="form-control" name="name" placeholder="Ingresa el nombre" required>
+                              </div>
+                              <div class="mb-3">
+                                  <label class="form-label">Apellido</label>
+                                  <input type="text" class="form-control" name="lastname" placeholder="Ingresa el apellido" required>
+                              </div>
+                              <div class="mb-3">
+                                  <label class="form-label">Correo electrónico</label>
+                                  <input type="email" class="form-control" name="email" placeholder="Ingresa el correo electrónico" required>
+                              </div>
+                              <div class="mb-3">
+                                  <label class="form-label">Número de teléfono</label>
+                                  <input type="text" class="form-control" name="phone_number" placeholder="Ingresa el número de teléfono" required>
+                              </div>
+                              <div class="mb-3">
+                                  <label class="form-label">Rol</label>
+                                  <select class="form-control" name="role">
+                                      <option value="admin" >Administrador</option>
+                                      <option value="user">Usuario</option>
+                                  </select>
+                              </div>
+                              <div class="mb-3">
+                                  <label class="form-label">Contraseña</label>
+                                  <input type="password" class="form-control" name="password" placeholder="Ingresa la nueva contraseña">
+                              </div>
+                              <div class="mb-3">
+                                  <label class="form-label">Creado por</label>
+                                  <input type="text" class="form-control" name="created_by" placeholder="Creado por">
+                              </div>
+                              <div class="mb-3">
+                                  <label class="form-label">Imagen de perfil</label>
+                                  <input class="form-control" type="file" name="profilePhotoPath">
+                              </div>
                           </div>
-
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-light-primary">Guardar cambios</button>
+                              <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
+                              <button type="submit" class="btn btn-light-primary">Guardar cambios</button>
                           </div>
-                        </form>
+                      </form>
+
+
 
                       </div>
                     </div>
@@ -326,6 +292,7 @@
                                                 <i class="feather icon-eye"></i>
                                             </a>
                                             <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
+                                            <input type="hidden" name="id" value="<?= $user['id'] ?>">
                                                 <i class="feather icon-edit"></i>
                                             </button>
                                             <form action="<?= BASE_PATH ?>app/UserController.php" method="POST" style="display: inline;">
@@ -389,6 +356,16 @@
         value--;
         document.getElementById(temp).value = value;
       }
+
+      function openEditModal(userId) {
+          // Asignar el valor del ID al campo oculto
+          document.querySelector('input[name="id"]').value = userId;
+          
+          // Abrir el modal (usa la función específica de tu framework o biblioteca)
+          const modal = new bootstrap.Modal(document.getElementById('editUserModal'));
+          modal.show();
+      }
+
       // quantity end
     </script>
     
@@ -398,7 +375,6 @@
 
 
       ?>
-
   </body>
   <!-- [Body] end -->
 </html>
