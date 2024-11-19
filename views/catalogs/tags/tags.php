@@ -97,18 +97,24 @@
                               />
                             </div>
                             <div class="mb-3">
-                              <label class="form-label">Información extra</label>
+                              <label class="form-label">Descripción del tag</label>
                               <input
                                 type="email"
                                 class="form-control"
                                 id="lname"
                                 aria-describedby="emailHelp"
-                                placeholder="Ingresa el apellido"
+                                placeholder="Ingresa la descripción del tag"
                               />
                             </div>
-                            <div class="col-md-12">
-                                <label class="form-label">Imagen del usuario</label>
-                                <input class="form-control" type="file" />
+                            <div class="mb-3">
+                              <label class="form-label">Slug</label>
+                              <input
+                                type="email"
+                                class="form-control"
+                                id="lname"
+                                aria-describedby="emailHelp"
+                                placeholder="Ingresa el slug"
+                              />
                             </div>
                           </div>
                           <div class="modal-footer">
@@ -153,18 +159,24 @@
                               />
                             </div>
                             <div class="mb-3">
-                              <label class="form-label">Información extra</label>
+                              <label class="form-label">Descripción del tag</label>
                               <input
                                 type="email"
                                 class="form-control"
                                 id="lname"
                                 aria-describedby="emailHelp"
-                                placeholder="Ingresa el apellido"
+                                placeholder="Ingresa la descripción"
                               />
                             </div>
-                            <div class="col-md-12">
-                                <label class="form-label">Imagen del usuario</label>
-                                <input class="form-control" type="file" />
+                            <div class="mb-3">
+                              <label class="form-label">Slug</label>
+                              <input
+                                type="email"
+                                class="form-control"
+                                id="lname"
+                                aria-describedby="emailHelp"
+                                placeholder="Ingresa el slug"
+                              />
                             </div>
                           </div>
                           <div class="modal-footer">
