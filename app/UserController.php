@@ -15,8 +15,8 @@ if (isset($_POST['action'])) {
             $password = $_POST['password']; 
             $profilePhotoPath = $_POST['profilePhotoPath']; 
 
-            $productController = new ProductController();
-            $productController->create($name, $lastname, $email, $phone_number, $created_by, $role, $password, $profilePhotoPath);
+            $userController = new UserController();
+            $userController->createUser($name, $lastname, $email, $phone_number, $created_by, $role, $password, $profilePhotoPath);
         break;
 
         case 'update_user':
