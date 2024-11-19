@@ -16,9 +16,6 @@ if (isset($_POST['action'])) {
             $role = $_POST['role'];
             $password = $_POST['password'];
             $profile_photo_file = $_FILES['profile_photo_file']['tmp_name'] ?? null;
-            if (empty($profile_photo_file) || !is_uploaded_file($profile_photo_file)) {
-                die("Error: sin foto");
-            }
         
             $userController = new UserController();
             $userController->createUser($name, $lastname, $email, $phone_number, $created_by, $role, $password, $profile_photo_file);
