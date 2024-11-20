@@ -1,6 +1,31 @@
 <?php 
   include_once "../../app/config.php";
 
+  // Incluye el controlador y obtén los datos del cliente
+  include "../../app/ClientController.php";
+  
+  $clientController = new ClientController();
+
+  // Obtener el ID del cliente desde la URL (si existe)
+  $clientId = isset($_GET['id']) ? $_GET['id'] : null;
+
+  // Si no se pasa un ID, mostrar un error o redirigir
+  if (!$clientId) {
+      echo "<p>ID de cliente no proporcionado.</p>";
+      exit;
+  }
+
+  // Llamar a la función getClientById
+  $response = $clientController->getClientById($clientId);
+
+  // Decodifica la respuesta JSON
+  $client = json_decode($response);
+
+  // Verifica si la respuesta es válida
+  if (!isset($client->data)) {
+      echo "<p>Error al obtener los detalles del cliente.</p>";
+      exit;
+  }
 ?>
 <!doctype html>
 <html lang="en">
@@ -60,14 +85,14 @@
                   <div class="card-body position-relative">
                     <div class="text-center mt-3">
                       <div class="chat-avtar d-inline-flex mx-auto">
-                        <img
-                          class="rounded-circle img-fluid wid-90 img-thumbnail"
-                          src="../assets/images/user/avatar-1.jpg"
-                          alt="User image"
-                        />
+                      <img
+                        class=" img-fluid img-thumbnail"
+                        src="<?= htmlspecialchars($avatar) ?>"
+                        alt="User image"
+                      />
                         <i class="chat-badge bg-success me-2 mb-2"></i>
                       </div>
-                      <h5 class="mb-0">William Bond</h5>
+                      <h5 class="mb-0"><?= htmlspecialchars($client->data->name) ?></h5>
                     </div>
                   </div>
                   <div
@@ -96,11 +121,11 @@
                   <div class="card-body position-relative">
                     <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
                       <p class="mb-0 text-muted me-1">Email</p>
-                      <p class="mb-0">anshan@gmail.com</p>
+                      <p class="mb-0"><?= htmlspecialchars($client->data->email) ?></p>
                     </div>
                     <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
                       <p class="mb-0 text-muted me-1">Número télefonico</p>
-                      <p class="mb-0">(+1-876) 8654 239 581</p>
+                      <p class="mb-0"><?= htmlspecialchars($client->data->phone_number) ?></p>
                     </div>
                   </div>
                 </div>
@@ -139,41 +164,37 @@
                             <div class="row">
                               <div class="col-md-6">
                                 <p class="mb-1 text-muted">Nombre</p>
-                                <p class="mb-0">Anshan</p>
+                                <p class="mb-0"><?= htmlspecialchars($client->data->name) ?></p>
                               </div>
-                              <div class="col-md-6">
-                                <p class="mb-1 text-muted">Apellidos</p>
-                                <p class="mb-0">Mr. Deepen Handgun</p>
-                              </div>
-                            </div>
-                          </li>
-                          <li class="list-group-item px-0">
-                            <div class="row">
-                              <div class="col-md-6">
-                                <p class="mb-1 text-muted">Número télefonico</p>
-                                <p class="mb-0">(+1-876) 8654 239 581</p>
-                              </div>
-                              <div class="col-md-6">
-                                <p class="mb-1 text-muted">Género</p>
-                                <p class="mb-0">Kanye West</p>
-                              </div>
-                            </div>
-                          </li>
-                          <li class="list-group-item px-0">
-                            <div class="row">
                               <div class="col-md-6">
                                 <p class="mb-1 text-muted">Email</p>
-                                <p class="mb-0">anshan.dh81@gmail.com</p>
-                              </div>
-                              <div class="col-md-6">
-                                <p class="mb-1 text-muted">Fecha de nacimiento</p>
-                                <p class="mb-0">22/08/2003</p>
+                                <p class="mb-0"><?= htmlspecialchars($client->data->email) ?></p>
                               </div>
                             </div>
                           </li>
-                          <li class="list-group-item px-0 pb-0">
-                            <p class="mb-1 text-muted">Fecha de ingreso a la empresa</p>
-                            <p class="mb-0">22/08/2003</p>
+                          <li class="list-group-item px-0">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <p class="mb-1 text-muted">Número telefónico</p>
+                                <p class="mb-0"><?= htmlspecialchars($client->data->phone_number) ?></p>
+                              </div>
+                              <div class="col-md-6">
+                                <p class="mb-1 text-muted">Suscripción</p>
+                                <p class="mb-0"><?= $client->data->is_suscribed ? 'Activo' : 'Inactivo' ?></p>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="list-group-item px-0">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <p class="mb-1 text-muted">Nivel</p>
+                                <p class="mb-0"><?= htmlspecialchars($client->data->level->name) ?></p>
+                              </div>
+                              <div class="col-md-6">
+                                <p class="mb-1 text-muted">Descuento</p>
+                                <p class="mb-0"><?= htmlspecialchars($client->data->level->percentage_discount) ?>%</p>
+                              </div>
+                            </div>
                           </li>
                         </ul>
                       </div>
