@@ -2,6 +2,16 @@
   include_once "../../app/config.php";
 
 ?>
+
+
+<?php 
+  include_once "../../app/CouponController.php";
+
+  $couponController = new CouponController();
+  $cupon = $couponController->getAllCoupons();
+
+?>
+
 <!doctype html>
 <html lang="en">
   <!-- [Head] start -->
@@ -81,109 +91,143 @@
                           >
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
-                        <form>
-                         <div class="modal-body">
+                        <form action="<?= BASE_PATH ?>contCupon" method="POST">
+                          <div class="modal-body">
                             <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
                               Completa la información para agregar un nuevo cupón.
                             </small>
+
+                            <input type="hidden" name="action" value="create_coupon">
+
                             <!-- Nombre del cupón -->
                             <div class="mb-3">
                               <label class="form-label">Nombre del cupón</label>
                               <input
                                 type="text"
                                 class="form-control"
+                                name="name"
                                 id="name"
                                 placeholder="Ingresa el nombre del cupón"
+                                required
                               />
                             </div>
+
                             <!-- Código -->
                             <div class="mb-3">
                               <label class="form-label">Código</label>
                               <input
                                 type="text"
                                 class="form-control"
+                                name="code"
                                 id="code"
                                 placeholder="Ingresa el código del cupón"
+                                required
                               />
                             </div>
+
                             <!-- Descuento porcentual -->
                             <div class="mb-3">
                               <label class="form-label">Descuento porcentual</label>
                               <input
                                 type="number"
                                 class="form-control"
+                                name="percentage_discount"
                                 id="percentage_discount"
                                 placeholder="Ingresa el porcentaje de descuento"
+                                min="0"
+                                max="100"
+                                required
                               />
                             </div>
+
                             <!-- Monto mínimo requerido -->
                             <div class="mb-3">
                               <label class="form-label">Monto mínimo requerido</label>
                               <input
                                 type="number"
                                 class="form-control"
+                                name="min_amount_required"
                                 id="min_amount_required"
                                 placeholder="Ingresa el monto mínimo requerido"
+                                min="0"
+                                required
                               />
                             </div>
+
                             <!-- Productos mínimos requeridos -->
                             <div class="mb-3">
                               <label class="form-label">Productos mínimos requeridos</label>
                               <input
                                 type="number"
                                 class="form-control"
+                                name="min_product_required"
                                 id="min_product_required"
                                 placeholder="Ingresa la cantidad mínima de productos requeridos"
+                                min="0"
+                                required
                               />
                             </div>
+
                             <!-- Fecha de inicio -->
                             <div class="mb-3">
                               <label class="form-label">Fecha de inicio</label>
                               <input
                                 type="date"
                                 class="form-control"
+                                name="start_date"
                                 id="start_date"
+                                required
                               />
                             </div>
+
                             <!-- Fecha de finalización -->
                             <div class="mb-3">
                               <label class="form-label">Fecha de finalización</label>
                               <input
                                 type="date"
                                 class="form-control"
+                                name="end_date"
                                 id="end_date"
+                                required
                               />
                             </div>
+
                             <!-- Máximo de usos -->
                             <div class="mb-3">
                               <label class="form-label">Máximo de usos</label>
                               <input
                                 type="number"
                                 class="form-control"
+                                name="max_uses"
                                 id="max_uses"
                                 placeholder="Ingresa el número máximo de usos"
+                                min="1"
+                                required
                               />
                             </div>
+
                             <!-- Válido solo para primera compra -->
                             <div class="mb-3">
                               <label class="form-label">Válido solo para la primera compra</label>
-                              <select class="form-control" id="valid_only_first_purchase">
+                              <select class="form-control" name="valid_only_first_purchase" id="valid_only_first_purchase" required>
                                 <option value="1">Sí</option>
                                 <option value="0">No</option>
                               </select>
                             </div>
+
                             <!-- Estado -->
                             <div class="mb-3">
                               <label class="form-label">Estado</label>
-                              <select class="form-control" id="status">
+                              <select class="form-control" name="status" id="status" required>
                                 <option value="1">Activo</option>
                                 <option value="0">Inactivo</option>
                               </select>
                             </div>
                           </div>
+
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Agregar cupon</button>
+                            <button type="submit" class="btn btn-light-primary">Agregar cupón</button>
                           </div>
                         </form>
                       </div>
@@ -207,10 +251,12 @@
                           </h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form>
+                        <form action="<?= BASE_PATH ?>contCupon" method="POST">
+                          <input type="hidden" name="action" value="update_coupon">
+                          <input type="hidden" name="id" id="edit_id"> 
                           <div class="modal-body">
                             <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
-                              Agrega la información correspondiente al formulario.
+                              Edita la información del cupón.
                             </small>
                             <!-- Nombre del cupón -->
                             <div class="mb-3">
@@ -218,98 +264,144 @@
                               <input
                                 type="text"
                                 class="form-control"
-                                id="name"
+                                name="name"
+                                id="edit_name"
                                 placeholder="Ingresa el nombre del cupón"
+                                required
                               />
                             </div>
+
                             <!-- Código -->
                             <div class="mb-3">
                               <label class="form-label">Código</label>
                               <input
                                 type="text"
                                 class="form-control"
-                                id="code"
+                                name="code"
+                                id="edit_code"
                                 placeholder="Ingresa el código del cupón"
+                                required
                               />
                             </div>
+
                             <!-- Descuento porcentual -->
                             <div class="mb-3">
                               <label class="form-label">Descuento porcentual</label>
                               <input
                                 type="number"
                                 class="form-control"
-                                id="percentage_discount"
+                                name="percentage_discount"
+                                id="edit_percentage_discount"
                                 placeholder="Ingresa el porcentaje de descuento"
+                                min="0"
+                                max="100"
+                                required
                               />
                             </div>
+
                             <!-- Monto mínimo requerido -->
                             <div class="mb-3">
                               <label class="form-label">Monto mínimo requerido</label>
                               <input
                                 type="number"
                                 class="form-control"
-                                id="min_amount_required"
+                                name="min_amount_required"
+                                id="edit_min_amount_required"
                                 placeholder="Ingresa el monto mínimo requerido"
+                                min="0"
+                                required
                               />
                             </div>
+
                             <!-- Productos mínimos requeridos -->
                             <div class="mb-3">
                               <label class="form-label">Productos mínimos requeridos</label>
                               <input
                                 type="number"
                                 class="form-control"
-                                id="min_product_required"
+                                name="min_product_required"
+                                id="edit_min_product_required"
                                 placeholder="Ingresa la cantidad mínima de productos requeridos"
+                                min="0"
+                                required
                               />
                             </div>
+
                             <!-- Fecha de inicio -->
                             <div class="mb-3">
                               <label class="form-label">Fecha de inicio</label>
                               <input
                                 type="date"
                                 class="form-control"
-                                id="start_date"
+                                name="start_date"
+                                id="edit_start_date"
+                                required
                               />
                             </div>
+
                             <!-- Fecha de finalización -->
                             <div class="mb-3">
                               <label class="form-label">Fecha de finalización</label>
                               <input
                                 type="date"
                                 class="form-control"
-                                id="end_date"
+                                name="end_date"
+                                id="edit_end_date"
+                                required
                               />
                             </div>
+
                             <!-- Máximo de usos -->
                             <div class="mb-3">
                               <label class="form-label">Máximo de usos</label>
                               <input
                                 type="number"
                                 class="form-control"
-                                id="max_uses"
+                                name="max_uses"
+                                id="edit_max_uses"
                                 placeholder="Ingresa el número máximo de usos"
+                                min="1"
+                                required
                               />
                             </div>
+
                             <!-- Válido solo para primera compra -->
                             <div class="mb-3">
                               <label class="form-label">Válido solo para la primera compra</label>
-                              <select class="form-control" id="valid_only_first_purchase">
+                              <select class="form-control" name="valid_only_first_purchase" id="edit_valid_only_first_purchase" required>
                                 <option value="1">Sí</option>
                                 <option value="0">No</option>
                               </select>
                             </div>
+
                             <!-- Estado -->
                             <div class="mb-3">
                               <label class="form-label">Estado</label>
-                              <select class="form-control" id="status">
+                              <select class="form-control" name="status" id="edit_status" required>
                                 <option value="1">Activo</option>
                                 <option value="0">Inactivo</option>
                               </select>
                             </div>
+
+                            <!-- Usos actuales -->
+                          <div class="mb-3">
+                            <label class="form-label">Usos actuales</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              name="count_uses"
+                              id="edit_count_uses"
+                              value="0"
+                              placeholder="Ingresa el número actual de usos"
+                              min="0"
+                              required
+                            />
+                          </div>
+
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Editar cupón</button>
+                            <button type="submit" class="btn btn-light-primary">Guardar cambios</button>
                           </div>
                         </form>
                       </div>
@@ -323,118 +415,52 @@
                     <thead>
                       <tr>
                         <th class="border-top-0">Nombre</th>
-                        <th class="border-top-0">Email</th>
-                        <th class="border-top-0">Cuenta</th>
-                        <th class="border-top-0">Cumpleaños (hay que cambiarlo)</th>
+                        <th class="border-top-0">Porcentaje</th>
+                        <th class="border-top-0">Inicio</th>
+                        <th class="border-top-0">Vencimiento</th>
                         <th class="border-top-0">Acción</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Mark Jason</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="<?= BASE_PATH ?>coupons/details" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
-                            <i class="feather icon-edit"></i>
-                          </button>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Alice Nicol</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Harry Cook</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Tom Hannry</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Martin Frank</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Endrew Khan</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Chritina Methewv</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Jakson Pit</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Nikolas Jons</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Nik Cage</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
+                      <?php  foreach($cupon as $lista): ?>
+                        <tr>
+                          <td><?php echo htmlspecialchars($lista->name); ?></td>
+                          <td><?php echo htmlspecialchars($lista->percentage_discount); ?>%</td>
+                          <td><?php echo htmlspecialchars($lista->start_date); ?></td>
+                          <td><?php echo htmlspecialchars($lista->end_date); ?></td>
+                          <td>
+                          <a href="" class="btn btn-sm btn-light-primary">
+                            <i class="feather icon-eye"></i>
+                          </a>
+
+                          <button type="button" 
+                                    class="btn btn-sm btn-light-success me-1" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#editModal"
+                                    data-id="<?= htmlspecialchars($lista->id); ?>"
+                                    data-name="<?= htmlspecialchars($lista->name); ?>"
+                                    data-code="<?= htmlspecialchars($lista->code); ?>"
+                                    data-percentage="<?= htmlspecialchars($lista->percentage_discount); ?>"
+                                    data-min-amount="<?= htmlspecialchars($lista->min_amount_required); ?>"
+                                    data-min-product="<?= htmlspecialchars($lista->min_product_required); ?>"
+                                    data-start-date="<?= htmlspecialchars($lista->start_date); ?>"
+                                    data-end-date="<?= htmlspecialchars($lista->end_date); ?>"
+                                    data-max-uses="<?= htmlspecialchars($lista->max_uses); ?>"
+                                    data-first-purchase="<?= htmlspecialchars($lista->valid_only_first_purchase); ?>"
+                                    data-status="<?= htmlspecialchars($lista->status); ?>">
+                              <i class="feather icon-edit"></i>
+                            </button>
+
+                            <form action="<?= BASE_PATH ?>contCupon" method="POST" style="display:inline;">
+                              <input type="hidden" name="action" value="delete_coupon">
+                              <input type="hidden" name="id" value="<?= htmlspecialchars($lista->id); ?>">
+                              <button type="submit" class="btn btn-sm btn-light-danger">
+                                <i class="feather icon-trash-2"></i>
+                              </button>
+                            </form>
+                          </td>
+                        </tr>
+                      <?php endforeach ?>
                     </tbody>
                   </table>
                 </div>
@@ -445,6 +471,40 @@
         <!-- [ Main Content ] end -->
       </div>
     </div>
+
+    <script>
+      const editModal = document.getElementById('editModal');
+      editModal.addEventListener('show.bs.modal', (event) => {
+        const button = event.relatedTarget;
+        
+        // Obtener datos desde los atributos data-*
+        const id = button.getAttribute('data-id');
+        const name = button.getAttribute('data-name');
+        const code = button.getAttribute('data-code');
+        const percentage = button.getAttribute('data-percentage');
+        const minAmount = button.getAttribute('data-min-amount');
+        const minProduct = button.getAttribute('data-min-product');
+        const startDate = button.getAttribute('data-start-date');
+        const endDate = button.getAttribute('data-end-date');
+        const maxUses = button.getAttribute('data-max-uses');
+        const firstPurchase = button.getAttribute('data-first-purchase');
+        const status = button.getAttribute('data-status');
+        
+        // Llenar los campos del formulario
+        editModal.querySelector('[name="id"]').value = id;
+        editModal.querySelector('[name="name"]').value = name;
+        editModal.querySelector('[name="code"]').value = code;
+        editModal.querySelector('[name="percentage_discount"]').value = percentage;
+        editModal.querySelector('[name="min_amount_required"]').value = minAmount;
+        editModal.querySelector('[name="min_product_required"]').value = minProduct;
+        editModal.querySelector('[name="start_date"]').value = startDate;
+        editModal.querySelector('[name="end_date"]').value = endDate;
+        editModal.querySelector('[name="max_uses"]').value = maxUses;
+        editModal.querySelector('[name="valid_only_first_purchase"]').value = firstPurchase;
+        editModal.querySelector('[name="status"]').value = status;
+      });
+    </script>
+
 
     <?php 
 
