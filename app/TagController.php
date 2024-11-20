@@ -52,10 +52,15 @@ class TagController {
             ),
         ));
 
-        $response = curl_exec($curl);
+        $response = curl_exec($curl); 
         curl_close($curl);
+        $response = json_decode($response);
 
-        echo $response;
+        if (isset($response->data) && count($response->data)) {
+            return $response->data;
+        }
+
+        return array();
     }
 
     public function getTag($id) {
@@ -75,10 +80,15 @@ class TagController {
             ),
         ));
 
-        $response = curl_exec($curl);
+        $response = curl_exec($curl); 
         curl_close($curl);
+        $response = json_decode($response);
 
-        echo $response;
+        if (isset($response->data) && !is_null($response->data)) {
+            return $response->data;
+        }
+
+        return null;
     }
 
     public function createTag($name, $description, $slug) {
@@ -105,8 +115,13 @@ class TagController {
 
         $response = curl_exec($curl);
         curl_close($curl);
+        $response = json_decode($response);
 
-        echo $response;
+        if (isset($response->code) && $response->code == 4) {
+        header('Location: ' . BASE_PATH . 'catalogs/tags?status=updated');
+        } else {
+        header('Location: ' . BASE_PATH . 'catalogs/tags?status=error');
+        }
     }
 
     public function updateTag($id, $name, $description, $slug) {
@@ -134,8 +149,13 @@ class TagController {
 
         $response = curl_exec($curl);
         curl_close($curl);
+        $response = json_decode($response);
 
-        echo $response;
+        if (isset($response->code) && $response->code == 4) {
+        header('Location: ' . BASE_PATH . 'catalogs/tags?status=updated');
+        } else {
+        header('Location: ' . BASE_PATH . 'catalogs/tags?status=error');
+        }
     }
 
     public function deleteTag($id) {
@@ -157,7 +177,12 @@ class TagController {
 
         $response = curl_exec($curl);
         curl_close($curl);
+        $response = json_decode($response);
 
-        echo $response;
+        if (isset($response->code) && $response->code == 4) {
+        header('Location: ' . BASE_PATH . 'catalogs/tags?status=updated');
+        } else {
+        header('Location: ' . BASE_PATH . 'catalogs/tags?status=error');
+        }
     }
 }

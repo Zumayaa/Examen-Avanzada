@@ -251,7 +251,7 @@ class ProductController {
 		if (isset($response->code) && $response->code == 4) {
 			header('Location: ' . BASE_PATH . 'products?status=ok');
 		} else {
-			header('Location: ' . BASE_PATH . 'products?status=ok');
+			header('Location: ' . BASE_PATH . 'products?status=error');
 		}
 	}
 
