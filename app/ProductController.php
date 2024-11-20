@@ -212,39 +212,37 @@ class ProductController {
     }
 
     public function update($nombre, $slug, $description, $features, $brand_id, $categories, $tags, $product_id){
-		$postfields = array(
-			'name' => $nombre,
-			'slug' => $slug,
-			'description' => $description,
-			'features' => $features,
-			'brand_id' => $brand_id,
-			'id' => $product_id
-		);
-
-		foreach ($categories as $index => $category) {
-			$postfields["categories[$index]"] = $category;
-		}
-
-		foreach ($tags as $index => $tag) {
-			$postfields["tags[$index]"] = $tag;
-		}
-
-		$curl = curl_init();
-
-		curl_setopt_array($curl, array(
-			CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_ENCODING => '',
-			CURLOPT_MAXREDIRS => 10,
-			CURLOPT_TIMEOUT => 0,
-			CURLOPT_FOLLOWLOCATION => true,
-			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			CURLOPT_CUSTOMREQUEST => 'PUT',
-			CURLOPT_POSTFIELDS => $postfields,
-			CURLOPT_HTTPHEADER => array(
-				'Authorization: Bearer ' . $_SESSION['user_data']->token,
-			),
-		));
+        $curl = curl_init();
+    
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'PUT',
+            CURLOPT_POSTFIELDS => 
+                "id=$product_id" .
+                "&name=$nombre" .
+                "&slug=$slug" .
+                "&description=$description" .
+                "&features=$features" .
+                "&brand_id=$brand_id" .
+                //concatenar categorías no se si funciona
+                implode('&', array_map(function($index, $category) {
+                    return "categories[$index]=$category";
+                }, array_keys($categories), $categories)) .
+                //concatenar etiquetas no se si funciona
+                implode('&', array_map(function($index, $tag) {
+                    return "tags[$index]=$tag";
+                }, array_keys($tags), $tags)),
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/x-www-form-urlencoded',
+                'Authorization: Bearer ' . $_SESSION['user_data']->token,
+            ),
+        ));
 
 		$response = curl_exec($curl);
 		curl_close($curl);

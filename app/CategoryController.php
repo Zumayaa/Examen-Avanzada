@@ -145,13 +145,12 @@ class CategoryController {
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'PUT',
-            CURLOPT_POSTFIELDS => http_build_query(array(
-                'id' => $id,
-                'name' => $name,
-                'description' => $description,
-                'slug' => $slug,
-                'category_id' => $category_id
-            )),
+            CURLOPT_POSTFIELDS => 
+                "id=$id" .
+                "&name=$name" .
+                "&description=$description" .
+                "&slug=$slug" .
+                "&category_id=$category_id",
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/x-www-form-urlencoded',
                 'Authorization: Bearer ' . $_SESSION['user_data']->token,

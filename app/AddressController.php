@@ -131,18 +131,17 @@ class AddressController {
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'PUT',
-            CURLOPT_POSTFIELDS => http_build_query(array(
-                'first_name' => $firstName,
-                'last_name' => $lastName,
-                'street_and_use_number' => $street,
-                'postal_code' => $postalCode,
-                'city' => $city,
-                'province' => $province,
-                'phone_number' => $phone,
-                'is_billing_address' => $isBilling,
-                'client_id' => $clientId,
-                'id' => $addressId,
-            )),
+            CURLOPT_POSTFIELDS => 
+                "id=$addressId" .
+                "&first_name=$firstName" .
+                "&last_name=$lastName" .
+                "&street_and_use_number=$street" .
+                "&postal_code=$postalCode" .
+                "&city=$city" .
+                "&province=$province" .
+                "&phone_number=$phone" .
+                "&is_billing_address=$isBilling" .
+                "&client_id=$clientId",
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/x-www-form-urlencoded',
                 'Authorization: Bearer ' . $_SESSION['user_data']->token,

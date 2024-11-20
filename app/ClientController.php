@@ -135,7 +135,7 @@ class ClientController {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://crud.jonathansoto.mx/api/clients/' . $clientId,
+            CURLOPT_URL => 'https://crud.jonathansoto.mx/api/clients',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -143,15 +143,14 @@ class ClientController {
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'PUT',
-            CURLOPT_POSTFIELDS => http_build_query(array(
-                'name' => $name,
-                'email' => $email,
-                'password' => $password,
-                'phone_number' => $phone_number,
-                'is_suscribed' => $is_suscribed,
-                'level_id' => $level_id,
-                'id' => $clientId
-            )),
+            CURLOPT_POSTFIELDS => 
+                "id=$clientId" .
+                "&name=$name" .
+                "&email=$email" .
+                "&password=$password" .
+                "&phone_number=$phone_number" .
+                "&is_suscribed=$is_suscribed" .
+                "&level_id=$level_id",
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/x-www-form-urlencoded',
                 'Authorization: Bearer ' . $_SESSION['user_data']->token,

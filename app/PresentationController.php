@@ -168,18 +168,17 @@ class PresentationController {
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'PUT',
-            CURLOPT_POSTFIELDS => http_build_query(array(
-                'description' => $description,
-                'code' => $code,
-                'weight_in_grams' => $weight,
-                'status' => $status,
-                'stock' => $stock,
-                'stock_min' => $stockMin,
-                'stock_max' => $stockMax,
-                'product_id' => $productId,
-                'amount' => $amount,
-                'id' => $presentationId
-            )),
+            CURLOPT_POSTFIELDS => 
+                "id=$presentationId" .
+                "&description=$description" .
+                "&code=$code" .
+                "&weight_in_grams=$weight" .
+                "&status=$status" .
+                "&stock=$stock" .
+                "&stock_min=$stockMin" .
+                "&stock_max=$stockMax" .
+                "&product_id=$productId" .
+                "&amount=$amount",
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/x-www-form-urlencoded',
                 'Authorization: Bearer ' . $_SESSION['user_data']->token,

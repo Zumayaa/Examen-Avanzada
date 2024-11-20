@@ -139,9 +139,9 @@ class UserController {
 
     public function updateUser($id, $name, $lastname, $email, $phone_number, $created_by, $role, $password) {
         $curl = curl_init();
-
+    
         curl_setopt_array($curl, [
-            CURLOPT_URL => 'https://crud.jonathansoto.mx/api/users/' . $id,
+            CURLOPT_URL => 'https://crud.jonathansoto.mx/api/users',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -149,16 +149,15 @@ class UserController {
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'PUT',
-            CURLOPT_POSTFIELDS => http_build_query([
-                'name' => $name,
-                'lastname' => $lastname,
-                'email' => $email,
-                'phone_number' => $phone_number,
-                'created_by' => $created_by,
-                'role' => $role,
-                'password' => $password,
-                'id' => $id
-            ]),
+            CURLOPT_POSTFIELDS => 
+                "id=$id" .
+                "&name=$name" .
+                "&lastname=$lastname" .
+                "&email=$email" .
+                "&phone_number=$phone_number" .
+                "&created_by=$created_by" .
+                "&role=$role" .
+                "&password=$password",
             CURLOPT_HTTPHEADER => [
                 'Content-Type: application/x-www-form-urlencoded',
                 'Authorization: Bearer ' . $_SESSION['user_data']->token,
