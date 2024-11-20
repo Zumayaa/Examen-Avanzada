@@ -104,7 +104,7 @@
                                     </a>
                                   </li>
                                   <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
-                                    <a href="<?= BASE_PATH ?>products/edit-presentation" class="avtar avtar-xs btn-link-success btn-pc-default">
+                                    <a href="<?= BASE_PATH ?>products/edit-presentation?presentation_id=<?= $mostrar->presentations[0]->id; ?>" class="avtar avtar-xs btn-link-success btn-pc-default">
                                       <i class="ti ti-edit-circle f-18"></i>
                                     </a>
                                   </li>

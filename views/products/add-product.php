@@ -150,6 +150,7 @@
 
                 </div>
               </div>
+              <!--
               <div class="card">
                 <div class="card-header">
                   <h5>Precio</h5>
@@ -170,6 +171,7 @@
                   </div>
                 </div>
               </div>
+              -->
             </div>
             <div class="col-xl-6">
               <div class="card">

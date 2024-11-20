@@ -148,6 +148,8 @@
                         <?php endforeach; ?>
                     </select>
                   </div>
+
+                  <!--
                   <div class="mb-3">
                     <label class="form-label">ID</label>
                     <input 
@@ -157,6 +159,7 @@
                       oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
                     />
                   </div>
+                        -->
                   <div class="mb-3">
                     <label class="form-label">precio</label>
                     <input 
