@@ -186,7 +186,7 @@
                     <label class="btn btn-outline-secondary my-2" for="flupld">
                       <i class="ti ti-upload me-2"></i> Click para subir
                     </label>
-                    <input type="file" id="flupld" class="d-none" name="cover" />
+                    <input type="file" id="flupld" class="d-none" name="cover" require />
                   </div>
                 </div>
               </div>

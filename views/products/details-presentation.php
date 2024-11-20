@@ -2,6 +2,18 @@
   include_once "../../app/config.php";
 
 ?>
+
+<?php 
+  include_once "../../app/PresentationController.php";
+
+  $presentation_id = $_GET['presentation_id'];
+  $presentationController = new PresentationController();
+
+  $presentation = $presentationController->getSpecificPresentation($presentation_id);
+
+?>
+
+
 <!doctype html>
 <html lang="en">
   <!-- [Head] start -->
@@ -96,27 +108,32 @@
                             </ul>
                           </div>
                           <div class="carousel-item active">
-                            <img src="../../assets/images/application/img-prod-1.jpg" class="d-block w-100" alt="Product images" />
+                              <img src="<?php echo $presentation->cover; ?>" class="d-block w-100" alt="Product images" />
                           </div>
+
+                          <!--
                           <div class="carousel-item">
                             <img src="../../assets/images/application/img-prod-2.jpg" class="d-block w-100" alt="Product images" />
                           </div>
+                          -->
                         </div>
                         <ol class="list-inline carousel-indicators position-relative product-carousel-indicators my-sm-3 mx-0">
                           <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="list-inline-item w-25 h-auto active">
-                            <img src="../../assets/images/application/img-prod-1.jpg" class="d-block wid-50 rounded" alt="Product images" />
+                            <img src="<?php echo $presentation->cover; ?>" class="d-block wid-50 rounded" alt="Product images" />
                           </li>
+                          <!--
                           <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="list-inline-item w-25 h-auto">
                             <img src="../../assets/images/application/img-prod-2.jpg" class="d-block wid-50 rounded" alt="Product images" />
                           </li>
+                          -->
                         </ol>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <span class="badge bg-success f-14">In stock</span>
-                    <h5 class="my-3">Apple Watch SE Smartwatch (GPS, 40mm) (Heart Rate Monitoring)</h5>
-                    <h5 class="mt-4 mb-sm-1 mb-0">Presentaciones</h5>
+                    <h1 class="my-3"><?php echo $presentation->description ?></h1>
+                    <h5 class="mt-4 mb-sm-1 mb-0">code: <?php echo $presentation->code; ?></h5>
+                    <!--
                     <div class="offer-check-block">
                       <div class="offer-check border rounded p-3">
                         <div class="form-check">
@@ -171,13 +188,20 @@
                         </div>
                       </div>
                     </div>
-                    <h5 class="mt-4 mb-sm-3 mb-2 f-w-500">Descripción del producto</h5>
+                     -->
+
+                    <h5 class="mt-4 mb-sm-3 mb-2 f-w-500">Datos</h5>
                     <ul>
-                      <li class="mb-2">Care Instructions: Hand Wash Only</li>
-                      <li class="mb-2">Fit Type: Regular</li>
-                      <li class="mb-2">Dark Blue Regular Women Jeans</li>
-                      <li class="mb-2">Fabric : 100% Cotton</li>
+                      <li class="mb-2">peso: <?php echo $presentation->weight_in_grams; ?> gr</li>
+                      <li class="mb-2">Stock: <?php echo $presentation->stock; ?></li>
+                      <li class="mb-2">Stok min: <?php echo $presentation->stock_min; ?></li>
+                      <li class="mb-2">Stok max:  <?php echo $presentation->stock_max; ?></li>
                     </ul>
+            
+                    <h5 class="mt-4 mb-sm-3 mb-2 f-w-500">Descripcion</h5>
+                    <p> <?php echo $presentation->product->description; ?></p>
+
+                    <!--
                     <div class="mb-3 row align-items-center">
                       <label class="col-form-label col-lg-3 col-sm-12">
                         <span class="d-block">Talla</span></label>
@@ -198,6 +222,7 @@
                         </div>
                       </div>
                     </div>
+                    
                     <div class="mb-3 row">
                       <label class="col-form-label col-lg-3 col-sm-12">Cantidad <span class="text-danger">*</span></label>
                       <div class="col-lg-6 col-md-12 col-sm-12">
@@ -217,8 +242,9 @@
                         </div>
                       </div>
                     </div>
+                    -->
                     <h3 class="mb-4"
-                      ><b>$299.00</b></h3>
+                      ><b>$<?php echo $presentation->current_price->amount; ?></b></h3>
                     <div class="row">
                       <div class="col-6">
                         <div class="d-grid">
