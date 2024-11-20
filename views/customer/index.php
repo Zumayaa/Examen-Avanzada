@@ -106,7 +106,7 @@
                           >
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
-                        <form enctype="multipart/form-data">
+                        <form action="ruta/donde/esta/tu/funcion" method="POST" enctype="multipart/form-data">
                           <div class="modal-body">
                             <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
                               Agrega la información correspondiente al formulario.
@@ -121,16 +121,7 @@
                                 required
                               />
                             </div>
-                            <div class="mb-3">
-                              <label class="form-label">Apellido</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                name="lastname"
-                                placeholder="Ingresa el apellido"
-                                required
-                              />
-                            </div>
+
                             <div class="mb-3">
                               <label class="form-label">Correo Electrónico</label>
                               <input
@@ -141,34 +132,7 @@
                                 required
                               />
                             </div>
-                            <div class="mb-3">
-                              <label class="form-label">Número de Teléfono</label>
-                              <input
-                                type="tel"
-                                class="form-control"
-                                name="phone_number"
-                                placeholder="Ingresa el número de teléfono"
-                                required
-                              />
-                            </div>
-                            <div class="mb-3">
-                              <label class="form-label">Creador</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                name="created_by"
-                                placeholder="Ingresa el nombre del creador"
-                                required
-                              />
-                            </div>
-                            <div class="mb-3">
-                              <label class="form-label">Rol</label>
-                              <select class="form-select" name="role" required>
-                                <option value="Administrador">Administrador</option>
-                                <option value="user">Usuario</option>
-                                <!-- Agrega más opciones según sea necesario -->
-                              </select>
-                            </div>
+
                             <div class="mb-3">
                               <label class="form-label">Contraseña</label>
                               <input
@@ -179,16 +143,35 @@
                                 required
                               />
                             </div>
+
                             <div class="mb-3">
-                              <label class="form-label">Imagen de Perfil</label>
+                              <label class="form-label">Número de Teléfono</label>
                               <input
-                                type="file"
+                                type="tel"
                                 class="form-control"
-                                name="profile_photo_file"
-                                accept="image/*"
+                                name="phone_number"
+                                placeholder="Ingresa el número de teléfono"
                                 required
                               />
                             </div>
+
+                            <div class="mb-3">
+                              <label class="form-label">¿Está Suscrito?</label>
+                              <select class="form-control" name="is_suscribed" required>
+                                <option value="1">Sí</option>
+                                <option value="0">No</option>
+                              </select>
+                            </div>
+
+                            <div class="mb-3">
+                              <label class="form-label">Nivel</label>
+                              <select class="form-control" name="level_id" required>
+                                <option value="1">Normal</option>
+                                <option value="2">Premium</option>
+                                <option value="3">VIP</option>
+                              </select>
+                            </div>
+
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
@@ -197,6 +180,7 @@
 
                           <input type="hidden" name="action" value="create_user">
                         </form>
+
                       </div>
                     </div>
                   </div>
