@@ -2,6 +2,15 @@
   include_once "../../app/config.php";
 
 ?>
+
+<?php  
+    include_once "../../app/ProductController.php";
+
+    $productController = new ProductController();
+    $presentation = $productController->get();
+
+?>
+
 <!doctype html>
 <html lang="en">
   <!-- [Head] start -->
@@ -69,85 +78,52 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>
-                          <div class="row">
-                            <div class="col">
-                              <h6 class="mb-1">Boat On-Ear Wireless</h6>
-                              <p class="text-muted f-12 mb-0">Mic(Bluetooth 4.2, Rockerz 450R</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td></td>
-                        <td class="text-end"></td>
-                        <td class="text-end"></td>
-                        <td class="text-center">
-                          <i class="ph-duotone f-24"></i>
-                        </td>
-                        <td class="text-center">
-                          <div class="prod-action-links">
-                            <ul class="list-inline me-auto mb-0">
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
-                                <a href="<?= BASE_PATH ?>products/details-presentation" class="avtar avtar-xs btn-link-success btn-pc-default">
-                                  <i class="ti ti-eye f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
-                                <a href="<?= BASE_PATH ?>products/edit-presentation" class="avtar avtar-xs btn-link-success btn-pc-default">
-                                  <i class="ti ti-edit-circle f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Delete">
-                                <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default">
-                                  <i class="ti ti-trash f-18"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="row">
-                            <div class="col">
-                              <h6 class="mb-1">Boat On-Ear Wireless</h6>
-                              <p class="text-muted f-12 mb-0">Mic(Bluetooth 4.2, Rockerz 450R</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td></td>
-                        <td class="text-end"></td>
-                        <td class="text-end"></td>
-                        <td class="text-center">
-                          <i class="ph-duotone f-24"></i>
-                        </td>
-                        <td class="text-center">
-                          <div class="prod-action-links">
-                            <ul class="list-inline me-auto mb-0">
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
-                                <a
-                                  href="#"
-                                  class="avtar avtar-xs btn-link-secondary btn-pc-default"
-                                  data-bs-toggle="offcanvas"
-                                  data-bs-target="#productOffcanvas"
-                                >
-                                  <i class="ti ti-eye f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
-                                <a href="ecom_product-add.html" class="avtar avtar-xs btn-link-success btn-pc-default">
-                                  <i class="ti ti-edit-circle f-18"></i>
-                                </a>
-                              </li>
-                              <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Delete">
-                                <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default">
-                                  <i class="ti ti-trash f-18"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>
+                    <?php foreach ($presentation as $mostrar): ?>
+                      <?php if (isset($mostrar->presentations[0]) && $mostrar->presentations[0] !== null && in_array($mostrar->presentations[0]->status, ['activo', 'active'])): ?>
+                            <tr>
+                            <td>
+                              <div class="row">
+                                <div class="col">
+                                  <h6 class="mb-1"><?php echo $mostrar->presentations[0]->description; ?></h6>
+                                  <p class="text-muted f-12 mb-0"><?php echo $mostrar->presentations[0]->code; ?></p>
+                                </div>
+                              </div>
+                            </td>
+                            <td></td>
+                            <td class="text-end"></td>
+                            <td class="text-end"></td>
+                            <td class="text-center">
+                              <i class="ph-duotone f-24"></i>
+                            </td>
+                            <td class="text-center">
+                              <div class="prod-action-links">
+                                <ul class="list-inline me-auto mb-0">
+                                  <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
+                                    <a href="<?= BASE_PATH ?>products/details-presentation?presentation_id=<?= $mostrar->presentations[0]->id; ?>" class="avtar avtar-xs btn-link-success btn-pc-default">
+                                      <i class="ti ti-eye f-18"></i>
+                                    </a>
+                                  </li>
+                                  <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
+                                    <a href="<?= BASE_PATH ?>products/edit-presentation" class="avtar avtar-xs btn-link-success btn-pc-default">
+                                      <i class="ti ti-edit-circle f-18"></i>
+                                    </a>
+                                  </li>
+                                  <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Delete">
+                                    <form action="<?= BASE_PATH ?>presentation" method="POST" style="display:inline;">
+                                      <input type="hidden" name="action" value="delete_presentation">
+                                      <input type="hidden" name="presentation_id" value="<?= $mostrar->presentations[0]->id; ?>">
+                                      <button type="submit" class="avtar avtar-xs btn-link-danger btn-pc-default">
+                                          <i class="ti ti-trash f-18"></i>
+                                      </button>
+                                    </form>
+                                  </li>
+                                </ul>
+                              </div>
+                            </td>
+                          </tr>
+                      <?php endif; ?>
+                    <?php endforeach?>
+    
                     </tbody>
                   </table>
                 </div>
