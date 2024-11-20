@@ -1,18 +1,28 @@
+
 <?php 
   include_once "../../app/config.php";
 
 ?>
 
 <?php 
- //categorias
+  include_once "../../app/CategoryController.php";
+
+  $categoryController = new CategoryController();
+  $categorias = $categoryController->getAllCategories();
 ?>
 
 <?php 
- //tags
+ include_once "../../app/TagController.php";
+
+ $tagController = new TagController();
+ $tags = $tagController->getAllTags();
+
 ?>
 
 <?php 
-  //brands
+  include_once "../../app/BrandController.php";
+  $brandController = new BrandController();
+  $brans = $brandController->get();
 ?>
 
 <!doctype html>
@@ -76,17 +86,16 @@
                 <div class="card-body">
                   <div class="mb-3">
                     <label class="form-label">Nombre de producto</label>
-                    <input type="text" class="form-control" placeholder="Ingresa el nombre del producto" name="nombre" />
+                    <input type="text" class="form-control" placeholder="Enter Product Name" name="nombre" />
                   </div>
+
                   <input type="hidden" name="action" value="create_product">
+
                   <div class="mb-3">
                     <label class="form-label">Slug</label>
-                    <input type="text" class="form-control" placeholder="Ingresa el slug" name="slug" />
+                    <input type="text" class="form-control" placeholder="Enter Product Slug" name="slug" />
                   </div>
-                  <div class="mb-3" style="display: none;">
-                    <label class="form-label">ID del Producto</label>
-                    <input type="hidden" class="form-control" placeholder="Ingresa el ID" name="slug" value="12345" />
-                  </div>
+
                   <div id="categories-section">
                     <div>
                       <label class="form-label my-2">Categorías</label>
@@ -95,7 +104,7 @@
                     <div class="category-item mb-3">
                       <select class="form-select d-inline w-75" name="categories[]">
                         <option></option>
-                        <?php foreach($categorias->data as $presentar): ?>
+                        <?php foreach($categorias as $presentar): ?>
                             <option value="<?php echo $presentar->id; ?>"><?php echo $presentar->name; ?></option>
                         <?php endforeach; ?>
                       </select>
@@ -111,7 +120,7 @@
                     <div class="tag-item mb-3">
                       <select class="form-select d-inline w-75" name="tags[]">
                       <option></option>
-                      <?php foreach($tags->data as $presentar): ?>
+                      <?php foreach($tags as $presentar): ?>
                           <option value="<?php echo $presentar->id; ?>"><?php echo $presentar->name; ?></option>
                       <?php endforeach; ?>
                       </select>
@@ -123,20 +132,20 @@
                     <label class="form-label">Marcas</label>
                     <select class="form-select" name="brand_id">
                       <option></option>
-                      <?php foreach($brans->data as $presentar): ?>
+                      <?php foreach($brans as $presentar): ?>
                           <option value="<?php echo $presentar->id; ?>"><?php echo $presentar->name; ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
 
-                  <div class="mb-3">
+                  <div class="mb-0">
                     <label class="form-label">Descripción del producto</label>
-                    <textarea class="form-control" placeholder="Ingresa la descripción del producto" name="description"></textarea>
+                    <textarea class="form-control" placeholder="Enter Product Description" name="description"></textarea>
                   </div>
 
-                  <div class="mb-3">
+                  <div class="mb-0">
                     <label class="form-label">Caracteristicas del producto</label>
-                    <textarea class="form-control" placeholder="Ingresa las características del producto" name="features"></textarea>
+                    <textarea class="form-control" placeholder="Enter Product Description" name="features"></textarea>
                   </div>
 
                 </div>
@@ -210,7 +219,7 @@
       newCategory.innerHTML = `
         <select class="form-select d-inline w-75" name="categories[]">
           <option></option>
-          <?php foreach($categorias->data as $presentar): ?>
+          <?php foreach($categorias as $presentar): ?>
               <option value="<?php echo $presentar->id; ?>"><?php echo $presentar->name; ?></option>
           <?php endforeach; ?>
         </select>
@@ -239,7 +248,7 @@
         newTag.innerHTML = `
           <select class="form-select d-inline w-75" name="tags[]">
             <option></option>
-            <?php foreach($tags->data as $presentar): ?>
+            <?php foreach($tags as $presentar): ?>
                 <option value="<?php echo $presentar->id; ?>"><?php echo $presentar->name; ?></option>
             <?php endforeach; ?>
             </select>
