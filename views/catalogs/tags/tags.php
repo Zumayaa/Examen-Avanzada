@@ -1,18 +1,22 @@
 <?php 
   include_once "../../../app/config.php";
-
 ?>
+
+<?php 
+  include_once "../../../app/TagController.php";
+
+  $tagController = new TagController();
+  $tag = $tagController->getAllTags();
+?>
+
 <!doctype html>
 <html lang="en">
   <!-- [Head] start -->
 
   <head>
   <?php 
-
     include "../../../views/layouts/head.php";
-
   ?>
-
   </head>
   <!-- [Head] end -->
   <!-- [Body] Start -->
@@ -20,16 +24,13 @@
   <body data-pc-preset="preset-1" data-pc-sidebar-theme="light" data-pc-sidebar-caption="true" data-pc-direction="ltr" data-pc-theme="light">
 
     <?php 
-
-    include "../../../views/layouts/sidebar.php";
-
+      include "../../../views/layouts/sidebar.php";
     ?>
 
     <?php 
-
-    include "../../../views/layouts/nav.php";
-
+      include "../../../views/layouts/nav.php";
     ?>
+
     <!-- [ Main Content ] start -->
     <div class="pc-container">
       <div class="pc-content">
@@ -53,7 +54,6 @@
           </div>
         </div>
         <!-- [ breadcrumb ] end -->
-      
 
         <!-- [ Main Content ] start -->
         <div class="row">
@@ -62,251 +62,167 @@
               <div class="card-header">
                 <h5>Tags</h5>
                 <div class="card-header-right">
-                  <button type="button" class="btn btn-light-warning m-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Agregar tags
+                  <button type="button" class="btn btn-light-warning m-0" data-bs-toggle="modal" data-bs-target="#addTagModal">
+                    Agregar tag
                   </button>
+                  <!-- Modal Agregar Tag -->
                   <div
                     class="modal fade"
-                    id="exampleModal"
+                    id="addTagModal"
                     tabindex="-1"
                     role="dialog"
-                    aria-labelledby="exampleModalLabel"
+                    aria-labelledby="addTagModalLabel"
                     aria-hidden="true"
                   >
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel"
-                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Agregar tags</h5
-                          >
+                          <h5 class="modal-title" id="addTagModalLabel">
+                            <i data-feather="tag" class="icon-svg-primary wid-20 me-2"></i>Agregar tag
+                          </h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
-                        <form>
+                        <form action="<?= BASE_PATH ?>contTag" method="POST">
                           <div class="modal-body">
-                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0"
-                              >Agrega la información correspondiente al formulario.</small
-                            >
+                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0">Agrega la información correspondiente al formulario.</small>
                             <div class="mb-3">
+
+                            <input type="hidden" name="action" value="create_tag">
+
                               <label class="form-label">Nombre del tag</label>
                               <input
                                 type="text"
                                 class="form-control"
-                                id="fname"
-                                aria-describedby="emailHelp"
+                                name="name"
                                 placeholder="Ingresa el nombre"
                               />
                             </div>
                             <div class="mb-3">
                               <label class="form-label">Descripción del tag</label>
                               <input
-                                type="email"
+                                type="text"
                                 class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
+                                name="description"
                                 placeholder="Ingresa la descripción del tag"
                               />
                             </div>
                             <div class="mb-3">
                               <label class="form-label">Slug</label>
                               <input
-                                type="email"
+                                type="text"
                                 class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
+                                name="slug"
                                 placeholder="Ingresa el slug"
                               />
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Agregar tag</button>
+                            <button type="submit" class="btn btn-light-primary">Agregar tag</button>
                           </div>
                         </form>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="card-header-right">
-                  <div
-                    class="modal fade"
-                    id="editModal"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="tituloModal"
-                    aria-hidden="true"
-                  >
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="tituloModal"
-                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Editar tag</h5
-                          >
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
-                        </div>
-                        <form>
-                          <div class="modal-body">
-                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0"
-                              >Agrega la información correspondiente al formulario.</small
-                            >
-                            <div class="mb-3">
-                              <label class="form-label">Nombre del tag</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="fname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el nombre"
-                              />
-                            </div>
-                            <div class="mb-3">
-                              <label class="form-label">Descripción del tag</label>
-                              <input
-                                type="email"
-                                class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa la descripción"
-                              />
-                            </div>
-                            <div class="mb-3">
-                              <label class="form-label">Slug</label>
-                              <input
-                                type="email"
-                                class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el slug"
-                              />
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Editar tag</button>
-                          </div>
-                        </form>
+
+                <!-- Modal Editar Tag -->
+                <div
+                  class="modal fade"
+                  id="editTagModal"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="editTagModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="editTagModalLabel">
+                          <i data-feather="tag" class="icon-svg-primary wid-20 me-2"></i>Editar tag
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                       </div>
+                      <form action="<?= BASE_PATH ?>contTag" method="POST">
+                        <div class="modal-body">
+                          <small id="emailHelp" class="form-text text-muted mb-2 mt-0">Edita la información correspondiente al formulario.</small>
+                          <input type="hidden" name="id" id="editId">
+                          <input type="hidden" name="action" value="update_tag">
+                          <div class="mb-3">
+                            <label class="form-label">Nombre del tag</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="name"
+                              id="editName"
+                              placeholder="Ingresa el nombre"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Descripción del tag</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="description"
+                              id="editDescription"
+                              placeholder="Ingresa la descripción"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Slug</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="slug"
+                              id="editSlug"
+                              placeholder="Ingresa el slug"
+                            />
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
+                          <button type="submit" class="btn btn-light-primary">Editar tag</button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
               </div>
+
               <div class="card-body shadow border-0">
                 <div class="table-responsive">
                   <table id="report-table" class="table table-bordered table-striped mb-0">
                     <thead>
                       <tr>
                         <th class="border-top-0">Nombre</th>
-                        <th class="border-top-0">Email</th>
-                        <th class="border-top-0">Cuenta</th>
-                        <th class="border-top-0">Cumpleaños (hay que cambiarlo)</th>
+                        <th class="border-top-0">Descripción</th>
+                        <th class="border-top-0">Slug</th>
                         <th class="border-top-0">Acción</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Mark Jason</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="<?= BASE_PATH ?>catalogs/tags/details" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
-                            <i class="feather icon-edit"></i>
-                          </button>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Alice Nicol</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Harry Cook</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Tom Hannry</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Martin Frank</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Endrew Khan</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Chritina Methewv</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Jakson Pit</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Nikolas Jons</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Nik Cage</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
+                      <?php foreach($tag as $lista): ?>
+                        <tr>
+                          <td><?php echo $lista->name; ?></td>
+                          <td><?php echo $lista->description; ?></td>
+                          <td><?php echo $lista->slug; ?></td>
+                          <td>
+                            <a href="<?= BASE_PATH ?>catalogs/tags/details?id=<?= $lista->id; ?>" class="btn btn-sm btn-light-primary">
+                              <i class="feather icon-eye"></i>
+                            </a>
+                            <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editTagModal" data-id="<?= $lista->id ?>" data-name="<?= $lista->name ?>" data-description="<?= $lista->description ?>" data-slug="<?= $lista->slug ?>">
+                              <i class="feather icon-edit"></i>
+                            </button>
+                            <form action="<?= BASE_PATH ?>contTag" method="POST" style="display:inline;">
+                              <input type="hidden" name="action" value="delete_tag">
+                              <input type="hidden" name="id" value="<?= $lista->id; ?>">
+                              <button type="submit" class="btn btn-sm btn-light-danger">
+                                <i class="feather icon-trash-2"></i>
+                              </button>
+                            </form>
+                          </td>
+                        </tr>
+                      <?php endforeach ?>
                     </tbody>
                   </table>
                 </div>
@@ -319,49 +235,29 @@
     </div>
 
     <?php 
-
       include "../../../views/layouts/footer.php";
-
-      ?>
+    ?>
 
     <?php 
-
       include "../../../views/layouts/scripts.php";
-
-      ?>
-
+    ?>
 
     <!-- [Page Specific JS] start -->
     <script>
-      // scroll-block
-      var tc = document.querySelectorAll('.scroll-block');
-      for (var t = 0; t < tc.length; t++) {
-        new SimpleBar(tc[t]);
-      }
-      // quantity start
-      function increaseValue(temp) {
-        var value = parseInt(document.getElementById(temp).value, 10);
-        value = isNaN(value) ? 0 : value;
-        value++;
-        document.getElementById(temp).value = value;
-      }
-
-      function decreaseValue(temp) {
-        var value = parseInt(document.getElementById(temp).value, 10);
-        value = isNaN(value) ? 0 : value;
-        value < 1 ? (value = 1) : '';
-        value--;
-        document.getElementById(temp).value = value;
-      }
-      // quantity end
+      // Script to load the edit modal with the existing data
+      document.querySelectorAll('[data-bs-toggle="modal"]').forEach(button => {
+        button.addEventListener('click', (event) => {
+          if (event.target.closest('button').getAttribute('data-bs-target') === '#editTagModal') {
+            const tagData = event.target.closest('button').dataset;
+            document.getElementById('editId').value = tagData.id;
+            document.getElementById('editName').value = tagData.name;
+            document.getElementById('editDescription').value = tagData.description;
+            document.getElementById('editSlug').value = tagData.slug;
+          }
+        });
+      });
     </script>
-    
-    <?php 
-
-      include "../../../views/layouts/modals.php";
-
-
-      ?>
+    <!-- [Page Specific JS] end -->
 
   </body>
   <!-- [Body] end -->
