@@ -1,6 +1,5 @@
 <?php 
   include_once "../../../app/config.php";
-
 ?>
 
 <?php 
@@ -10,18 +9,14 @@
   $categorias = $categoryController->getAllCategories();
 ?>
 
-
 <!doctype html>
 <html lang="en">
   <!-- [Head] start -->
 
   <head>
-  <?php 
-
-    include "../../../views/layouts/head.php";
-
-  ?>
-
+    <?php 
+      include "../../../views/layouts/head.php";
+    ?>
   </head>
   <!-- [Head] end -->
   <!-- [Body] Start -->
@@ -29,15 +24,11 @@
   <body data-pc-preset="preset-1" data-pc-sidebar-theme="light" data-pc-sidebar-caption="true" data-pc-direction="ltr" data-pc-theme="light">
 
     <?php 
-
-    include "../../../views/layouts/sidebar.php";
-
+      include "../../../views/layouts/sidebar.php";
     ?>
 
     <?php 
-
-    include "../../../views/layouts/nav.php";
-
+      include "../../../views/layouts/nav.php";
     ?>
     <!-- [ Main Content ] start -->
     <div class="pc-container">
@@ -62,7 +53,6 @@
           </div>
         </div>
         <!-- [ breadcrumb ] end -->
-      
 
         <!-- [ Main Content ] start -->
         <div class="row">
@@ -90,11 +80,12 @@
                           >
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
-                        <form>
+                        <form method="post" action="<?= BASE_PATH ?>contCategory">
                           <div class="modal-body">
                             <small id="emailHelp" class="form-text text-muted mb-2 mt-0"
                               >Agrega la información correspondiente al formulario.</small
                             >
+                            <input type="hidden" name="action" value="create_category">
                             <div class="mb-3">
                               <label class="form-label">Nombre de la categoría</label>
                               <input
@@ -103,42 +94,35 @@
                                 id="fname"
                                 aria-describedby="emailHelp"
                                 placeholder="Ingresa el nombre"
+                                name="name"
                               />
                             </div>
                             <div class="mb-3">
                               <label class="form-label">Descripción de la categoría</label>
                               <input
-                                type="email"
+                                type="text"
                                 class="form-control"
                                 id="lname"
                                 aria-describedby="emailHelp"
                                 placeholder="Ingresa el apellido"
+                                name="description"
                               />
                             </div>
                             <div class="mb-3">
                               <label class="form-label">Slug</label>
                               <input
-                                type="email"
+                                type="text"
                                 class="form-control"
                                 id="lname"
                                 aria-describedby="emailHelp"
                                 placeholder="Slug"
-                              />
-                            </div>
-                            <div class="mb-3">
-                              <label class="form-label">ID de categoría</label>
-                              <input
-                                type="email"
-                                class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el ID de categoría"
+                                name="slug"
                               />
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Agregar categoría</button>
+                            <button type="submit" class="btn btn-light-primary">Agregar categoría</button>
                           </div>
                         </form>
                       </div>
@@ -162,55 +146,45 @@
                           >
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
-                        <form>
+                        <form method="post" action="<?= BASE_PATH ?>contCategory">
                           <div class="modal-body">
                             <small id="emailHelp" class="form-text text-muted mb-2 mt-0"
                               >Agrega la información correspondiente al formulario.</small
                             >
+                            <input type="hidden" name="action" value="update_category">
+                            <input type="hidden" name="id" id="id">
+
                             <div class="mb-3">
                               <label class="form-label">Nombre de la categoría</label>
                               <input
                                 type="text"
                                 class="form-control"
-                                id="fname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el nombre categoría"
+                                id="editName"
+                                name="name"
                               />
                             </div>
                             <div class="mb-3">
                               <label class="form-label">Descripción de la categoría</label>
                               <input
-                                type="email"
+                                type="text"
                                 class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa la descripción"
+                                id="editDescription"
+                                name="description"
                               />
                             </div>
                             <div class="mb-3">
-                              <label class="form-label">Ingresa el slug</label>
+                              <label class="form-label">Slug</label>
                               <input
-                                type="email"
+                                type="text"
                                 class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el slug"
-                              />
-                            </div>
-                            <div class="mb-3">
-                              <label class="form-label">Ingresa el ID de la categoría</label>
-                              <input
-                                type="email"
-                                class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el ID de la categoría"
+                                id="editSlug"
+                                name="slug"
                               />
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Editar categoría</button>
+                            <button type="submit" class="btn btn-light-primary">Editar categoría</button>
                           </div>
                         </form>
                       </div>
@@ -220,7 +194,7 @@
               </div>
               <div class="card-body shadow border-0">
                 <div class="table-responsive">
-                <table id="report-table" class="table table-bordered table-striped mb-0">
+                  <table id="report-table" class="table table-bordered table-striped mb-0">
                     <thead>
                       <tr>
                         <th class="border-top-0">Nombre</th>
@@ -232,14 +206,16 @@
                       <?php foreach($categorias as $lista): ?>
                       <tr>
                         <td><?php echo $lista->name; ?></td>
-                        <td><?php echo $lista->description; ?></td> <!-- Corregí el cierre de esta etiqueta -->
+                        <td><?php echo $lista->description; ?></td>
                         <td>
-                          <a href="<?= BASE_PATH ?>catalogs/categories/details" class="btn btn-sm btn-light-primary">
+                        <a href="<?= BASE_PATH ?>catalogs/categories/details?id=<?= $lista->id; ?>" class="btn btn-sm btn-light-primary">
                             <i class="feather icon-eye"></i>
-                          </a>
-                          <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
-                            <i class="feather icon-edit"></i>
+                        </a>
+
+                          <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal" data-id="<?= $lista->id ?>" data-name="<?= $lista->name ?>" data-description="<?= $lista->description ?>" data-slug="<?= $lista->slug ?>">
+                              <i class="feather icon-edit"></i>
                           </button>
+
                           <form action="<?= BASE_PATH ?>contCategory" method="POST" style="display:inline;">
                             <input type="hidden" name="action" value="delete_category">
                             <input type="hidden" name="id" value="<?= $lista->id; ?>">
@@ -262,50 +238,33 @@
     </div>
 
     <?php 
-
       include "../../../views/layouts/footer.php";
-
-      ?>
+    ?>
 
     <?php 
-
       include "../../../views/layouts/scripts.php";
-
-      ?>
+    ?>
 
 
     <!-- [Page Specific JS] start -->
     <script>
-      // scroll-block
-      var tc = document.querySelectorAll('.scroll-block');
-      for (var t = 0; t < tc.length; t++) {
-        new SimpleBar(tc[t]);
-      }
-      // quantity start
-      function increaseValue(temp) {
-        var value = parseInt(document.getElementById(temp).value, 10);
-        value = isNaN(value) ? 0 : value;
-        value++;
-        document.getElementById(temp).value = value;
-      }
-
-      function decreaseValue(temp) {
-        var value = parseInt(document.getElementById(temp).value, 10);
-        value = isNaN(value) ? 0 : value;
-        value < 1 ? (value = 1) : '';
-        value--;
-        document.getElementById(temp).value = value;
-      }
-      // quantity end
+      // Pre-cargar los datos en el modal de edición
+      const editButtons = document.querySelectorAll('[data-bs-toggle="modal"][data-bs-target="#editModal"]');
+      editButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const categoryId = this.getAttribute('data-id');
+          const categoryName = this.getAttribute('data-name');
+          const categoryDescription = this.getAttribute('data-description');
+          const categorySlug = this.getAttribute('data-slug');
+          
+          document.getElementById('id').value = categoryId;  
+          document.getElementById('editName').value = categoryName;
+          document.getElementById('editDescription').value = categoryDescription;
+          document.getElementById('editSlug').value = categorySlug;
+        });
+      });
     </script>
-    
-    <?php 
 
-      include "../../../views/layouts/modals.php";
-
-
-      ?>
-
+    <!-- [Page Specific JS] end -->
   </body>
-  <!-- [Body] end -->
 </html>
