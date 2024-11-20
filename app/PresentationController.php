@@ -150,9 +150,9 @@ class PresentationController {
         $response = json_decode($response);
 
         if (isset($response->code) && $response->code == 4) {
-            header('Location: ' . BASE_PATH . 'presentation?status=created');
+            header('Location: ' . BASE_PATH . 'products/presentation?status=created');
         } else {
-            header('Location: ' . BASE_PATH . 'presentation?status=error');
+            header('Location: ' . BASE_PATH . 'products/presentation?status=error');
         }
     }
 
@@ -190,9 +190,9 @@ class PresentationController {
         $response = json_decode($response);
 
         if (isset($response->code) && $response->code == 4) {
-            header('Location: ' . BASE_PATH . 'presentation?status=updated');
+            header('Location: ' . BASE_PATH . 'products/presentation?status=updated');
         } else {
-            header('Location: ' . BASE_PATH . 'presentation?status=error');
+            header('Location: ' . BASE_PATH . 'products/presentation?status=error');
         }
     }
 
@@ -218,9 +218,9 @@ class PresentationController {
         $response = json_decode($response);
 
         if (isset($response->code) && $response->code == 4) {
-            header('Location: ' . BASE_PATH . 'presentation?status=deleted');
+            header('Location: ' . BASE_PATH . 'products/presentation?status=deleted');
         } else {
-            header('Location: ' . BASE_PATH . 'presentation?status=error');
+            header('Location: ' . BASE_PATH . 'products/presentation?status=error');
         }
     }
 
@@ -251,9 +251,9 @@ class PresentationController {
         $response = json_decode($response);
 
         if (isset($response->code) && $response->code == 4) {
-            header('Location: ' . BASE_PATH . 'presentation?status=updatedPrice');
+            header('Location: ' . BASE_PATH . 'products/presentation?status=updatedPrice');
         } else {
-            header('Location: ' . BASE_PATH . 'presentation?status=error');
+            header('Location: ' . BASE_PATH . 'products/presentation?status=error');
         }
     }
 }

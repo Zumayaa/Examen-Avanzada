@@ -81,9 +81,13 @@ class BrandController {
     
     $response = curl_exec($curl);
     curl_close($curl);
-    
-    $decodedResponse = json_decode($response);
-    return $decodedResponse ? $decodedResponse->data : null;
+    $response = json_decode($response);
+
+    if (isset($response->data)) {
+        return $response->data;
+    }
+
+    return null; 
     
   }
 

@@ -1,5 +1,7 @@
 <?php
 
+echo "hola";
+
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -13,10 +15,10 @@ if (isset($_POST['action'])) {
             $name = $_POST['name'];
             $description = $_POST['description'];
             $slug = $_POST['slug'];
-            $categoryId = $_POST['category_id'];
+
 
             $categoryController = new CategoryController();
-            $categoryController->createCategory($name, $description, $slug, $categoryId);
+            $categoryController->createCategory($name, $description, $slug);
         break;
 
         case 'update_category':
@@ -24,10 +26,11 @@ if (isset($_POST['action'])) {
             $name = $_POST['name'];
             $description = $_POST['description'];
             $slug = $_POST['slug'];
-            $categoryId = $_POST['category_id'];
 
+            var_dump($id, $name, $description, $slug);
+            
             $categoryController = new CategoryController();
-            $categoryController->updateCategory($id, $name, $description, $slug, $categoryId);
+            $categoryController->updateCategory($id, $name, $description, $slug);
         break;
 
         case 'delete_category':
@@ -69,7 +72,7 @@ class CategoryController {
         return null; 
     }
 
-    public function createCategory($name, $description, $slug, $category_id) {
+    public function createCategory($name, $description, $slug) {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -84,8 +87,7 @@ class CategoryController {
             CURLOPT_POSTFIELDS => array(
                 'name' => $name,
                 'description' => $description,
-                'slug' => $slug,
-                'category_id' => $category_id
+                'slug' => $slug
             ),
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer ' . $_SESSION['user_data']->token,
@@ -133,7 +135,7 @@ class CategoryController {
     }
     
 
-    public function updateCategory($id, $name, $description, $slug, $category_id) {
+    public function updateCategory($id, $name, $description, $slug) {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -149,8 +151,7 @@ class CategoryController {
                 "id=$id" .
                 "&name=$name" .
                 "&description=$description" .
-                "&slug=$slug" .
-                "&category_id=$category_id",
+                "&slug=$slug" ,
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/x-www-form-urlencoded',
                 'Authorization: Bearer ' . $_SESSION['user_data']->token,

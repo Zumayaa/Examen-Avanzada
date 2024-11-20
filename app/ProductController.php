@@ -214,46 +214,56 @@ class ProductController {
     public function update($nombre, $slug, $description, $features, $brand_id, $categories, $tags, $product_id){
         $curl = curl_init();
     
+        $categoriesStr = implode('&', array_map(function($category) {
+            return "categories[]=" . urlencode($category);
+        }, $categories));
+    
+        $tagsStr = implode('&', array_map(function($tag) {
+            return "tags[]=" . urlencode($tag);
+        }, $tags));
+    
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
+            CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products', 
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 0,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'PUT',
+            CURLOPT_CUSTOMREQUEST => 'PUT',  
             CURLOPT_POSTFIELDS => 
-                "id=$product_id" .
-                "&name=$nombre" .
-                "&slug=$slug" .
-                "&description=$description" .
-                "&features=$features" .
-                "&brand_id=$brand_id" .
-                //concatenar categorías no se si funciona
-                implode('&', array_map(function($index, $category) {
-                    return "categories[$index]=$category";
-                }, array_keys($categories), $categories)) .
-                //concatenar etiquetas no se si funciona
-                implode('&', array_map(function($index, $tag) {
-                    return "tags[$index]=$tag";
-                }, array_keys($tags), $tags)),
+                "id=$product_id" . 
+                "&name=$nombre" . 
+                "&slug=$slug" . 
+                "&description=$description" . 
+                "&features=$features" . 
+                "&brand_id=$brand_id" . 
+                "&$categoriesStr" .  
+                "&$tagsStr",  
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/x-www-form-urlencoded',
-                'Authorization: Bearer ' . $_SESSION['user_data']->token,
+                'Authorization: Bearer ' . $_SESSION['user_data']->token,  
             ),
         ));
-
-		$response = curl_exec($curl);
-		curl_close($curl);
-		$response = json_decode($response);
-
-		if (isset($response->code) && $response->code == 4) {
-			header('Location: ' . BASE_PATH . 'products?status=ok');
-		} else {
-			header('Location: ' . BASE_PATH . 'products?status=error');
-		}
-	}
+    
+        $response = curl_exec($curl);
+    
+        if($response === false) {
+            echo 'Curl error: ' . curl_error($curl);
+        } else {
+            $response = json_decode($response);  
+            var_dump($response); 
+        }
+    
+        curl_close($curl);
+    
+        if (isset($response->code) && $response->code == 4) {
+            header('Location: ' . BASE_PATH . 'products?status=ok');
+        } else {
+            var_dump($response);  
+            header('Location: ' . BASE_PATH . 'products?status=error');
+        }
+    }
 
     public function remove($product_id){
         $curl = curl_init();
