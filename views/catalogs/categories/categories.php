@@ -2,6 +2,15 @@
   include_once "../../../app/config.php";
 
 ?>
+
+<?php 
+  include_once "../../../app/CategoryController.php";
+
+  $categoryController = new CategoryController();
+  $categorias = $categoryController->getAllCategories();
+?>
+
+
 <!doctype html>
 <html lang="en">
   <!-- [Head] start -->
@@ -211,122 +220,36 @@
               </div>
               <div class="card-body shadow border-0">
                 <div class="table-responsive">
-                  <table id="report-table" class="table table-bordered table-striped mb-0">
+                <table id="report-table" class="table table-bordered table-striped mb-0">
                     <thead>
                       <tr>
                         <th class="border-top-0">Nombre</th>
-                        <th class="border-top-0">Email</th>
-                        <th class="border-top-0">Cuenta</th>
-                        <th class="border-top-0">Cumpleaños (hay que cambiarlo)</th>
+                        <th class="border-top-0">Descripción</th>
                         <th class="border-top-0">Acción</th>
                       </tr>
                     </thead>
                     <tbody>
+                      <?php foreach($categorias as $lista): ?>
                       <tr>
-                        <td>Mark Jason</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
+                        <td><?php echo $lista->name; ?></td>
+                        <td><?php echo $lista->description; ?></td> <!-- Corregí el cierre de esta etiqueta -->
                         <td>
-                          <a href="<?= BASE_PATH ?>catalogs/categories/details" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
+                          <a href="<?= BASE_PATH ?>catalogs/categories/details" class="btn btn-sm btn-light-primary">
+                            <i class="feather icon-eye"></i>
+                          </a>
                           <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
                             <i class="feather icon-edit"></i>
                           </button>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
+                          <form action="<?= BASE_PATH ?>contCategory" method="POST" style="display:inline;">
+                            <input type="hidden" name="action" value="delete_category">
+                            <input type="hidden" name="id" value="<?= $lista->id; ?>">
+                            <button type="submit" class="btn btn-sm btn-light-danger">
+                              <i class="feather icon-trash-2"></i>
+                            </button>
+                          </form>
                         </td>
                       </tr>
-                      <tr>
-                        <td>Alice Nicol</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Harry Cook</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Tom Hannry</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Martin Frank</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Endrew Khan</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Chritina Methewv</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Jakson Pit</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Nikolas Jons</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Nik Cage</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
+                      <?php endforeach ?>
                     </tbody>
                   </table>
                 </div>
