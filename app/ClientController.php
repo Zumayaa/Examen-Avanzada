@@ -124,9 +124,9 @@ class ClientController {
         $response = json_decode($response);
 
         if (isset($response->code) && $response->code == 4) {
-            header('Location: ' . BASE_PATH . 'clients?status=client_created');
+            header('Location: ' . BASE_PATH . 'customer?status=client_created');
         } else {
-            header('Location: ' . BASE_PATH . 'clients?status=error');
+            header('Location: ' . BASE_PATH . 'customer?status=error');
         }
     }
 
@@ -162,9 +162,9 @@ class ClientController {
         $response = json_decode($response);
 
         if (isset($response->code) && $response->code == 4) {
-            header('Location: ' . BASE_PATH . 'clients?status=client_updated');
+            header('Location: ' . BASE_PATH . 'customer?status=client_updated');
         } else {
-            header('Location: ' . BASE_PATH . 'clients?status=error');
+            header('Location: ' . BASE_PATH . 'customer?status=error');
         }
     }
 
@@ -190,9 +190,9 @@ class ClientController {
         $response = json_decode($response);
 
         if (isset($response->code) && $response->code == 4) {
-            header('Location: ' . BASE_PATH . 'clients?status=client_deleted');
+            header('Location: ' . BASE_PATH . 'customer?status=client_deleted');
         } else {
-            header('Location: ' . BASE_PATH . 'clients?status=error');
+            header('Location: ' . BASE_PATH . 'customer?status=error');
         }
     }
 }
