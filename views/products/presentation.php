@@ -109,7 +109,7 @@
                                     </a>
                                   </li>
                                   <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Delete">
-                                    <form action="<?= BASE_PATH ?>presentation" method="POST" style="display:inline;">
+                                    <form action="<?= BASE_PATH ?>contPresentation" method="POST" style="display:inline;">
                                       <input type="hidden" name="action" value="delete_presentation">
                                       <input type="hidden" name="presentation_id" value="<?= $mostrar->presentations[0]->id; ?>">
                                       <button type="submit" class="avtar avtar-xs btn-link-danger btn-pc-default">
