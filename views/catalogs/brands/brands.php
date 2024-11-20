@@ -1,18 +1,22 @@
 <?php 
   include_once "../../../app/config.php";
-
 ?>
+
+<?php 
+  include_once "../../../app/BrandController.php";
+
+  $brandController = new BrandController();
+  $brands = $brandController->get();
+?>
+
 <!doctype html>
 <html lang="en">
   <!-- [Head] start -->
 
   <head>
-  <?php 
-
-    include "../../../views/layouts/head.php";
-
-  ?>
-
+    <?php 
+      include "../../../views/layouts/head.php";
+    ?>
   </head>
   <!-- [Head] end -->
   <!-- [Body] Start -->
@@ -20,15 +24,11 @@
   <body data-pc-preset="preset-1" data-pc-sidebar-theme="light" data-pc-sidebar-caption="true" data-pc-direction="ltr" data-pc-theme="light">
 
     <?php 
-
-    include "../../../views/layouts/sidebar.php";
-
+      include "../../../views/layouts/sidebar.php";
     ?>
 
     <?php 
-
-    include "../../../views/layouts/nav.php";
-
+      include "../../../views/layouts/nav.php";
     ?>
     <!-- [ Main Content ] start -->
     <div class="pc-container">
@@ -41,7 +41,7 @@
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>home">Inicio</a></li>
                   <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>catalogs/brands">Marcas</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Todos los marcas</li>
+                  <li class="breadcrumb-item" aria-current="page">Todas las marcas</li>
                 </ul>
               </div>
               <div class="col-md-12">
@@ -53,7 +53,6 @@
           </div>
         </div>
         <!-- [ breadcrumb ] end -->
-      
 
         <!-- [ Main Content ] start -->
         <div class="row">
@@ -63,7 +62,7 @@
                 <h5>Marcas</h5>
                 <div class="card-header-right">
                   <button type="button" class="btn btn-light-warning m-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Agregar marcas
+                    Agregar marca
                   </button>
                   <div
                     class="modal fade"
@@ -76,50 +75,51 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel"
-                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Agregar marcas</h5
-                          >
+                          <h5 class="modal-title" id="exampleModalLabel">
+                            <i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Agregar marca
+                          </h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
-                        <form>
+                        <form method="post" action="<?= BASE_PATH ?>contBrand">
                           <div class="modal-body">
-                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0"
-                              >Agrega la información correspondiente al formulario.</small
-                            >
+                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
+                              Agrega la información correspondiente al formulario.
+                            </small>
+                            <input type="hidden" name="action" value="create_brand">
                             <div class="mb-3">
                               <label class="form-label">Nombre de la marca</label>
                               <input
                                 type="text"
                                 class="form-control"
                                 id="fname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el nombre de la marca"
+                                placeholder="Ingresa el nombre"
+                                name="name"
                               />
                             </div>
                             <div class="mb-3">
-                              <label class="form-label">Descripción</label>
+                              <label class="form-label">Descripción de la marca</label>
                               <input
-                                type="email"
+                                type="text"
                                 class="form-control"
                                 id="lname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa la descripción de la marca"
+                                placeholder="Ingresa la descripción"
+                                name="description"
                               />
                             </div>
                             <div class="mb-3">
                               <label class="form-label">Slug</label>
                               <input
-                                type="email"
+                                type="text"
                                 class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
+                                id="slug"
                                 placeholder="Slug"
+                                name="slug"
                               />
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Agregar marca</button>
+                            <button type="submit" class="btn btn-light-primary">Agregar marca</button>
                           </div>
                         </form>
                       </div>
@@ -138,50 +138,50 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="tituloModal"
-                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Editar marca</h5
-                          >
+                          <h5 class="modal-title" id="tituloModal">
+                            <i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Editar marca
+                          </h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
-                        <form>
+                        <form method="post" action="<?= BASE_PATH ?>contBrand">
                           <div class="modal-body">
-                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0"
-                              >Agrega la información correspondiente al formulario.</small
-                            >
+                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
+                              Agrega la información correspondiente al formulario.
+                            </small>
+                            <input type="hidden" name="action" value="update_brand">
+                            <input type="hidden" name="id" id="id">
+
                             <div class="mb-3">
                               <label class="form-label">Nombre de la marca</label>
                               <input
                                 type="text"
                                 class="form-control"
-                                id="fname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el nombre de la marca"
+                                id="editName"
+                                name="name"
                               />
                             </div>
                             <div class="mb-3">
                               <label class="form-label">Descripción de la marca</label>
                               <input
-                                type="email"
+                                type="text"
                                 class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el apellido"
+                                id="editDescription"
+                                name="description"
                               />
                             </div>
                             <div class="mb-3">
                               <label class="form-label">Slug</label>
                               <input
-                                type="email"
+                                type="text"
                                 class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
-                                placeholder="Slug"
+                                id="editSlug"
+                                name="slug"
                               />
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Editar marca</button>
+                            <button type="submit" class="btn btn-light-primary">Editar marca</button>
                           </div>
                         </form>
                       </div>
@@ -195,118 +195,34 @@
                     <thead>
                       <tr>
                         <th class="border-top-0">Nombre</th>
-                        <th class="border-top-0">Email</th>
-                        <th class="border-top-0">Cuenta</th>
-                        <th class="border-top-0">Cumpleaños (hay que cambiarlo)</th>
+                        <th class="border-top-0">Descripción</th>
                         <th class="border-top-0">Acción</th>
                       </tr>
                     </thead>
                     <tbody>
+                      <?php foreach($brands as $brand): ?>
                       <tr>
-                        <td>Mark Jason</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
+                        <td><?php echo $brand->name; ?></td>
+                        <td><?php echo $brand->description; ?></td>
                         <td>
-                          <a href="<?= BASE_PATH ?>catalogs/brands/details" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
-                            <i class="feather icon-edit"></i>
+                          <a href="<?= BASE_PATH ?>catalogs/brands/details?id=<?= $brand->id; ?>" class="btn btn-sm btn-light-primary">
+                            <i class="feather icon-eye"></i>
+                          </a>
+
+                          <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal" data-id="<?= $brand->id ?>" data-name="<?= $brand->name ?>" data-description="<?= $brand->description ?>" data-slug="<?= $brand->slug ?>">
+                              <i class="feather icon-edit"></i>
                           </button>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
+
+                          <form action="<?= BASE_PATH ?>contBrand" method="POST" style="display:inline;">
+                            <input type="hidden" name="action" value="delete_brand">
+                            <input type="hidden" name="id" value="<?= $brand->id; ?>">
+                            <button type="submit" class="btn btn-sm btn-light-danger">
+                              <i class="feather icon-trash-2"></i>
+                            </button>
+                          </form>
                         </td>
                       </tr>
-                      <tr>
-                        <td>Alice Nicol</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Harry Cook</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Tom Hannry</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Martin Frank</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Endrew Khan</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Chritina Methewv</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Jakson Pit</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Nikolas Jons</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Nik Cage</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
+                      <?php endforeach ?>
                     </tbody>
                   </table>
                 </div>
@@ -319,50 +235,28 @@
     </div>
 
     <?php 
-
       include "../../../views/layouts/footer.php";
-
-      ?>
+    ?>
 
     <?php 
-
       include "../../../views/layouts/scripts.php";
-
-      ?>
-
+    ?>
 
     <!-- [Page Specific JS] start -->
     <script>
-      // scroll-block
-      var tc = document.querySelectorAll('.scroll-block');
-      for (var t = 0; t < tc.length; t++) {
-        new SimpleBar(tc[t]);
-      }
-      // quantity start
-      function increaseValue(temp) {
-        var value = parseInt(document.getElementById(temp).value, 10);
-        value = isNaN(value) ? 0 : value;
-        value++;
-        document.getElementById(temp).value = value;
-      }
+      // Pre-cargar los datos en el modal de edición
+      const editButtons = document.querySelectorAll('.btn-light-success');
+      editButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+          const modal = new bootstrap.Modal(document.getElementById('editModal'));
 
-      function decreaseValue(temp) {
-        var value = parseInt(document.getElementById(temp).value, 10);
-        value = isNaN(value) ? 0 : value;
-        value < 1 ? (value = 1) : '';
-        value--;
-        document.getElementById(temp).value = value;
-      }
-      // quantity end
+          document.getElementById('id').value = e.target.dataset.id;
+          document.getElementById('editName').value = e.target.dataset.name;
+          document.getElementById('editDescription').value = e.target.dataset.description;
+          document.getElementById('editSlug').value = e.target.dataset.slug;
+        });
+      });
     </script>
-    
-    <?php 
-
-      include "../../../views/layouts/modals.php";
-
-
-      ?>
-
+    <!-- [Page Specific JS] end -->
   </body>
-  <!-- [Body] end -->
 </html>
