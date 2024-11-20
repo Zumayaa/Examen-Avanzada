@@ -15,7 +15,10 @@ RewriteRule ^orders/?$ views/orders/orders.php [L]
 # Controladores
 RewriteRule ^auth/?$ app/AuthController.php [L]
 RewriteRule ^products/?$ app/ProductController.php [L]
-
+RewriteRule ^contPresentation/?$ app/PresentationController.php [L]
+RewriteRule ^contCategory/?$ app/CategoryController.php [L]
+RewriteRule ^contBrand/?$ app/BrandController.php [L]
+RewriteRule ^contTag/?$ app/TagController.php [L]
 
 # Editar producto
 RewriteRule ^products/edit-product/?$ views/products/edit-product.php [L]
@@ -62,5 +65,3 @@ RewriteRule ^catalogs/tags/details/?$ views/catalogs/tags/details.php [L]
 
 #Detalles Cupon
 RewriteRule ^coupons/([^/]+)/?$ views/coupons/details.php [L]
-
-
