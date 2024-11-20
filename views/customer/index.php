@@ -6,6 +6,8 @@
   
   $clientController = new ClientController();
   $response = $clientController->getAllClients();
+  $clients = $clientsResponse['data'] ?? []; // Asegurarse de que 'data' esté presente en la respuesta
+
 
   // Decodifica la respuesta JSON
   $clients = json_decode($response);
@@ -202,7 +204,11 @@
                           </h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="ruta/a/tu/controller.php" method="POST">
+                        <form action="<?= BASE_PATH ?>app/ClientController.php" method="POST" enctype="multipart/form-data">
+                          <!-- Identificar el cliente y la acción -->
+                          <input type="hidden" name="action" value="update_client">
+                          <input type="hidden" id="clientId" name="clientId">
+
                           <div class="modal-body">
                             <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
                               Edita la información correspondiente al formulario.
@@ -216,17 +222,7 @@
                                 name="name"
                                 placeholder="Ingresa el nombre"
                                 required
-                              />
-                            </div>
-                            <div class="mb-3">
-                              <label for="lastname" class="form-label">Apellido</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="lastname"
-                                name="lastname"
-                                placeholder="Ingresa el apellido"
-                                required
+                                value="<?= htmlspecialchars($client->name ?? '') ?>"
                               />
                             </div>
                             <div class="mb-3">
@@ -238,33 +234,8 @@
                                 name="email"
                                 placeholder="Ingresa el email"
                                 required
+                                value="<?= htmlspecialchars($client->email ?? '') ?>"
                               />
-                            </div>
-                            <div class="mb-3">
-                              <label for="phone_number" class="form-label">Número telefónico</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="phone_number"
-                                name="phone_number"
-                                placeholder="Ingresa el número telefónico"
-                                required
-                              />
-                            </div>
-                            <div class="mb-3">
-                              <label for="is_suscribed" class="form-label">Suscripción</label>
-                              <select class="form-select" id="is_suscribed" name="is_suscribed" required>
-                                <option value="1">Suscrito</option>
-                                <option value="0">No suscrito</option>
-                              </select>
-                            </div>
-                            <div class="mb-3">
-                              <label for="level_id" class="form-label">Nivel</label>
-                              <select class="form-select" id="level_id" name="level_id" required>
-                                <option value="1">Normal</option>
-                                <option value="2">Premium</option>
-                                <option value="3">VIP</option>
-                              </select>
                             </div>
                             <div class="mb-3">
                               <label for="password" class="form-label">Contraseña</label>
@@ -276,15 +247,40 @@
                                 placeholder="Ingresa una nueva contraseña (opcional)"
                               />
                             </div>
+                            <div class="mb-3">
+                              <label for="phone_number" class="form-label">Número telefónico</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="phone_number"
+                                name="phone_number"
+                                placeholder="Ingresa el número telefónico"
+                                required
+                                value="<?= htmlspecialchars($client->phone_number ?? '') ?>"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label for="is_suscribed" class="form-label">Suscripción</label>
+                              <select class="form-select" id="is_suscribed" name="is_suscribed" required>
+                                <option value="1" <?= isset($client->is_suscribed) && $client->is_suscribed == 1 ? 'selected' : '' ?>>Suscrito</option>
+                                <option value="0" <?= isset($client->is_suscribed) && $client->is_suscribed == 0 ? 'selected' : '' ?>>No suscrito</option>
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <label for="level_id" class="form-label">Nivel</label>
+                              <select class="form-select" id="level_id" name="level_id" required>
+                                <option value="1" <?= isset($client->level_id) && $client->level_id == 1 ? 'selected' : '' ?>>Normal</option>
+                                <option value="2" <?= isset($client->level_id) && $client->level_id == 2 ? 'selected' : '' ?>>Premium</option>
+                                <option value="3" <?= isset($client->level_id) && $client->level_id == 3 ? 'selected' : '' ?>>VIP</option>
+                              </select>
+                            </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-light-primary">Agregar cliente</button>
+                            <button type="submit" class="btn btn-light-primary">Actualizar cliente</button>
                           </div>
-
-                          <!-- Acción para identificar el tipo de solicitud -->
-                          <input type="hidden" name="action" value="create_client">
                         </form>
+
                       </div>
                     </div>
                   </div>
@@ -314,9 +310,21 @@
                                         <a href="<?= BASE_PATH ?>customer/details.php?id=<?= $client->id ?>" class="btn btn-sm btn-light-primary">
                                             <i class="feather icon-eye"></i>
                                         </a>
-                                        <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
+                                        <button 
+                                            type="button" 
+                                            class="btn btn-sm btn-light-success me-1 btn-edit-client"
+                                            data-client-id="<?= htmlspecialchars($client->id) ?>"
+                                            data-client-name="<?= htmlspecialchars($client->name) ?>"
+                                            data-client-email="<?= htmlspecialchars($client->email) ?>"
+                                            data-client-phone="<?= htmlspecialchars($client->phone_number) ?>"
+                                            data-client-subscribed="<?= htmlspecialchars($client->is_suscribed) ?>"
+                                            data-client-level="<?= htmlspecialchars($client->level_id) ?>"
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#editModal"
+                                        >
                                             <i class="feather icon-edit"></i>
                                         </button>
+
                                         <form action="<?= BASE_PATH ?>app/ClientController.php" method="POST" style="display: inline;">
                                             <input type="hidden" name="action" value="delete_client">
                                             <input type="hidden" name="clientId" value="<?= htmlspecialchars($client->id) ?>">
@@ -374,6 +382,40 @@
         value--;
         document.getElementById(temp).value = value;
       }
+
+      function openEditModal(clientId) {
+          // Asignar el valor del ID al campo oculto
+          document.querySelector('input[name="id"]').value = clientId;
+
+          // Abrir el modal (usa la función específica de tu framework o biblioteca)
+          const modal = new bootstrap.Modal(document.getElementById('editClientModal'));
+          modal.show();
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+          const editButtons = document.querySelectorAll('.btn-edit-client');
+
+          editButtons.forEach(button => {
+              button.addEventListener('click', () => {
+                  const clientId = button.getAttribute('data-client-id');
+                  const clientName = button.getAttribute('data-client-name');
+                  const clientEmail = button.getAttribute('data-client-email');
+                  const clientPhone = button.getAttribute('data-client-phone');
+                  const clientSubscribed = button.getAttribute('data-client-subscribed');
+                  const clientLevel = button.getAttribute('data-client-level');
+
+                  // Asignar valores a los campos del formulario
+                  document.getElementById('clientId').value = clientId;
+                  document.getElementById('name').value = clientName;
+                  document.getElementById('email').value = clientEmail;
+                  document.getElementById('phone_number').value = clientPhone;
+                  document.getElementById('is_suscribed').value = clientSubscribed;
+                  document.getElementById('level_id').value = clientLevel;
+              });
+          });
+      });
+
+
       // quantity end
     </script>
     
