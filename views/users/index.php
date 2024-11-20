@@ -195,76 +195,75 @@
                   </div>
                 </div>
                 <div class="card-header-right">
-                  <div
+                <div
                     class="modal fade"
                     id="editModal"
                     tabindex="-1"
                     role="dialog"
                     aria-labelledby="tituloModal"
                     aria-hidden="true"
-                  >
+                >
                     <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="tituloModal"
-                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Editar usuario</h5
-                          >
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="tituloModal">
+                                    <i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>
+                                    Editar usuario
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                            </div>
+                            <form id="updateForm" action="<?= BASE_PATH ?>app/UserController.php" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="action" value="update_user">
+                                <input type="hidden" id="userId" name="id">
+
+                                <div class="modal-body">
+                                    <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
+                                        Edita la información del usuario.
+                                    </small>
+                                    <div class="mb-3">
+                                        <label class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" id="userName" name="name" placeholder="Ingresa el nombre" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Apellido</label>
+                                        <input type="text" class="form-control" id="userLastname" name="lastname" placeholder="Ingresa el apellido" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Correo Electrónico</label>
+                                        <input type="email" class="form-control" id="userEmail" name="email" placeholder="Ingresa el correo electrónico" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Número de Teléfono</label>
+                                        <input type="text" class="form-control" id="userPhone" name="phone_number" placeholder="Ingresa el número de teléfono" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Rol</label>
+                                        <select class="form-control" id="userRole" name="role" required>
+                                            <option value="admin">Administrador</option>
+                                            <option value="user">Usuario</option>
+                                        </select>
+                                    </div>
+                                    <!-- <div class="mb-3">
+                                        <label class="form-label">Contraseña</label>
+                                        <input type="password" class="form-control" id="userPassword" name="password" placeholder="Ingresa la nueva contraseña">
+                                    </div> -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Creado por</label>
+                                        <input type="text" class="form-control" id="userCreatedBy" name="created_by" placeholder="Creado por">
+                                    </div>
+                                    <!-- <div class="mb-3">
+                                        <label class="form-label">Imagen de perfil</label>
+                                        <input class="form-control" type="file" id="userProfilePhoto" name="profilePhotoPath">
+                                    </div> -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-light-primary">Guardar cambios</button>
+                                </div>
+                            </form>
                         </div>
-                        <form id="updateForm" action="<?= BASE_PATH ?>app/UserController.php" method="POST" enctype="multipart/form-data">
-                          <input type="hidden" name="action" value="update_user">
-                          <input type="hidden" name="id" value="<?= isset($user->id) ? htmlspecialchars($user->id) : '' ?>">
-                          <div class="modal-body">
-                              <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
-                                  Edita la información del usuario.
-                              </small>
-                              <div class="mb-3">
-                                  <label class="form-label">Nombre</label>
-                                  <input type="text" class="form-control" name="name" placeholder="Ingresa el nombre" required>
-                              </div>
-                              <div class="mb-3">
-                                  <label class="form-label">Apellido</label>
-                                  <input type="text" class="form-control" name="lastname" placeholder="Ingresa el apellido" required>
-                              </div>
-                              <div class="mb-3">
-                                  <label class="form-label">Correo electrónico</label>
-                                  <input type="email" class="form-control" name="email" placeholder="Ingresa el correo electrónico" required>
-                              </div>
-                              <div class="mb-3">
-                                  <label class="form-label">Número de teléfono</label>
-                                  <input type="text" class="form-control" name="phone_number" placeholder="Ingresa el número de teléfono" required>
-                              </div>
-                              <div class="mb-3">
-                                  <label class="form-label">Rol</label>
-                                  <select class="form-control" name="role">
-                                      <option value="admin" >Administrador</option>
-                                      <option value="user">Usuario</option>
-                                  </select>
-                              </div>
-                              <div class="mb-3">
-                                  <label class="form-label">Contraseña</label>
-                                  <input type="password" class="form-control" name="password" placeholder="Ingresa la nueva contraseña">
-                              </div>
-                              <div class="mb-3">
-                                  <label class="form-label">Creado por</label>
-                                  <input type="text" class="form-control" name="created_by" placeholder="Creado por">
-                              </div>
-                              <div class="mb-3">
-                                  <label class="form-label">Imagen de perfil</label>
-                                  <input class="form-control" type="file" name="profilePhotoPath">
-                              </div>
-                          </div>
-                          <div class="modal-footer">
-                              <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                              <button type="submit" class="btn btn-light-primary">Guardar cambios</button>
-                          </div>
-                      </form>
-
-
-
-                      </div>
                     </div>
-                  </div>
+                </div>
                 </div>
               </div>
               <div class="card-body shadow border-0">
@@ -291,8 +290,19 @@
                                             <a href="<?= BASE_PATH ?>users/details.php?id=<?= urlencode($user['id']) ?>" class="btn btn-sm btn-light-primary">
                                                 <i class="feather icon-eye"></i>
                                             </a>
-                                            <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
-                                            <input type="hidden" name="id" value="<?= $user['id'] ?>">
+                                            <button 
+                                                type="button" 
+                                                class="btn btn-sm btn-light-success me-1 btn-edit-user" 
+                                                data-bs-toggle="modal" 
+                                                data-bs-target="#editModal"
+                                                data-user-id="<?= htmlspecialchars($user['id']) ?>"
+                                                data-user-name="<?= htmlspecialchars($user['name']) ?>"
+                                                data-user-lastname="<?= htmlspecialchars($user['lastname']) ?>"
+                                                data-user-email="<?= htmlspecialchars($user['email']) ?>"
+                                                data-user-phone="<?= htmlspecialchars($user['phone_number']) ?>"
+                                                data-user-role="<?= htmlspecialchars($user['role']) ?>"
+                                                data-user-created-by="<?= htmlspecialchars($user['created_by']) ?>"
+                                            >
                                                 <i class="feather icon-edit"></i>
                                             </button>
                                             <form action="<?= BASE_PATH ?>app/UserController.php" method="POST" style="display: inline;">
@@ -365,6 +375,32 @@
           const modal = new bootstrap.Modal(document.getElementById('editUserModal'));
           modal.show();
       }
+
+      document.addEventListener('DOMContentLoaded', () => {
+          const editButtons = document.querySelectorAll('.btn-edit-user');
+
+          editButtons.forEach(button => {
+              button.addEventListener('click', () => {
+                  const userId = button.getAttribute('data-user-id');
+                  const userName = button.getAttribute('data-user-name');
+                  const userLastname = button.getAttribute('data-user-lastname');
+                  const userEmail = button.getAttribute('data-user-email');
+                  const userPhone = button.getAttribute('data-user-phone');
+                  const userRole = button.getAttribute('data-user-role');
+                  const userCreatedBy = button.getAttribute('data-user-created-by');
+
+                  // Asignar valores a los campos del formulario
+                  document.getElementById('userId').value = userId;
+                  document.getElementById('userName').value = userName;
+                  document.getElementById('userLastname').value = userLastname;
+                  document.getElementById('userEmail').value = userEmail;
+                  document.getElementById('userPhone').value = userPhone;
+                  document.getElementById('userRole').value = userRole;
+                  document.getElementById('userCreatedBy').value = userCreatedBy;
+              });
+          });
+      });
+
 
       // quantity end
     </script>

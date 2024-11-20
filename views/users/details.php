@@ -27,6 +27,7 @@ if (isset($_SESSION['user_data'])) {
         $phone_numberUser = $userData['data']['phone_number'] ?? 'N/A';
         $emailUser = $userData['data']['email'] ?? 'N/A';
         $roleUser = $userData['data']['role'] ?? 'N/A';
+        $password = $userData['data']['password'] ?? 'N/A';
         $profilePhotoPath = $userData['data']['profile_photo_file'] ?? 'default_avatar.png'; // Imagen predeterminada si no hay avatar
         $created_by = $userData['data']['created_by'] ?? 'default_avatar.png'; // Imagen predeterminada si no hay avatar
         $avatarUser = $userData['data']['avatar'] ?? 'assets/images/default_avatar.png';
@@ -112,6 +113,10 @@ if (isset($_SESSION['user_data'])) {
                     <li class="list-group-item">
                       <p class="mb-1 text-muted">Rol</p>
                       <p class="mb-0"><?= htmlspecialchars($roleUser) ?></p>
+                    </li>
+                    <li class="list-group-item">
+                      <p class="mb-1 text-muted">Password</p>
+                      <p class="mb-0"><?= htmlspecialchars($password) ?></p>
                     </li>
                     <li class="list-group-item">
                       <p class="mb-1 text-muted">Número de teléfono</p>
