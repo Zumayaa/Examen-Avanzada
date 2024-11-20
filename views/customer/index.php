@@ -106,7 +106,7 @@
                           >
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
-                        <form action="ruta/donde/esta/tu/funcion" method="POST" enctype="multipart/form-data">
+                        <form action="<?= BASE_PATH ?>app/ClientController.php" method="POST" enctype="multipart/form-data">
                           <div class="modal-body">
                             <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
                               Agrega la información correspondiente al formulario.
@@ -178,7 +178,7 @@
                             <button type="submit" class="btn btn-light-primary">Agregar cliente</button>
                           </div>
 
-                          <input type="hidden" name="action" value="create_user">
+                          <input type="hidden" name="action" value="create_client">
                         </form>
 
                       </div>
@@ -197,13 +197,13 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="tituloModal"
-                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Editar cliente</h5
-                          >
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                          <h5 class="modal-title" id="tituloModal">
+                            <i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Editar cliente
+                          </h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form>
-                        <div class="modal-body">
+                        <form action="ruta/a/tu/controller.php" method="POST">
+                          <div class="modal-body">
                             <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
                               Edita la información correspondiente al formulario.
                             </small>
@@ -240,7 +240,7 @@
                                 required
                               />
                             </div>
-                            <div class="mb-6">
+                            <div class="mb-3">
                               <label for="phone_number" class="form-label">Número telefónico</label>
                               <input
                                 type="text"
@@ -250,30 +250,20 @@
                                 placeholder="Ingresa el número telefónico"
                                 required
                               />
-                              
-                            <div class="mb-3">
-                              <label for="created_by" class="form-label">Creado por</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="created_by"
-                                name="created_by"
-                                placeholder="Nombre del creador"
-                                required
-                              />
-                            </div>
-                              
                             </div>
                             <div class="mb-3">
-                              <label for="role" class="form-label">Rol</label>
-                              <select
-                                class="form-select"
-                                id="role"
-                                name="role"
-                                required
-                              >
-                                <option value="admin">Admin</option>
-                                <option value="user">Usuario</option>
+                              <label for="is_suscribed" class="form-label">Suscripción</label>
+                              <select class="form-select" id="is_suscribed" name="is_suscribed" required>
+                                <option value="1">Suscrito</option>
+                                <option value="0">No suscrito</option>
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <label for="level_id" class="form-label">Nivel</label>
+                              <select class="form-select" id="level_id" name="level_id" required>
+                                <option value="1">Normal</option>
+                                <option value="2">Premium</option>
+                                <option value="3">VIP</option>
                               </select>
                             </div>
                             <div class="mb-3">
@@ -289,13 +279,17 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Editar cliente</button>
+                            <button type="submit" class="btn btn-light-primary">Agregar cliente</button>
                           </div>
+
+                          <!-- Acción para identificar el tipo de solicitud -->
+                          <input type="hidden" name="action" value="create_client">
                         </form>
                       </div>
                     </div>
                   </div>
                 </div>
+
               </div>
               <div class="card-body shadow border-0">
                 <div class="table-responsive">
@@ -323,9 +317,14 @@
                                         <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
                                             <i class="feather icon-edit"></i>
                                         </button>
-                                        <a href="#" class="btn btn-sm btn-light-danger">
-                                            <i class="feather icon-trash-2"></i>
-                                        </a>
+                                        <form action="<?= BASE_PATH ?>app/ClientController.php" method="POST" style="display: inline;">
+                                            <input type="hidden" name="action" value="delete_client">
+                                            <input type="hidden" name="clientId" value="<?= htmlspecialchars($client->id) ?>">
+                                            <button type="submit" class="btn btn-sm btn-light-danger">
+                                                <i class="feather icon-trash-2"></i>
+                                            </button>
+                                        </form>
+
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
