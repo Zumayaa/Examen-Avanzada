@@ -429,19 +429,11 @@ $totalOrders = $widgetsController->getOrderCountByClient($clientId);
       </div>
 
       <script>
-          // Evento para abrir el modal y configurar los valores de los campos
           var editButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
           editButtons.forEach(function(button) {
               button.addEventListener('click', function() {
                   var addressId = button.getAttribute('data-id');
-                  // Aquí debes recuperar los datos de la dirección que quieres editar y asignarlos al modal
-                  // Ejemplo de asignación de los datos (se asume que esos datos están disponibles en el contexto)
                   document.getElementById('address_id').value = addressId;
-                  
-                  // Si tienes más campos de la dirección, los debes asignar aquí (por ejemplo):
-                  // document.getElementById('first_name').value = "Valor recuperado";
-                  // document.getElementById('last_name').value = "Valor recuperado";
-                  // Continúa con los demás campos de la misma forma...
               });
           });
       </script>
