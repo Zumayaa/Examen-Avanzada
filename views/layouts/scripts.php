@@ -28,5 +28,5 @@
     </script>
      
     <script>
-      preset_change('preset-1');
+      preset_change('preset-4');
     </script>

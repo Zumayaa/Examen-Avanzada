@@ -1,5 +1,5 @@
     <title>
-      Sample Page | Light Able Admin & Dashboard Template
+      Marcomers
     </title>
     <!-- [Meta] -->
     <meta charset="utf-8" />
@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="description"
-      content="Light Able admin and dashboard template offer a variety of UI elements and pages, ensuring your admin panel is both fast and effective."
+      content="Es un ecommerce vale?"
     />
     <meta name="author" content="phoenixcoded" />
 
     <!-- [Favicon] icon -->
-    <link rel="icon" href="<?= BASE_PATH ?>assets/images/favicon.svg" type="image/x-icon" />
+    <link rel="icon" href="<?= BASE_PATH ?>views/layouts/loguito.png" type="image/x-icon" />
      <!-- [Google Font : Public Sans] icon -->
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
     <!-- [phosphor Icons] https://phosphoricons.com/ -->
