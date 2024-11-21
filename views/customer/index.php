@@ -128,8 +128,6 @@
                                 type="email"
                                 class="form-control"
                                 name="email"
-                                title="Solo se permiten letras y espacios"
-                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
                                 required
                               />
                             </div>
@@ -238,9 +236,6 @@
                                 id="email"
                                 name="email"
                                 placeholder="Ingresa el email"
-                                pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" 
-                                title="Solo se permiten letras y espacios"
-                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
                                 required
                                 value="<?= htmlspecialchars($client->email ?? '') ?>"
                               />
