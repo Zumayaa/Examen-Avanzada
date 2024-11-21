@@ -19,6 +19,7 @@ RewriteRule ^contPresentation/?$ app/PresentationController.php [L]
 RewriteRule ^contCategory/?$ app/CategoryController.php [L]
 RewriteRule ^contBrand/?$ app/BrandController.php [L]
 RewriteRule ^contTag/?$ app/TagController.php [L]
+RewriteRule ^contOrders/?$ app/OrderController.php [L]
 
 # Editar producto
 RewriteRule ^products/edit-product/?$ views/products/edit-product.php [L]
