@@ -2,6 +2,25 @@
   include_once "../../app/config.php";
 
 ?>
+
+<?php 
+  include_once "../../app/CouponController.php";
+
+  $id = $_GET['id'];
+
+  $couponController = new CouponController();
+
+  $cupon = $couponController->getCoupon($id);
+?>
+
+
+<?php 
+  include_once "../../app/WidgetsController.php";
+
+  $widgetsController = new WidgetsController();
+  $countCupon = $widgetsController->getCouponUsageCount();
+
+?>
 <!doctype html>
 <html lang="en">
   <!-- [Head] start -->
@@ -55,6 +74,7 @@
           <!-- [ sample-page ] start -->
           <div class="col-sm-12">
             <div class="row">
+              <!-- 
               <div class="col-lg-5 col-xxl-3">
                 <div class="card overflow-hidden">
                   <div class="card-body position-relative">
@@ -89,6 +109,7 @@
                     </a>
                   </div>
                 </div>
+
                 <div class="card">
                   <div class="card-header">
                     <h5>Información personal</h5>
@@ -104,55 +125,52 @@
                     </div>
                   </div>
                 </div>
+                -->
               </div>
               <div class="col-lg-7 col-xxl-9">
                 <div class="tab-content" id="user-set-tabContent">
                   <div class="tab-pane fade show active" id="user-set-profile" role="tabpanel" aria-labelledby="user-set-profile-tab">
                     <div class="card">
                       <div class="card-header">
-                        <h5>Información personal</h5>
+                        <h5>Información Cupon</h5>
                       </div>
                       <div class="card-body">
                         <ul class="list-group list-group-flush">
                           <li class="list-group-item px-0 pt-0">
                             <div class="row">
                               <div class="col-md-6">
-                                <p class="mb-1 text-muted">Nombre</p>
-                                <p class="mb-0">Anshan</p>
+                                <p class="mb-1 text-muted">Nombre Del Cupon</p>
+                                <p class="mb-0"><?php echo $cupon->name; ?></p>
                               </div>
                               <div class="col-md-6">
-                                <p class="mb-1 text-muted">Apellidos</p>
-                                <p class="mb-0">Mr. Deepen Handgun</p>
+                                <p class="mb-1 text-muted">Code del Cupon</p>
+                                <p class="mb-0"><?php echo $cupon->code; ?></p>
                               </div>
                             </div>
                           </li>
                           <li class="list-group-item px-0">
                             <div class="row">
                               <div class="col-md-6">
-                                <p class="mb-1 text-muted">Número télefonico</p>
-                                <p class="mb-0">(+1-876) 8654 239 581</p>
+                                <p class="mb-1 text-muted">Porcentaje De Descuento</p>
+                                <p class="mb-0">%<?php echo $cupon->percentage_discount; ?></p>
                               </div>
                               <div class="col-md-6">
-                                <p class="mb-1 text-muted">Género</p>
-                                <p class="mb-0">Kanye West</p>
+                                <p class="mb-1 text-muted">Cantidad Descontada</p>
+                                <p class="mb-0"><?php echo $cupon->amount_discount; ?></p>
                               </div>
                             </div>
                           </li>
                           <li class="list-group-item px-0">
                             <div class="row">
                               <div class="col-md-6">
-                                <p class="mb-1 text-muted">Email</p>
-                                <p class="mb-0">anshan.dh81@gmail.com</p>
+                                <p class="mb-1 text-muted">Fecha Inicio </p>
+                                <p class="mb-0"><?php echo $cupon->start_date ?></p>
                               </div>
                               <div class="col-md-6">
-                                <p class="mb-1 text-muted">Fecha de nacimiento</p>
-                                <p class="mb-0">22/08/2003</p>
+                                <p class="mb-1 text-muted">Fecha de Vencimiento</p>
+                                <p class="mb-0"><?php echo $cupon->end_date; ?></p>
                               </div>
                             </div>
-                          </li>
-                          <li class="list-group-item px-0 pb-0">
-                            <p class="mb-1 text-muted">Fecha de ingreso a la empresa</p>
-                            <p class="mb-0">22/08/2003</p>
                           </li>
                         </ul>
                       </div>
@@ -166,7 +184,7 @@
                         <img src="<?= BASE_PATH ?>assets/images/widget/img-status-4.svg" alt="img" class="img-fluid img-bg" />
                         <h5 class="mb-4">Total descontado</h5>
                         <div class="d-flex align-items-center mt-3">
-                        <h3 class="f-w-300 d-flex align-items-center m-b-0">$249.95</h3>
+                        <h3 class="f-w-300 d-flex align-items-center m-b-0"> </h3>
                         <span class="badge bg-light-success ms-2">36%</span>
                         </div>
                         <p class="text-muted mb-2 text-sm mt-3">Descontaste 50,500 pesos en 20% de descuento</p>

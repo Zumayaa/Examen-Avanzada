@@ -429,7 +429,7 @@
                           <td><?php echo htmlspecialchars($lista->start_date); ?></td>
                           <td><?php echo htmlspecialchars($lista->end_date); ?></td>
                           <td>
-                          <a href="<?= BASE_PATH ?>coupons/details" class="btn btn-sm btn-light-primary">
+                          <a href="<?= BASE_PATH ?>coupons/details?id=<?= $lista->id; ?>" class="btn btn-sm btn-light-primary">
                             <i class="feather icon-eye"></i>
                           </a>
 
