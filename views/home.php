@@ -2,6 +2,17 @@
   include_once "../app/config.php";
 
 ?>
+
+<?php 
+  include_once "../app/ProductController.php";
+
+  $productController = new ProductController();
+  $produc = $productController->get();
+
+
+?>
+
+
 <!doctype html>
 <html lang="en">
   <!-- [Head] start -->
@@ -58,92 +69,32 @@
           <div class="col-sm-12">
             <div class="ecom-wrapper">
               <div class="ecom-content">
+              
                 <div class="row">
-                  <div class="col-sm-6 col-xl-4">
+                <?php foreach($produc as $list): ?>
+                    <div class="col-sm-6 col-xl-4">
                     <div class="card product-card">
-                      <div class="card-img-top">
-                        <a href="ecom_product-details.html">
-                          <img src="../assets/images/application/img-prod-1.jpg" alt="image" class="img-prod img-fluid" />
-                        </a>
-                        <div class="card-body position-absolute end-0 top-0">
+                        <div class="card-img-top">
+                          <a href="ecom_product-details.html">
+                          </a>
+                          <div class="card-body position-absolute end-0 top-0">
+                          </div>
                         </div>
-                      </div>
-                      <div class="card-body">
-                        <a href="ecom_product-details.html">
-                          <p class="prod-content mb-0 text-muted">Apple watch -4</p>
-                        </a>
-                        <div class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
-                          <h4 class="mb-0 text-truncate"
-                            ><b>$299.00</b> <span class="text-sm text-muted f-w-400 text-decoration-line-through">$399.00</span></h4
-                          >
+                        <div class="card-body">
+                          <a href="ecom_product-details.html">
+                            <h3 class="prod-content mb-0 text-muted"> <?php echo $list->name; ?></h3>
+                          </a>
+                          <div class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
+                            <h4 class="mb-0 text-truncate"
+                              ><b>$<?php echo isset($list->presentations[0]->price[0]->amount) ? $list->presentations[0]->price[0]->amount : 0; ?></b></h4
+                            >
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-sm-6 col-xl-4">
-                    <div class="card product-card">
-                      <div class="card-img-top">
-                        <a href="ecom_product-details.html">
-                          <img src="../assets/images/application/img-prod-1.jpg" alt="image" class="img-prod img-fluid" />
-                        </a>
-                        <div class="card-body position-absolute end-0 top-0">
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <a href="ecom_product-details.html">
-                          <p class="prod-content mb-0 text-muted">Apple watch -4</p>
-                        </a>
-                        <div class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
-                          <h4 class="mb-0 text-truncate"
-                            ><b>$299.00</b> <span class="text-sm text-muted f-w-400 text-decoration-line-through">$399.00</span></h4
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-xl-4">
-                    <div class="card product-card">
-                      <div class="card-img-top">
-                        <a href="ecom_product-details.html">
-                          <img src="../assets/images/application/img-prod-1.jpg" alt="image" class="img-prod img-fluid" />
-                        </a>
-                        <div class="card-body position-absolute end-0 top-0">
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <a href="ecom_product-details.html">
-                          <p class="prod-content mb-0 text-muted">Apple watch -4</p>
-                        </a>
-                        <div class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
-                          <h4 class="mb-0 text-truncate"
-                            ><b>$299.00</b> <span class="text-sm text-muted f-w-400 text-decoration-line-through">$399.00</span></h4
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-xl-4">
-                    <div class="card product-card">
-                      <div class="card-img-top">
-                        <a href="ecom_product-details.html">
-                          <img src="../assets/images/application/img-prod-1.jpg" alt="image" class="img-prod img-fluid" />
-                        </a>
-                        <div class="card-body position-absolute end-0 top-0">
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <a href="ecom_product-details.html">
-                          <p class="prod-content mb-0 text-muted">Apple watch -4</p>
-                        </a>
-                        <div class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
-                          <h4 class="mb-0 text-truncate"
-                            ><b>$299.00</b> <span class="text-sm text-muted f-w-400 text-decoration-line-through">$399.00</span></h4
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    <?php endforeach ?>
                 </div>
+                
               </div>
             </div>
           </div>
