@@ -67,17 +67,23 @@ class AddressController {
                 'Authorization: Bearer ' . $_SESSION['user_data']->token,
             ),
         ));
-        
+
         $response = curl_exec($curl);
+        $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE); 
         curl_close($curl);
         $response = json_decode($response);
-    
-        if (isset($response->data)) {
-            return $response->data; 
+
+        if ($httpCode !== 200 || $response === null) {
+            error_log("Error al obtener las direcciones. HTTP Code: $httpCode");
+            return null;
         }
-    
+
+        if (isset($response->data)) {
+            return is_array($response->data) ? $response->data : [$response->data];
+        }
+
         return null;
-    
+
     }
 
     public function createAddress($firstName, $lastName, $street, $postalCode, $city, $province, $phone, $isBilling, $clientId) {
