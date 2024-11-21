@@ -75,15 +75,11 @@
                     <div class="col-sm-6 col-xl-4">
                     <div class="card product-card">
                         <div class="card-img-top">
-                          <a href="ecom_product-details.html">
-                          </a>
                           <div class="card-body position-absolute end-0 top-0">
                           </div>
                         </div>
                         <div class="card-body">
-                          <a href="ecom_product-details.html">
                             <h3 class="prod-content mb-0 text-muted"> <?php echo $list->name; ?></h3>
-                          </a>
                           <div class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
                             <h4 class="mb-0 text-truncate"
                               ><b>$<?php echo isset($list->presentations[0]->price[0]->amount) ? $list->presentations[0]->price[0]->amount : 0; ?></b></h4
