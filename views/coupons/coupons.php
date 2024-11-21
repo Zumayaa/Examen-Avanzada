@@ -91,7 +91,7 @@
                           >
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
-                        <form action="<?= BASE_PATH ?>app/CouponController" method="POST">
+                        <form action="<?= BASE_PATH ?>app/CouponController.php" method="POST">
                           <div class="modal-body">
                             <small id="emailHelp" class="form-text text-muted mb-2 mt-0">
                               Completa la información para agregar un nuevo cupón.
@@ -251,7 +251,7 @@
                           </h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="<?= BASE_PATH ?>app/CouponController" method="POST">
+                        <form action="<?= BASE_PATH ?>app/CouponController.php" method="POST">
                           <input type="hidden" name="action" value="update_coupon">
                           <input type="hidden" name="id" id="edit_id"> 
                           <div class="modal-body">
@@ -451,7 +451,7 @@
                               <i class="feather icon-edit"></i>
                             </button>
 
-                            <form action="<?= BASE_PATH ?>app/CouponController" method="POST" style="display:inline;">
+                            <form action="<?= BASE_PATH ?>app/CouponController.php" method="POST" style="display:inline;">
                               <input type="hidden" name="action" value="delete_coupon">
                               <input type="hidden" name="id" value="<?= htmlspecialchars($lista->id); ?>">
                               <button type="submit" class="btn btn-sm btn-light-danger">
