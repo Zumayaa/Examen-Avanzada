@@ -30,6 +30,8 @@ $client = json_decode($response)->data;
 $addressController = new AddressController();
 $addresses = $client->addresses;
 
+$orders = $client->orders;
+
 
 
 // Incluir el controlador
@@ -274,6 +276,67 @@ $totalOrders = $widgetsController->getOrderCountByClient($clientId);
                                   <form action="<?= BASE_PATH ?>app/AddressController.php" method="POST" style="display: inline;">
                                       <input type="hidden" name="action" value="delete_address">
                                       <input type="hidden" name="address_id" value="<?= htmlspecialchars($address->id) ?>"> <!-- Cambié clientId por address_id -->
+                                      <button type="submit" class="btn btn-sm btn-light-danger">
+                                          <i class="feather icon-trash-2"></i>
+                                      </button>
+                                  </form>
+
+                              </td>
+                          </tr>
+                      <?php endforeach; ?>
+                  <?php else: ?>
+                      <tr>
+                          <td colspan="9" class="text-center">No se encontraron direcciones para este cliente.</td>
+                      </tr>
+                  <?php endif; ?>
+              </tbody>
+            </table>
+          </div>
+                  <!-- Botón para agregar dirección -->
+                  <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addAddressModal">
+                      Agregar Dirección
+                  </button>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <!-- ORDENES HEHJEHEJEJASDKLJF;ALSKDJF;ALSKDFJA;LSDKFJA;LSDKFJ -->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card shadow-none">
+              <div class="card-header">
+              <h2>Órdenes</h2>
+              <div class="card-body shadow border-0">
+              <div class="table-responsive">
+              <table id="report-table" class="table table-bordered table-striped mb-0">
+                <thead>
+                    <tr>
+                        <th>Folio</th>
+                        <th>Total</th>
+                        <th>Nombre</th>
+                        <th>Direcciones</th>
+                        <th>Correo</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <?php if (!empty($orders)): ?>
+                      <?php foreach ($orders as $order): ?>
+                          <tr>
+                              <td><?= htmlspecialchars($order->folio) ?></td>
+                              <td><?= htmlspecialchars($order->total) ?></td>
+                              <td><?= htmlspecialchars($client->name) ?></td>
+                              <td><?= htmlspecialchars($order->address_id) ?></td>
+                              <td><?= htmlspecialchars($client->email) ?></td>
+                              <td>
+                                  <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal" data-id="<?= $order->id ?>">
+                                      <i class="feather icon-edit"></i>
+                                  </button>
+                                  <form action="<?= BASE_PATH ?>app/AddressController.php" method="POST" style="display: inline;">
+                                      <input type="hidden" name="action" value="delete_address">
+                                      <input type="hidden" name="address_id" value="<?= htmlspecialchars($order->id) ?>"> <!-- Cambié clientId por address_id -->
                                       <button type="submit" class="btn btn-sm btn-light-danger">
                                           <i class="feather icon-trash-2"></i>
                                       </button>
