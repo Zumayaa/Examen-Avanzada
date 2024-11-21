@@ -160,6 +160,61 @@
                   </div>
                 </div>
               </div>
+              <div class="col-lg-7 col-xxl-9">
+                <div class="tab-content" id="user-set-tabContent">
+                  <div class="tab-pane fade show active" id="user-set-profile" role="tabpanel" aria-labelledby="user-set-profile-tab">
+                    <div class="card">
+                      <div class="card-header">
+                        <h5>Información personal del cliente que compró</h5>
+                      </div>
+                      <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item px-0 pt-0">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <p class="mb-1 text-muted">Nombre</p>
+                                <p class="mb-0">Anshan</p>
+                              </div>
+                              <div class="col-md-6">
+                                <p class="mb-1 text-muted">Apellidos</p>
+                                <p class="mb-0">Mr. Deepen Handgun</p>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="list-group-item px-0">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <p class="mb-1 text-muted">Número télefonico</p>
+                                <p class="mb-0">(+1-876) 8654 239 581</p>
+                              </div>
+                              <div class="col-md-6">
+                                <p class="mb-1 text-muted">Género</p>
+                                <p class="mb-0">Kanye West</p>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="list-group-item px-0">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <p class="mb-1 text-muted">Email</p>
+                                <p class="mb-0">anshan.dh81@gmail.com</p>
+                              </div>
+                              <div class="col-md-6">
+                                <p class="mb-1 text-muted">Fecha de nacimiento</p>
+                                <p class="mb-0">22/08/2003</p>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="list-group-item px-0 pb-0">
+                            <p class="mb-1 text-muted">Fecha de ingreso a la empresa</p>
+                            <p class="mb-0">22/08/2003</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="col-sm-12">
                 <div class="card statistics-card-1 overflow-hidden">
                     <div class="card-body">

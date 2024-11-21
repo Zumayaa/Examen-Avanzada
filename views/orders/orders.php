@@ -107,6 +107,26 @@
                                 placeholder="Ingresa el apellido"
                               />
                             </div>
+                            <div class="mb-3">
+                              <label class="form-label">Información extra</label>
+                              <input
+                                type="email"
+                                class="form-control"
+                                id="lname"
+                                aria-describedby="emailHelp"
+                                placeholder="Ingresa el apellido"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Información extra</label>
+                              <input
+                                type="email"
+                                class="form-control"
+                                id="lname"
+                                aria-describedby="emailHelp"
+                                placeholder="Ingresa el apellido"
+                              />
+                            </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
@@ -147,6 +167,26 @@
                                 id="fname"
                                 aria-describedby="emailHelp"
                                 placeholder="Ingresa el nombre"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Información extra</label>
+                              <input
+                                type="email"
+                                class="form-control"
+                                id="lname"
+                                aria-describedby="emailHelp"
+                                placeholder="Ingresa el apellido"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Información extra</label>
+                              <input
+                                type="email"
+                                class="form-control"
+                                id="lname"
+                                aria-describedby="emailHelp"
+                                placeholder="Ingresa el apellido"
                               />
                             </div>
                             <div class="mb-3">
