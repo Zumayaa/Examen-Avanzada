@@ -1,32 +1,48 @@
 <?php 
-  include_once "../../app/config.php";
+include_once "../../app/config.php";
+include "../../app/ClientController.php";
+include "../../app/AddressController.php";
 
-  // Incluye el controlador y obtén los datos del cliente
-  include "../../app/ClientController.php";
-  
-  $clientController = new ClientController();
+$clientController = new ClientController();
 
-  // Obtener el ID del cliente desde la URL (si existe)
-  $clientId = isset($_GET['id']) ? $_GET['id'] : null;
+// Obtener el ID del cliente desde la URL (si existe)
+$clientId = isset($_GET['id']) ? $_GET['id'] : null;
 
-  // Si no se pasa un ID, mostrar un error o redirigir
-  if (!$clientId) {
-      echo "<p>ID de cliente no proporcionado.</p>";
-      exit;
-  }
+// Si no se pasa un ID, mostrar un error o redirigir
+if (!$clientId) {
+    echo "<p>ID de cliente no proporcionado.</p>";
+    exit;
+}
 
-  // Llamar a la función getClientById
-  $response = $clientController->getClientById($clientId);
+// Llamar a la función getClientById
+$response = $clientController->getClientById($clientId);
 
-  // Decodifica la respuesta JSON
-  $client = json_decode($response);
+// Decodifica la respuesta JSON
+$client = json_decode($response)->data;
 
-  // Verifica si la respuesta es válida
-  if (!isset($client->data)) {
-      echo "<p>Error al obtener los detalles del cliente.</p>";
-      exit;
-  }
+// Verifica si la respuesta es válida
+// if (!isset($client->data)) {
+//     echo "<p>Error al obtener los detalles del cliente.</p>";
+//     exit;
+// }
+
+
+$addressController = new AddressController();
+
+// Obtener direcciones asociadas al cliente
+// $response = $addressController->getAddressByClient($clientId);
+// $addresses = $addressController->getAddressByClient($clientId);
+$addresses = $client->addresses;
+
+// $addresses = $addressController->getAddressByClient($clientId);
+// var_dump($addresses);
+// exit;
+
+
+
 ?>
+
+
 <!doctype html>
 <html lang="en">
   <!-- [Head] start -->
@@ -92,7 +108,7 @@
                       />
                         <i class="chat-badge bg-success me-2 mb-2"></i>
                       </div>
-                      <h5 class="mb-0"><?= htmlspecialchars($client->data->name) ?></h5>
+                      <h5 class="mb-0"><?= htmlspecialchars($client->name) ?></h5>
                     </div>
                   </div>
                   <div
@@ -121,11 +137,11 @@
                   <div class="card-body position-relative">
                     <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
                       <p class="mb-0 text-muted me-1">Email</p>
-                      <p class="mb-0"><?= htmlspecialchars($client->data->email) ?></p>
+                      <p class="mb-0"><?= htmlspecialchars($client->email) ?></p>
                     </div>
                     <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
                       <p class="mb-0 text-muted me-1">Número télefonico</p>
-                      <p class="mb-0"><?= htmlspecialchars($client->data->phone_number) ?></p>
+                      <p class="mb-0"><?= htmlspecialchars($client->phone_number) ?></p>
                     </div>
                   </div>
                 </div>
@@ -164,11 +180,11 @@
                             <div class="row">
                               <div class="col-md-6">
                                 <p class="mb-1 text-muted">Nombre</p>
-                                <p class="mb-0"><?= htmlspecialchars($client->data->name) ?></p>
+                                <p class="mb-0"><?= htmlspecialchars($client->name) ?></p>
                               </div>
                               <div class="col-md-6">
                                 <p class="mb-1 text-muted">Email</p>
-                                <p class="mb-0"><?= htmlspecialchars($client->data->email) ?></p>
+                                <p class="mb-0"><?= htmlspecialchars($client->email) ?></p>
                               </div>
                             </div>
                           </li>
@@ -176,11 +192,11 @@
                             <div class="row">
                               <div class="col-md-6">
                                 <p class="mb-1 text-muted">Número telefónico</p>
-                                <p class="mb-0"><?= htmlspecialchars($client->data->phone_number) ?></p>
+                                <p class="mb-0"><?= htmlspecialchars($client->phone_number) ?></p>
                               </div>
                               <div class="col-md-6">
                                 <p class="mb-1 text-muted">Suscripción</p>
-                                <p class="mb-0"><?= $client->data->is_suscribed ? 'Activo' : 'Inactivo' ?></p>
+                                <p class="mb-0"><?= $client->is_suscribed ? 'Activo' : 'Inactivo' ?></p>
                               </div>
                             </div>
                           </li>
@@ -188,11 +204,11 @@
                             <div class="row">
                               <div class="col-md-6">
                                 <p class="mb-1 text-muted">Nivel</p>
-                                <p class="mb-0"><?= htmlspecialchars($client->data->level->name) ?></p>
+                                <p class="mb-0"><?= htmlspecialchars($client->level->name) ?></p>
                               </div>
                               <div class="col-md-6">
                                 <p class="mb-1 text-muted">Descuento</p>
-                                <p class="mb-0"><?= htmlspecialchars($client->data->level->percentage_discount) ?>%</p>
+                                <p class="mb-0"><?= htmlspecialchars($client->level->percentage_discount) ?>%</p>
                               </div>
                             </div>
                           </li>
@@ -203,249 +219,116 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+
+        <div class="row">
           <div class="col-lg-12">
             <div class="card shadow-none">
               <div class="card-header">
-                <h5>Marcas</h5>
-                <div class="card-header-right">
-                  <button type="button" class="btn btn-light-warning m-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Agregar usuarios
-                  </button>
-                  <div
-                    class="modal fade"
-                    id="exampleModal"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                  >
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel"
-                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Agregar usuarios</h5
-                          >
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
-                        </div>
-                        <form>
-                          <div class="modal-body">
-                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0"
-                              >Agrega la información correspondiente al formulario.</small
-                            >
-                            <div class="mb-3">
-                              <label class="form-label">Nombre de los usuarios</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="fname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el nombre"
-                              />
-                            </div>
-                            <div class="mb-3">
-                              <label class="form-label">Información extra</label>
-                              <input
-                                type="email"
-                                class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el apellido"
-                              />
-                            </div>
-                            <div class="col-md-12">
-                                <label class="form-label">Imagen del usuario</label>
-                                <input class="form-control" type="file" />
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Agregar usuario</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-header-right">
-                  <div
-                    class="modal fade"
-                    id="editModal"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="tituloModal"
-                    aria-hidden="true"
-                  >
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="tituloModal"
-                            ><i data-feather="user" class="icon-svg-primary wid-20 me-2"></i>Editar usuario</h5
-                          >
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
-                        </div>
-                        <form>
-                          <div class="modal-body">
-                            <small id="emailHelp" class="form-text text-muted mb-2 mt-0"
-                              >Agrega la información correspondiente al formulario.</small
-                            >
-                            <div class="mb-3">
-                              <label class="form-label">Nombre del usuario</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="fname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el nombre"
-                              />
-                            </div>
-                            <div class="mb-3">
-                              <label class="form-label">Información extra</label>
-                              <input
-                                type="email"
-                                class="form-control"
-                                id="lname"
-                                aria-describedby="emailHelp"
-                                placeholder="Ingresa el apellido"
-                              />
-                            </div>
-                            <div class="col-md-12">
-                                <label class="form-label">Imagen del usuario</label>
-                                <input class="form-control" type="file" />
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-light-primary">Editar usuario</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <h2>Direcciones</h2>
               <div class="card-body shadow border-0">
-                <div class="table-responsive">
-                  <table id="report-table" class="table table-bordered table-striped mb-0">
-                    <thead>
+              <div class="table-responsive">
+              <table id="report-table" class="table table-bordered table-striped mb-0">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Calle y Número</th>
+                        <th>Código Postal</th>
+                        <th>Ciudad</th>
+                        <th>Provincia</th>
+                        <th>Teléfono</th>
+                        <th>¿Es Dirección de Facturación?</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <?php if (!empty($addresses)): ?>
+                      <?php foreach ($addresses as $address): ?>
+                          <tr>
+                              <td><?= htmlspecialchars($address->first_name) ?></td>
+                              <td><?= htmlspecialchars($address->last_name) ?></td>
+                              <td><?= htmlspecialchars($address->street_and_use_number) ?></td>
+                              <td><?= htmlspecialchars($address->postal_code) ?></td>
+                              <td><?= htmlspecialchars($address->city) ?></td>
+                              <td><?= htmlspecialchars($address->province) ?></td>
+                              <td><?= htmlspecialchars($address->phone_number) ?></td>
+                              <td><?= $address->is_billing_address ? 'Sí' : 'No' ?></td>
+                              <td>
+                                  <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal" data-id="<?= $address->id ?>">
+                                      <i class="feather icon-edit"></i>
+                                  </button>
+                                  <a href="<?= BASE_PATH ?>addresses/delete?id=<?= $address->id ?>" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
+                              </td>
+                          </tr>
+                      <?php endforeach; ?>
+                  <?php else: ?>
                       <tr>
-                        <th class="border-top-0">Nombre</th>
-                        <th class="border-top-0">Email</th>
-                        <th class="border-top-0">Cuenta</th>
-                        <th class="border-top-0">Cumpleaños (hay que cambiarlo)</th>
-                        <th class="border-top-0">Acción</th>
+                          <td colspan="9" class="text-center">No se encontraron direcciones para este cliente.</td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Mark Jason</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="<?= BASE_PATH ?>users/details" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
-                            <i class="feather icon-edit"></i>
-                          </button>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Alice Nicol</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Harry Cook</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-primary"><i class="feather icon-eye"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Tom Hannry</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Martin Frank</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Endrew Khan</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Chritina Methewv</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Jakson Pit</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Nikolas Jons</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Nik Cage</td>
-                        <td><a href="#" class="link-secondary">mark@mark.com</a></td>
-                        <td>N/A</td>
-                        <td>January 01,2019 at 03:35 PM</td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-light-success me-1"><i class="feather icon-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                  <?php endif; ?>
+              </tbody>
+            </table>
+          </div>
+                  <!-- Botón para agregar dirección -->
+                  <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addAddressModal">
+                      Agregar Dirección
+                  </button>
+        </div>
+
+      <!-- Modal para agregar una nueva dirección -->
+      <div class="modal fade" id="addAddressModal" tabindex="-1" aria-labelledby="addAddressModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="addAddressModalLabel">Agregar Nueva Dirección</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                  </div>
+                  <div class="modal-body">
+                  <form action="<?= BASE_PATH ?>app/AddressController.php" method="POST">
+                    <input type="hidden" name="action" value="create_address">
+                    <input type="hidden" name="client_id" value="<?= htmlspecialchars($clientId) ?>">
+                    <div class="mb-3">
+                        <label for="first_name" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="street_and_use_number" class="form-label">Calle y Número</label>
+                        <input type="text" class="form-control" id="street_and_use_number" name="street_and_use_number" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="postal_code" class="form-label">Código Postal</label>
+                        <input type="text" class="form-control" id="postal_code" name="postal_code" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="city" class="form-label">Ciudad</label>
+                        <input type="text" class="form-control" id="city" name="city" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="province" class="form-label">Provincia</label>
+                        <input type="text" class="form-control" id="province" name="province" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone_number" class="form-label">Teléfono</label>
+                        <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="is_billing_address" class="form-label">¿Es Dirección de Facturación?</label>
+                        <select class="form-select" id="is_billing_address" name="is_billing_address" required>
+                            <option value="1">Sí</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Dirección</button>
+                </form>
+
+                  </div>
               </div>
+          </div>
+      </div>
             </div>
           </div>
         </div>
