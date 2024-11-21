@@ -28,17 +28,29 @@ $client = json_decode($response)->data;
 
 
 $addressController = new AddressController();
-
-// Obtener direcciones asociadas al cliente
-// $response = $addressController->getAddressByClient($clientId);
-// $addresses = $addressController->getAddressByClient($clientId);
 $addresses = $client->addresses;
 
-// $addresses = $addressController->getAddressByClient($clientId);
-// var_dump($addresses);
-// exit;
 
 
+// Incluir el controlador
+include_once "../../app/WidgetsController.php";
+
+// Obtener el ID del cliente de la URL
+$clientId = isset($_GET['id']) ? $_GET['id'] : null;
+
+// Verificar si el ID del cliente es válido
+if (!$clientId) {
+    echo "<p>ID de cliente no proporcionado.</p>";
+    exit;
+}
+
+// Crear una instancia de WidgetsController
+$widgetsController = new WidgetsController();
+
+
+// Obtener el total de compras del cliente
+$totalPurchases = $widgetsController->getTotalPurchasesByClient($clientId);
+$totalOrders = $widgetsController->getOrderCountByClient($clientId);
 
 ?>
 
@@ -147,23 +159,25 @@ $addresses = $client->addresses;
                 </div>
                 <div class="card statistics-card-1 overflow-hidden">
                 <div class="card-body">
-                <img src="<?= BASE_PATH ?>assets/images/widget/img-status-4.svg" alt="img" class="img-fluid img-bg" />
-                <h5 class="mb-4">Widget total de compras</h5>
-                <div class="d-flex align-items-center mt-3">
-                  <h3 class="f-w-300 d-flex align-items-center m-b-0">$249.95</h3>
-                  <span class="badge bg-light-success ms-2">36%</span>
-                </div>
-                <p class="text-muted mb-2 text-sm mt-3">Compraste 420,69 en este mes</p>
-                <div class="progress" style="height: 7px">
-                  <div
-                    class="progress-bar bg-brand-color-3"
-                    role="progressbar"
-                    style="width: 75%"
-                    aria-valuenow="75"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
+                  <img src="<?= BASE_PATH ?>assets/images/widget/img-status-4.svg" alt="img" class="img-fluid img-bg" />
+                  <h5 class="mb-4">Widget total de compras</h5>
+                  <div class="d-flex align-items-center mt-3">
+                      <h3 class="f-w-300 d-flex align-items-center m-b-0">
+                          $<?= number_format($totalPurchases, 2) ?>
+                      </h3>
+                      <span class="badge bg-light-success ms-2">36%</span>
+                  </div>
+                  <p class="text-muted mb-2 text-sm mt-3">Compraste <?= number_format($totalOrders) ?> veces</p>
+                  <div class="progress" style="height: 7px">
+                      <div
+                          class="progress-bar bg-brand-color-3"
+                          role="progressbar"
+                          style="width: <?= $totalPurchases ? (min($totalPurchases, 1000) / 1000) * 100 : 0 ?>%"
+                          aria-valuenow="<?= $totalPurchases ? (min($totalPurchases, 1000) / 1000) * 100 : 0 ?>"
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                      ></div>
+                  </div>
               </div>
               </div>
             </div>
