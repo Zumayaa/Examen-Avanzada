@@ -284,8 +284,8 @@
                             <tr>
                                 <th class="border-top-0">Nombre</th>
                                 <th class="border-top-0">Email</th>
-                                <th class="border-top-0">Cuenta</th>
-                                <th class="border-top-0">Cumpleaños</th>
+                                <th class="border-top-0">Rol</th>
+                                <th class="border-top-0">Creado por</th>
                                 <th class="border-top-0">Acción</th>
                             </tr>
                         </thead>
@@ -296,7 +296,7 @@
                                         <td><?= htmlspecialchars($user['name']) . ' ' . htmlspecialchars($user['lastname']) ?></td>
                                         <td><a href="mailto:<?= htmlspecialchars($user['email']) ?>" class="link-secondary"><?= htmlspecialchars($user['email']) ?></a></td>
                                         <td><?= htmlspecialchars($user['role'] ?? 'N/A') ?></td>
-                                        <td><?= htmlspecialchars($user['birthday'] ?? 'No disponible') ?></td>
+                                        <td><?= htmlspecialchars($user['created_by'] ?? 'No disponible') ?></td>
                                         <td>
                                             <a href="<?= BASE_PATH ?>users/details.php?id=<?= urlencode($user['id']) ?>" class="btn btn-sm btn-light-primary">
                                                 <i class="feather icon-eye"></i>
