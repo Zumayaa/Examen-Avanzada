@@ -95,6 +95,10 @@
                                 aria-describedby="emailHelp"
                                 placeholder="Ingresa el nombre"
                                 name="name"
+                                pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
+                                required
                               />
                             </div>
                             <div class="mb-3">
@@ -104,8 +108,12 @@
                                 class="form-control"
                                 id="lname"
                                 aria-describedby="emailHelp"
-                                placeholder="Ingresa el apellido"
+                                placeholder="Ingresa la descripción de categoría"
                                 name="description"
+                                pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
+                                required
                               />
                             </div>
                             <div class="mb-3">
@@ -117,6 +125,10 @@
                                 aria-describedby="emailHelp"
                                 placeholder="Slug"
                                 name="slug"
+                                pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
+                                required
                               />
                             </div>
                           </div>
@@ -161,6 +173,10 @@
                                 class="form-control"
                                 id="editName"
                                 name="name"
+                                pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
+                                required
                               />
                             </div>
                             <div class="mb-3">
@@ -170,6 +186,10 @@
                                 class="form-control"
                                 id="editDescription"
                                 name="description"
+                                pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
+                                required
                               />
                             </div>
                             <div class="mb-3">
@@ -179,6 +199,10 @@
                                 class="form-control"
                                 id="editSlug"
                                 name="slug"
+                                pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
+                                required
                               />
                             </div>
                           </div>

@@ -95,6 +95,9 @@
                                 class="form-control"
                                 name="name"
                                 placeholder="Ingresa el nombre"
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
+                                required
                               />
                             </div>
                             <div class="mb-3">
@@ -104,6 +107,9 @@
                                 class="form-control"
                                 name="description"
                                 placeholder="Ingresa la descripción del tag"
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
+                                required
                               />
                             </div>
                             <div class="mb-3">
@@ -113,6 +119,9 @@
                                 class="form-control"
                                 name="slug"
                                 placeholder="Ingresa el slug"
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
+                                required
                               />
                             </div>
                           </div>
@@ -156,6 +165,9 @@
                               name="name"
                               id="editName"
                               placeholder="Ingresa el nombre"
+                              title="Solo se permiten letras y espacios"
+                              oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
+                              required
                             />
                           </div>
                           <div class="mb-3">
@@ -166,6 +178,9 @@
                               name="description"
                               id="editDescription"
                               placeholder="Ingresa la descripción"
+                              title="Solo se permiten letras y espacios"
+                              oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
+                              required
                             />
                           </div>
                           <div class="mb-3">
@@ -176,6 +191,9 @@
                               name="slug"
                               id="editSlug"
                               placeholder="Ingresa el slug"
+                              title="Solo se permiten letras y espacios"
+                              oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
+                              required
                             />
                           </div>
                         </div>

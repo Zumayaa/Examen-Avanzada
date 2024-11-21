@@ -42,7 +42,7 @@
               </div>
               <div class="col-md-12">
                 <div class="page-header-title">
-                  <h2 class="mb-0">Detalles de cupon</h2>
+                  <h2 class="mb-0">Detalles de orden</h2>
                 </div>
               </div>
             </div>

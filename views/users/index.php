@@ -111,6 +111,9 @@
                                 class="form-control"
                                 name="name"
                                 placeholder="Ingresa el nombre"
+                                pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" 
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
                                 required
                               />
                             </div>
@@ -121,6 +124,9 @@
                                 class="form-control"
                                 name="lastname"
                                 placeholder="Ingresa el apellido"
+                                pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" 
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
                                 required
                               />
                             </div>
@@ -141,6 +147,8 @@
                                 class="form-control"
                                 name="phone_number"
                                 placeholder="Ingresa el número de teléfono"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                                title="Solo se permiten números"
                                 required
                               />
                             </div>
@@ -222,19 +230,19 @@
                                     </small>
                                     <div class="mb-3">
                                         <label class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" id="userName" name="name" placeholder="Ingresa el nombre" required>
+                                        <input type="text" class="form-control" id="userName" name="name" placeholder="Ingresa el nombre" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo se permiten letras y espacios" oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Apellido</label>
-                                        <input type="text" class="form-control" id="userLastname" name="lastname" placeholder="Ingresa el apellido" required>
+                                        <input type="text" class="form-control" id="userLastname" name="lastname" placeholder="Ingresa el apellido" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo se permiten letras y espacios" oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Correo Electrónico</label>
-                                        <input type="email" class="form-control" id="userEmail" name="email" placeholder="Ingresa el correo electrónico" required>
+                                        <input type="email" class="form-control" id="userEmail" name="email" placeholder="Ingresa el correo electrónico"  required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Número de Teléfono</label>
-                                        <input type="text" class="form-control" id="userPhone" name="phone_number" placeholder="Ingresa el número de teléfono" required>
+                                        <input type="text" class="form-control" id="userPhone" name="phone_number" placeholder="Ingresa el número de teléfono" pattern="\d+" title="Solo se permiten números" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Rol</label>
