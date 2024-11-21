@@ -74,7 +74,7 @@
         <!-- [ breadcrumb ] end -->
 
         <!-- [ Main Content ] start -->
-        <form action="<?= BASE_PATH ?>contPresentation" method="post">
+        <form action="<?= BASE_PATH ?>app/PresentationController.php" method="post">
           <div class="row">
             <!-- [ sample-page ] start -->
             <div class="col-xl-6">

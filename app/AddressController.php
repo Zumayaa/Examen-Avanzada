@@ -119,9 +119,9 @@ class AddressController {
         $response = json_decode($response);
 
         if (isset($response->code) && $response->code == 4) {
-            header('Location: ' . BASE_PATH . 'address?status=createdAddress');
+            header('Location: ' . BASE_PATH . 'customer?status=createdAddress');
         } else {
-            header('Location: ' . BASE_PATH . 'address?status=error');
+            header('Location: ' . BASE_PATH . 'customer?status=error');
         }
     }
 
@@ -159,9 +159,9 @@ class AddressController {
         $response = json_decode($response);
 
         if (isset($response->code) && $response->code == 4) {
-            header('Location: ' . BASE_PATH . 'address?status=updatedAddress');
+            header('Location: ' . BASE_PATH . 'customer?status=updatedAddress');
         } else {
-            header('Location: ' . BASE_PATH . 'address?status=error');
+            header('Location: ' . BASE_PATH . 'customer?status=error');
         }
     }
 
@@ -187,9 +187,9 @@ class AddressController {
         $response = json_decode($response);
 
         if (isset($response->code) && $response->code == 4) {
-            header('Location: ' . BASE_PATH . 'address?status=deletedAddress');
+            header('Location: ' . BASE_PATH . 'customer?status=deletedAddress');
         } else {
-            header('Location: ' . BASE_PATH . 'address?status=error');
+            header('Location: ' . BASE_PATH . 'customer?status=error');
         }
     }
 }

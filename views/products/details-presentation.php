@@ -139,11 +139,6 @@
                           <button type="button" class="btn btn-primary">Ordenar aquí</button>
                         </div>
                       </div>
-                      <div class="col-6">
-                        <div class="d-grid">
-                          <button type="button" class="btn btn-outline-secondary">Este lo borramos?</button>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>

@@ -62,7 +62,7 @@
         <!-- [ breadcrumb ] end -->
 
         <!-- [ Main Content ] start -->
-        <form action="<?= BASE_PATH ?>contPresentation" method="post"  enctype="multipart/form-data">
+        <form action="<?= BASE_PATH ?>app/PresentationController.php" method="post"  enctype="multipart/form-data">
           <div class="row">
             <!-- [ sample-page ] start -->
             <div class="col-xl-6">
