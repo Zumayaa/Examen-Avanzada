@@ -1,0 +1,69 @@
+Options +FollowSymLinks -MultiViews -Indexes
+RewriteEngine on
+RewriteBase /Examen-avanzada/
+
+# Rutas de reescritura de páginas
+RewriteRule ^login/?$ index.php [L]
+RewriteRule ^home/?$ views/home.php [L]
+RewriteRule ^profile/?$ views/profile.php [L]
+RewriteRule ^products/?$ views/products/index.php [L]
+RewriteRule ^users/?$ views/users/index.php [L]
+RewriteRule ^customer/?$ views/customer/index.php [L]
+RewriteRule ^coupons/?$ views/coupons/coupons.php [L]
+RewriteRule ^orders/?$ views/orders/orders.php [L]
+
+# Controladores
+RewriteRule ^auth/?$ app/AuthController.php [L]
+RewriteRule ^products/?$ app/ProductController.php [L]
+RewriteRule ^contPresentation/?$ app/PresentationController.php [L]
+RewriteRule ^contCategory/?$ app/CategoryController.php [L]
+RewriteRule ^contBrand/?$ app/BrandController.php [L]
+RewriteRule ^contTag/?$ app/TagController.php [L]
+RewriteRule ^contOrders/?$ app/OrderController.php [L]
+
+# Editar producto
+RewriteRule ^products/edit-product/?$ views/products/edit-product.php [L]
+
+# Lista de presentaciones
+RewriteRule ^products/presentation/?$ views/products/presentation.php [L]
+
+# Crear presentaciones
+RewriteRule ^products/add-presentation/?$ views/products/add-presentation.php [L]
+RewriteRule ^products/add-product/?$ views/products/add-product.php [L]
+
+# Editar presentaciones
+RewriteRule ^products/edit-presentation/?$ views/products/edit-presentation.php [L]
+
+# Detalles de productos
+RewriteRule ^products/details/?$ views/products/details.php [L]
+
+# Detalles de presentaciones
+RewriteRule ^products/([^/]+)/?$ views/products/details-presentation.php [L]
+
+# Alta de usuarios
+RewriteRule ^users/add-users/?$ views/users/add-users.php [L]
+
+# Detalles de usuarrio
+RewriteRule ^users/([^/]+)/?$ views/users/details.php [L]
+
+# Ver cliente
+RewriteRule ^customer/([^/]+)/?$ views/customer/details.php [L]
+
+# Ver ordenes
+RewriteRule ^orders/([^/]+)/?$ views/orders/details.php [L]
+
+#CRUD marcas
+RewriteRule ^catalogs/brands/?$ views/catalogs/brands/brands.php [L]
+RewriteRule ^catalogs/brands/details/?$ views/catalogs/brands/details.php [L]
+
+#CRUD categories
+RewriteRule ^catalogs/categories/?$ views/catalogs/categories/categories.php [L]
+RewriteRule ^catalogs/categories/details/?$ views/catalogs/categories/details.php [L]
+
+#CRUD tags
+RewriteRule ^catalogs/tags/?$ views/catalogs/tags/tags.php [L]
+RewriteRule ^catalogs/tags/details/?$ views/catalogs/tags/details.php [L]
+
+#Detalles Cupon
+RewriteRule ^coupons/coupons/?$ views/coupons/coupons.php [L]
+RewriteRule ^coupons/details/?$ views/coupons/details.php [L]
