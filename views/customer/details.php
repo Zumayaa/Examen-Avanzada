@@ -271,7 +271,14 @@ $totalOrders = $widgetsController->getOrderCountByClient($clientId);
                                   <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal" data-id="<?= $address->id ?>">
                                       <i class="feather icon-edit"></i>
                                   </button>
-                                  <a href="<?= BASE_PATH ?>addresses/delete?id=<?= $address->id ?>" class="btn btn-sm btn-light-danger"><i class="feather icon-trash-2"></i></a>
+                                  <form action="<?= BASE_PATH ?>app/AddressController.php" method="POST" style="display: inline;">
+                                      <input type="hidden" name="action" value="delete_address">
+                                      <input type="hidden" name="address_id" value="<?= htmlspecialchars($address->id) ?>"> <!-- Cambié clientId por address_id -->
+                                      <button type="submit" class="btn btn-sm btn-light-danger">
+                                          <i class="feather icon-trash-2"></i>
+                                      </button>
+                                  </form>
+
                               </td>
                           </tr>
                       <?php endforeach; ?>
