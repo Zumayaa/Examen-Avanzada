@@ -252,7 +252,6 @@ class ProductController {
             echo 'Curl error: ' . curl_error($curl);
         } else {
             $response = json_decode($response);  
-            var_dump($response); 
         }
     
         curl_close($curl);
@@ -260,7 +259,6 @@ class ProductController {
         if (isset($response->code) && $response->code == 4) {
             header('Location: ' . BASE_PATH . 'products?status=ok');
         } else {
-            var_dump($response);  
             header('Location: ' . BASE_PATH . 'products?status=error');
         }
     }
