@@ -4,7 +4,7 @@
 	}
 	
 	if (!defined('BASE_PATH')) {
-      define('BASE_PATH','http://localhost/Examen-avanzada/');
+      define('BASE_PATH','https://marcomercce-a6381734ee04.herokuapp.com/');
    	}
 
 ?>
