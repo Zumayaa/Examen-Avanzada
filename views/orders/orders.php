@@ -226,12 +226,13 @@
                           <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal">
                             <i class="feather icon-edit"></i>
                           </button>
-                          <form action="<?= BASE_PATH ?>contOrder" method="POST" style="display:inline;">
+                          <form action="<?= BASE_PATH ?>contOrders" method="POST" style="display:inline;">
                               <input type="hidden" name="action" value="delete_order">
                               <input type="hidden" name="id" value="<?= $lista->id; ?>">
                               <button type="submit" class="btn btn-sm btn-light-danger">
                                 <i class="feather icon-trash-2"></i>
                               </button>
+                          </form>
                         </td>
                       </tr>
                     <?php  endforeach ?>
