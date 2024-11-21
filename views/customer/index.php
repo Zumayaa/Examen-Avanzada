@@ -87,7 +87,7 @@
           <div class="col-lg-12">
             <div class="card shadow-none">
               <div class="card-header">
-                <h5>Marcas</h5>
+                <h5>Clientes</h5>
                 <div class="card-header-right">
                   <button type="button" class="btn btn-light-warning m-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Agregar clientes

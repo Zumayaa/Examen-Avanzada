@@ -83,39 +83,6 @@
               </div>
             </div>
           </div>
-          <div class="col-xl-6">
-            <!-- 
-            <div class="card">
-              <div class="card-header">
-                <h5>Select size</h5>
-              </div>
-              <div class="card-body">
-                <div class="row g-2">
-                  <div class="col-auto">
-                    <input type="radio" class="btn-check" id="btnrdolite1" name="btn_radio2" checked="" />
-                    <label class="btn btn-sm btn-light-primary" for="btnrdolite1">34</label>
-                  </div>
-                  <div class="col-auto">
-                    <input type="radio" class="btn-check" id="btnrdolite2" name="btn_radio2" />
-                    <label class="btn btn-sm btn-light-primary" for="btnrdolite2">36</label>
-                  </div>
-                  <div class="col-auto">
-                    <input type="radio" class="btn-check" id="btnrdolite3" name="btn_radio2" />
-                    <label class="btn btn-sm btn-light-primary" for="btnrdolite3">38</label>
-                  </div>
-                  <div class="col-auto">
-                    <input type="radio" class="btn-check" id="btnrdolite4" name="btn_radio2" />
-                    <label class="btn btn-sm btn-light-primary" for="btnrdolite4">40</label>
-                  </div>
-                  <div class="col-auto">
-                    <input type="radio" class="btn-check" id="btnrdolite5" name="btn_radio2" />
-                    <label class="btn btn-sm btn-light-primary" for="btnrdolite5">42</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            -->
-          </div>
           <div class="col-sm-12">
             <div class="card">
               <div class="card-body text-end btn-page">

@@ -147,31 +147,8 @@
                     <label class="form-label">Caracteristicas del producto</label>
                     <textarea class="form-control" placeholder="Enter Product Description" name="features"></textarea>
                   </div>
-
                 </div>
               </div>
-              <!--
-              <div class="card">
-                <div class="card-header">
-                  <h5>Precio</h5>
-                </div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="mb-0">
-                        <label class="form-label d-flex align-items-center"
-                          >Precio del producto <i class="ph-duotone ph-info ms-1" data-bs-toggle="tooltip" data-bs-title="Precio del producto general"></i
-                        ></label>
-                        <div class="input-group mb-0">
-                          <span class="input-group-text">$</span>
-                          <input type="text" class="form-control" placeholder="Cost per items" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              -->
             </div>
             <div class="col-xl-6">
               <div class="card">
