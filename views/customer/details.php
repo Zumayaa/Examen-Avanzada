@@ -350,6 +350,104 @@ $totalOrders = $widgetsController->getOrderCountByClient($clientId);
               </div>
           </div>
       </div>
+
+      <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editAddressModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editAddressModalLabel">Editar Dirección</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+              <form action="<?= BASE_PATH ?>app/AddressController.php" method="POST">
+                <!-- Acción para actualizar dirección -->
+                <input type="hidden" name="action" value="update_address">
+                
+                <!-- ID de la dirección a editar -->
+                <input type="hidden" name="address_id" id="address_id" value="">
+
+                <!-- ID del cliente relacionado con la dirección -->
+                <input type="hidden" name="client_id" value="<?= htmlspecialchars($clientId) ?>">
+
+                <!-- Primer nombre -->
+                <div class="mb-3">
+                  <label for="first_name" class="form-label">Primer Nombre</label>
+                  <input type="text" class="form-control" id="first_name" name="first_name" required>
+                </div>
+
+                <!-- Apellido -->
+                <div class="mb-3">
+                  <label for="last_name" class="form-label">Apellido</label>
+                  <input type="text" class="form-control" id="last_name" name="last_name" required>
+                </div>
+
+                <!-- Calle y número -->
+                <div class="mb-3">
+                  <label for="street_and_use_number" class="form-label">Calle y Número</label>
+                  <input type="text" class="form-control" id="street_and_use_number" name="street_and_use_number" required>
+                </div>
+
+                <!-- Código postal -->
+                <div class="mb-3">
+                  <label for="postal_code" class="form-label">Código Postal</label>
+                  <input type="text" class="form-control" id="postal_code" name="postal_code" required>
+                </div>
+
+                <!-- Ciudad -->
+                <div class="mb-3">
+                  <label for="city" class="form-label">Ciudad</label>
+                  <input type="text" class="form-control" id="city" name="city" required>
+                </div>
+
+                <!-- Provincia -->
+                <div class="mb-3">
+                  <label for="province" class="form-label">Provincia</label>
+                  <input type="text" class="form-control" id="province" name="province" required>
+                </div>
+
+                <!-- Teléfono -->
+                <div class="mb-3">
+                  <label for="phone_number" class="form-label">Teléfono</label>
+                  <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+                </div>
+
+                <!-- Dirección de facturación -->
+                <div class="mb-3">
+                  <label for="is_billing_address" class="form-label">¿Es dirección de facturación?</label>
+                  <select class="form-select" id="is_billing_address" name="is_billing_address" required>
+                    <option value="1">Sí</option>
+                    <option value="0">No</option>
+                  </select>
+                </div>
+
+                <!-- Botón para guardar cambios -->
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+          // Evento para abrir el modal y configurar los valores de los campos
+          var editButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
+          editButtons.forEach(function(button) {
+              button.addEventListener('click', function() {
+                  var addressId = button.getAttribute('data-id');
+                  // Aquí debes recuperar los datos de la dirección que quieres editar y asignarlos al modal
+                  // Ejemplo de asignación de los datos (se asume que esos datos están disponibles en el contexto)
+                  document.getElementById('address_id').value = addressId;
+                  
+                  // Si tienes más campos de la dirección, los debes asignar aquí (por ejemplo):
+                  // document.getElementById('first_name').value = "Valor recuperado";
+                  // document.getElementById('last_name').value = "Valor recuperado";
+                  // Continúa con los demás campos de la misma forma...
+              });
+          });
+      </script>
+
+      </div>
+
             </div>
           </div>
         </div>
