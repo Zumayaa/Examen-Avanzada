@@ -1,31 +1,26 @@
 <?php 
   include_once "../../app/config.php";
 
-  // Incluye el controlador y obtén los datos de los clientes
   include "../../app/ClientController.php";
   
   $clientController = new ClientController();
   $response = $clientController->getAllClients();
-  $clients = $clientsResponse['data'] ?? []; // Asegurarse de que 'data' esté presente en la respuesta
+  $clients = $clientsResponse['data'] ?? []; 
 
 
-  // Decodifica la respuesta JSON
   $clients = json_decode($response);
 
-  // Verifica si la respuesta es válida
   if (!isset($clients->data)) {
       echo "<p>Error al obtener los clientes.</p>";
       exit;
   }
 
-  // Supongamos que tienes un ID del usuario en la URL
   $clientId = $_GET['id'] ?? null;
 
   if ($clientId) {
-      // Carga los datos del usuario desde la base de datos
-      $client = getUserById($clientId); // Función ficticia para obtener datos
+      $client = getUserById($clientId); 
   } else {
-      $client = null; // Si no hay ID, no hay usuario
+      $client = null;
   }
 
 ?>
@@ -120,6 +115,9 @@
                                 class="form-control"
                                 name="name"
                                 placeholder="Ingresa el nombre"
+                                pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" 
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
                                 required
                               />
                             </div>
@@ -130,7 +128,8 @@
                                 type="email"
                                 class="form-control"
                                 name="email"
-                                placeholder="Ingresa el correo"
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
                                 required
                               />
                             </div>
@@ -153,6 +152,9 @@
                                 class="form-control"
                                 name="phone_number"
                                 placeholder="Ingresa el número de teléfono"
+                                pattern="^[0-9]{6,12}$"
+                                maxlength="12"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 12)"
                                 required
                               />
                             </div>
@@ -221,6 +223,9 @@
                                 id="name"
                                 name="name"
                                 placeholder="Ingresa el nombre"
+                                pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" 
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
                                 required
                                 value="<?= htmlspecialchars($client->name ?? '') ?>"
                               />
@@ -233,6 +238,9 @@
                                 id="email"
                                 name="email"
                                 placeholder="Ingresa el email"
+                                pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" 
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
                                 required
                                 value="<?= htmlspecialchars($client->email ?? '') ?>"
                               />
@@ -254,7 +262,9 @@
                                 class="form-control"
                                 id="phone_number"
                                 name="phone_number"
-                                placeholder="Ingresa el número telefónico"
+                                pattern="^[0-9]{6,12}$"
+                                maxlength="12"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 12)"
                                 required
                                 value="<?= htmlspecialchars($client->phone_number ?? '') ?>"
                               />
