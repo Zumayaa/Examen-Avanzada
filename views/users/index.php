@@ -147,8 +147,9 @@
                                 class="form-control"
                                 name="phone_number"
                                 placeholder="Ingresa el número de teléfono"
-                                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                                title="Solo se permiten números"
+                                pattern="^[0-9]{6,12}$"
+                                maxlength="12"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 12)"
                                 required
                               />
                             </div>
@@ -159,6 +160,8 @@
                                 class="form-control"
                                 name="created_by"
                                 placeholder="Ingresa el nombre del creador"
+                                title="Solo se permiten letras y espacios"
+                                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')"
                                 required
                               />
                             </div>
@@ -242,7 +245,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Número de Teléfono</label>
-                                        <input type="text" class="form-control" id="userPhone" name="phone_number" placeholder="Ingresa el número de teléfono" pattern="\d+" title="Solo se permiten números" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+                                        <input type="text" class="form-control" id="userPhone" name="phone_number" placeholder="Ingresa el número de teléfono" pattern="\d+" title="Solo se permiten números" pattern="^[0-9]{6,12}$" maxlength="12" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 12)" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Rol</label>
@@ -257,7 +260,7 @@
                                     </div> -->
                                     <div class="mb-3">
                                         <label class="form-label">Creado por</label>
-                                        <input type="text" class="form-control" id="userCreatedBy" name="created_by" placeholder="Creado por">
+                                        <input type="text" class="form-control" id="userCreatedBy" name="created_by" placeholder="Creado por" title="Solo se permiten letras y espacios" oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '')" required>
                                     </div>
                                     <!-- <div class="mb-3">
                                         <label class="form-label">Imagen de perfil</label>
