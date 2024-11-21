@@ -28,7 +28,7 @@ if (isset($_SESSION['user_data'])) {
         <div class="m-header">
           <a href="<?= BASE_PATH ?>home" class="b-brand text-primary">
             <!-- ========   Change your logo from here   ============ -->
-            <img src="<?= BASE_PATH ?>assets/images/logo-dark.svg" alt="logo image" class="logo-lg" />
+            <img src="<?= BASE_PATH ?>views/layouts/logo.png" alt="logo image" />
             <span class="badge bg-brand-color-2 rounded-pill ms-2 theme-version"><?= htmlspecialchars($name)?> was here</span>
           </a>
         </div>
