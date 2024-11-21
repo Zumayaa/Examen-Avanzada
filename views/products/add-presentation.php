@@ -149,7 +149,7 @@
                     </select>
                   </div>
                   <div class="mb-3">
-                    <label class="form-label">precio</label>
+                    <label class="form-label">Precio</label>
                     <input 
                       type="number" 
                       class="form-control" 

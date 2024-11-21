@@ -57,32 +57,99 @@
         <div class="row">
           <!-- [ sample-page ] start -->
           <div class="col-xl-6">
-            <div class="card">
-              <div class="card-header">
-                <h5>Descripción de la presentación</h5>
-              </div>
-              <div class="card-body">
-                <div class="mb-3">
-                  <label class="form-label">Nombre de la presentación</label>
-                  <input type="text" class="form-control" placeholder="Enter Product Name" />
+              <div class="card">
+                <div class="card-header">
+                  <h5>Descripción de la presentación</h5>
                 </div>
-                <div class="mb-3">
-                  <label class="form-label">Producto madre</label>
-                  <select class="form-select">
-                    <option>Sneakers</option>
-                    <option>Category 1</option>
-                    <option>Category 2</option>
-                    <option>Category 3</option>
-                    <option>Category 4</option>
-                  </select>
-                </div>
-                <div class="mb-0">
-                  <label class="form-label">Descripción de la presentación</label>
-                  <textarea class="form-control" placeholder="Enter Product Description"></textarea>
+                <input type="hidden" name="action" value="create_presentation">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <label class="form-label">Nombre de la presentación</label>
+                    <input type="text" class="form-control" placeholder="Ingresa el nombre" name="description"/>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Código</label>
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      placeholder="Ingrese el código" 
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                      required 
+                      name="code"
+                    />
+                    <small class="text-muted">El código debe contener solo números.</small>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Peso en gramos</label>
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      placeholder="gr" 
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                      name="weight"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Estatus</label>
+                    <select class="form-control" required name="status">
+                      <option value="">Seleccione un estatus</option>
+                      <option value="activo">Activo</option>
+                      <option value="inactivo">Inactivo</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Stock</label>
+                    <input 
+                      type="number" 
+                      class="form-control" 
+                      placeholder="Ingrese el stock actual" 
+                      min="0" 
+                      required 
+                      name="stock"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Stock mínimo</label>
+                    <input 
+                      type="number" 
+                      class="form-control" 
+                      placeholder="Ingrese el stock mínimo" 
+                      min="0" 
+                      required 
+                      name="stock_min"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Stock máximo</label>
+                    <input 
+                      type="number" 
+                      class="form-control" 
+                      placeholder="Ingrese el stock máximo" 
+                      min="0" 
+                      required 
+                      name="stock_max"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Producto</label>
+                    <select class="form-control" required name="product_id">
+                        <option value="">Seleccione un producto</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Precio</label>
+                    <input 
+                      type="number" 
+                      class="form-control" 
+                      placeholder="Ingrese la cantidad" 
+                      min="0" 
+                      required 
+                      name="amount"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           <div class="col-sm-12">
             <div class="card">
               <div class="card-body text-end btn-page">

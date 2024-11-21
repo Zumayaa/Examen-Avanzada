@@ -86,14 +86,14 @@
                 <div class="card-body">
                   <div class="mb-3">
                     <label class="form-label">Nombre de producto</label>
-                    <input type="text" class="form-control" placeholder="Enter Product Name" name="nombre" />
+                    <input type="text" class="form-control" placeholder="Ingresa el nombre del producto" name="nombre" />
                   </div>
 
                   <input type="hidden" name="action" value="create_product">
 
                   <div class="mb-3">
                     <label class="form-label">Slug</label>
-                    <input type="text" class="form-control" placeholder="Enter Product Slug" name="slug" />
+                    <input type="text" class="form-control" placeholder="Ingresa el slug del producto" name="slug" />
                   </div>
 
                   <div id="categories-section">
@@ -138,14 +138,14 @@
                     </select>
                   </div>
 
-                  <div class="mb-0">
+                  <div class="mb-3">
                     <label class="form-label">Descripción del producto</label>
-                    <textarea class="form-control" placeholder="Enter Product Description" name="description"></textarea>
+                    <textarea class="form-control" placeholder="Ingresa la descripción del producto" name="description"></textarea>
                   </div>
 
-                  <div class="mb-0">
+                  <div class="mb-3">
                     <label class="form-label">Caracteristicas del producto</label>
-                    <textarea class="form-control" placeholder="Enter Product Description" name="features"></textarea>
+                    <textarea class="form-control" placeholder="Ingresa las características del producto" name="features"></textarea>
                   </div>
                 </div>
               </div>
