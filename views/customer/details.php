@@ -316,9 +316,7 @@ $totalOrders = $widgetsController->getOrderCountByClient($clientId);
                         <th>Folio</th>
                         <th>Total</th>
                         <th>Nombre</th>
-                        <th>Direcciones</th>
                         <th>Correo</th>
-                        <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -328,21 +326,7 @@ $totalOrders = $widgetsController->getOrderCountByClient($clientId);
                               <td><?= htmlspecialchars($order->folio) ?></td>
                               <td><?= htmlspecialchars($order->total) ?></td>
                               <td><?= htmlspecialchars($client->name) ?></td>
-                              <td><?= htmlspecialchars($order->address_id) ?></td>
                               <td><?= htmlspecialchars($client->email) ?></td>
-                              <td>
-                                  <button type="button" class="btn btn-sm btn-light-success me-1" data-bs-toggle="modal" data-bs-target="#editModal" data-id="<?= $order->id ?>">
-                                      <i class="feather icon-edit"></i>
-                                  </button>
-                                  <form action="<?= BASE_PATH ?>app/AddressController.php" method="POST" style="display: inline;">
-                                      <input type="hidden" name="action" value="delete_address">
-                                      <input type="hidden" name="address_id" value="<?= htmlspecialchars($order->id) ?>"> <!-- Cambié clientId por address_id -->
-                                      <button type="submit" class="btn btn-sm btn-light-danger">
-                                          <i class="feather icon-trash-2"></i>
-                                      </button>
-                                  </form>
-
-                              </td>
                           </tr>
                       <?php endforeach; ?>
                   <?php else: ?>
@@ -353,10 +337,6 @@ $totalOrders = $widgetsController->getOrderCountByClient($clientId);
               </tbody>
             </table>
           </div>
-                  <!-- Botón para agregar dirección -->
-                  <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addAddressModal">
-                      Agregar Dirección
-                  </button>
         </div>
 
       <!-- Modal para agregar una nueva dirección -->

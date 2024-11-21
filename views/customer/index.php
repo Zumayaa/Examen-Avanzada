@@ -87,7 +87,7 @@
           <div class="col-lg-12">
             <div class="card shadow-none">
               <div class="card-header">
-                <h5>Clientes</h5>
+                <h5>Marcas</h5>
                 <div class="card-header-right">
                   <button type="button" class="btn btn-light-warning m-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Agregar clientes
@@ -294,8 +294,9 @@
                             <tr>
                                 <th class="border-top-0">Nombre</th>
                                 <th class="border-top-0">Email</th>
-                                <th class="border-top-0">Cuenta</th>
-                                <th class="border-top-0">Cumpleaños</th>
+                                <th class="border-top-0">Número telefónico</th>
+                                <th class="border-top-0">Suscripción</th>
+                                <th class="border-top-0">Nivel</th>
                                 <th class="border-top-0">Acción</th>
                             </tr>
                         </thead>
@@ -304,8 +305,9 @@
                                 <tr>
                                     <td><?= htmlspecialchars($client->name) ?></td>
                                     <td><a href="#" class="link-secondary"><?= htmlspecialchars($client->email) ?></a></td>
-                                    <td><?= htmlspecialchars($client->account ?? 'N/A') ?></td>
-                                    <td><?= htmlspecialchars(date('F d, Y', strtotime($client->birthday ?? ''))) ?></td>
+                                    <td><?= htmlspecialchars($client->phone_number ?? 'N/A') ?></td>
+                                    <td><?= htmlspecialchars($client->is_suscribed ?? 'N/A') ?></td>
+                                    <td><?= htmlspecialchars($client->level_id ?? 'N/A') ?></td>
                                     <td>
                                         <a href="<?= BASE_PATH ?>customer/details.php?id=<?= $client->id ?>" class="btn btn-sm btn-light-primary">
                                             <i class="feather icon-eye"></i>
