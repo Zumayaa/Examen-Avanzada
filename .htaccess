@@ -1,6 +1,5 @@
 Options +FollowSymLinks -MultiViews -Indexes
 RewriteEngine on
-RewriteBase /Examen-avanzada/
 
 # Rutas de reescritura de páginas
 RewriteRule ^login/?$ index.php [L]
